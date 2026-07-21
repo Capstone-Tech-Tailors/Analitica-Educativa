@@ -1,0 +1,21 @@
+comentario,sentimiento,robertuito,beto,multilingue,acuerdo,esperado,coincide
+No resuelve las dudas de los estudiantes.,NEG,NEG,NEU,NEG,2,NEG,True
+Falta mucha pedagogía.,NEG,NEG,NEU,NEG,2,NEG,True
+Califica de forma injusta.,NEG,NEG,NEG,NEG,3,NEG,True
+"No explica bien, me siento perdido.",NEG,NEG,NEG,NEG,3,NEG,True
+"Asistencia puntual, pero falta dinamismo.",NEG,NEU,NEG,NEG,2,NEG,True
+Llega tarde a las clases frecuentemente.,NEG,NEG,NEG,NEG,3,NEG,True
+La clase es muy aburrida y monótona.,NEG,NEG,NEG,NEG,3,NEG,True
+Se podría mejorar un poco el material de estudio.,NEU,NEU,NEU,NEU,3,NEG,False
+Los temas son difíciles pero se entienden.,NEU,POS,NEU,NEU,2,NEU,True
+"El profesor es normal, ni muy bueno ni muy malo.",NEU,NEU,NEU,NEG,2,NEU,True
+Los parciales no tienen nada que ver con lo visto en clase.,NEU,NEG,NEU,NEU,2,NEG,False
+Se nota que sabe mucho de la materia.,NEU,POS,NEU,NEU,2,POS,False
+Resuelve las dudas con mucha paciencia.,NEU,NEU,POS,NEU,2,POS,False
+Cumple con el programa.,NEU,NEU,POS,NEU,2,NEU,True
+"Excelente profesor, muy claro.",POS,POS,POS,POS,3,POS,True
+La clase estuvo bien.,POS,POS,POS,POS,3,NEU,False
+Los talleres son muy útiles para aprender.,POS,POS,POS,POS,3,POS,True
+Explica muy bien los temas.,POS,POS,POS,POS,3,POS,True
+Me inspiró a seguir aprendiendo sobre este tema.,POS,POS,POS,POS,3,POS,True
+La clase es muy dinámica y entretenida.,POS,POS,POS,POS,3,POS,True

@@ -1,0 +1,21 @@
+comentario,consenso_modelos,etiqueta_final
+No resuelve las dudas de los estudiantes.,NEG,NEG
+Falta mucha pedagogía.,NEG,NEG
+Califica de forma injusta.,NEG,NEG
+"No explica bien, me siento perdido.",NEG,NEG
+"Asistencia puntual, pero falta dinamismo.",NEG,NEG
+Llega tarde a las clases frecuentemente.,NEG,NEG
+La clase es muy aburrida y monótona.,NEG,NEG
+Se podría mejorar un poco el material de estudio.,NEU,NEG
+Los temas son difíciles pero se entienden.,NEU,NEU
+"El profesor es normal, ni muy bueno ni muy malo.",NEU,NEU
+Los parciales no tienen nada que ver con lo visto en clase.,NEU,NEG
+Se nota que sabe mucho de la materia.,NEU,NEU
+Resuelve las dudas con mucha paciencia.,NEU,NEU
+Cumple con el programa.,NEU,NEU
+"Excelente profesor, muy claro.",POS,POS
+La clase estuvo bien.,POS,NEU
+Los talleres son muy útiles para aprender.,POS,POS
+Explica muy bien los temas.,POS,POS
+Me inspiró a seguir aprendiendo sobre este tema.,POS,POS
+La clase es muy dinámica y entretenida.,POS,POS
