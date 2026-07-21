@@ -1,0 +1,21 @@
+comentario,gold,fronterizo,robertuito,beto,xlmr,consenso,acuerdo_modelos
+"Excelente profesor, muy claro.",POS,False,POS,POS,POS,POS,3
+Explica muy bien los temas.,POS,False,POS,POS,POS,POS,3
+Resuelve las dudas con mucha paciencia.,POS,False,NEU,POS,NEU,NEU,2
+Se nota que sabe mucho de la materia.,POS,False,POS,NEU,NEU,NEU,2
+Los talleres son muy útiles para aprender.,POS,False,POS,POS,POS,POS,3
+Me inspiró a seguir aprendiendo sobre este tema.,POS,False,POS,POS,POS,POS,3
+La clase es muy dinámica y entretenida.,POS,False,POS,POS,POS,POS,3
+La clase estuvo bien.,NEU,True,POS,POS,POS,POS,3
+"El profesor es normal, ni muy bueno ni muy malo.",NEU,False,NEU,NEU,NEG,NEU,2
+Cumple con el programa.,NEU,False,NEU,POS,NEU,NEU,2
+Los temas son difíciles pero se entienden.,NEU,True,POS,NEU,NEU,NEU,2
+No resuelve las dudas de los estudiantes.,NEG,False,NEG,NEU,NEG,NEG,2
+Falta mucha pedagogía.,NEG,False,NEG,NEU,NEG,NEG,2
+Califica de forma injusta.,NEG,False,NEG,NEG,NEG,NEG,3
+"No explica bien, me siento perdido.",NEG,False,NEG,NEG,NEG,NEG,3
+La clase es muy aburrida y monótona.,NEG,False,NEG,NEG,NEG,NEG,3
+Llega tarde a las clases frecuentemente.,NEG,False,NEG,NEG,NEG,NEG,3
+Los parciales no tienen nada que ver con lo visto en clase.,NEG,False,NEG,NEU,NEU,NEU,2
+"Asistencia puntual, pero falta dinamismo.",NEG,True,NEU,NEG,NEG,NEG,2
+Se podría mejorar un poco el material de estudio.,NEG,True,NEU,NEU,NEU,NEU,3
