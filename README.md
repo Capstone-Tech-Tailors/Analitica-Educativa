@@ -77,7 +77,8 @@ de texto (detalle en [Naturaleza y limitaciones de los datos](#-naturaleza-y-lim
 │   └── notebooks/
 │       ├── 01_catalogo_modelos_espanol.ipynb   # catálogo de modelos de sentimiento (referencia)
 │       ├── 02_sentimiento_evaluaciones.ipynb   # pipeline de sentimiento → data/processed
-│       └── 03_benchmark_modelos.ipynb          # comparación de los 3 modelos vs gold
+│       ├── 03_benchmark_modelos.ipynb          # comparación de los 3 modelos vs gold
+│       └── 04_finetuning_sentimiento.ipynb     # fine-tuning (destilación) de BETO — avanzado
 ├── analisis_datos/
 │   ├── notebooks/
 │   │   ├── 01_eda_techtailors_referencia.ipynb # EDA de referencia (compañero del equipo)
@@ -120,6 +121,7 @@ Los notebooks `01_*` son material de referencia/apoyo (catálogo de modelos y ED
 - `01_catalogo_modelos_espanol` — catálogo comparativo de modelos de sentimiento en español.
 - `02_sentimiento_evaluaciones` — pipeline con 3 modelos + votación por mayoría + *gold standard*.
 - `03_benchmark_modelos` — benchmark de los 3 modelos contra el *gold* humano; recomendación.
+- `04_finetuning_sentimiento` — fine-tuning de BETO por destilación de RoBERTuito sobre comentarios reales (avanzado; ejecutable en GPU Apple/MPS).
 
 **Análisis de datos** (`analisis_datos/notebooks/`)
 - `01_eda_techtailors_referencia` — análisis exploratorio (material de referencia del compañero).

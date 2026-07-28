@@ -18,3 +18,8 @@ env/
 .DS_Store
 Thumbs.db
 
+# Pesos de modelos fine-tuneados (grandes, regenerables)
+*/models/*_ft/
+modelo_sentimiento_ft/
+*.safetensors
+checkpoint-*/
