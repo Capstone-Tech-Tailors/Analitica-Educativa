@@ -22,7 +22,8 @@ tendencia de desempeño (`Mejora` / `Estable` / `En riesgo`).
 6. [Descripción de los notebooks](#-descripción-de-los-notebooks)
 7. [Naturaleza y limitaciones de los datos](#-naturaleza-y-limitaciones-de-los-datos)
 8. [Créditos](#-créditos)
-9. [Licencia](#-licencia)
+9. [Guía de aprendizaje](#-guía-de-aprendizaje)
+10. [Licencia](#-licencia)
 
 ## 🎯 Problema y objetivo
 
@@ -158,6 +159,14 @@ Rosario): Juan David Ríos · Natalia Remolina · Giovanni Balza.
 
 El notebook `01_eda_techtailors_referencia.ipynb` es un análisis exploratorio elaborado por un
 integrante del equipo; se incluye como referencia y solo se ajustaron sus rutas de datos.
+
+## 📚 Guía de aprendizaje
+
+[`GUIA_APRENDIZAJE.md`](GUIA_APRENDIZAJE.md) explica en lenguaje accesible **qué se hizo, por
+qué se decidió cada cosa y qué conceptos hay detrás** (transfer learning, sobreajuste,
+macro-F1, destilación). Incluye las decisiones metodológicas con su justificación, preguntas
+frecuentes y las líneas de continuación del proyecto. Recomendada para incorporarse al
+proyecto o para preparar la exposición ante el jurado.
 
 ## 📄 Licencia
 
