@@ -21,5 +21,6 @@ Thumbs.db
 # Pesos de modelos fine-tuneados (grandes, regenerables)
 */models/*_ft/
 modelo_sentimiento_ft/
+modelo_sentimiento_ft_robertuito/
 *.safetensors
 checkpoint-*/

@@ -87,7 +87,8 @@ de texto (detalle en [Naturaleza y limitaciones de los datos](#-naturaleza-y-lim
 │   │   └── 03_modelado_tendencia_docente.ipynb # entrena, valida y exporta el modelo
 │   ├── reports/        # informe de revisión, justificaciones y gráficos
 │   └── models/         # artefactos del modelo (.pkl ignorado por git; metadatos versionados)
-├── src/                # código reutilizable: rutas.py, sentimiento.py, modelo_utils.py
+├── anotacion/          # rúbrica, protocolo y planillas de anotación humana
+├── src/                # código reutilizable: rutas.py, sentimiento.py, modelo_utils.py, acuerdo.py
 ├── requirements.txt
 ├── LICENSE
 └── README.md
@@ -136,6 +137,23 @@ Los notebooks `01_*` son material de referencia/apoyo (catálogo de modelos y ED
 
 Informes de apoyo en [`analisis_datos/reports/`](analisis_datos/reports/): revisión del EDA,
 justificación de los comentarios repetidos y la sección de limitaciones de datos.
+
+## 🏷️ Anotación humana (siguiente fase)
+
+El componente de texto tiene un techo demostrado: el modelo ajustado aprende de etiquetas
+generadas por RoBERTuito y por tanto **no puede superarlo**. La carpeta
+[`anotacion/`](anotacion/) contiene todo lo necesario para romperlo mediante anotación humana:
+
+| Archivo | Contenido |
+|---|---|
+| [`RUBRICA_ANOTACION.md`](anotacion/RUBRICA_ANOTACION.md) | Rúbrica v1.0 con reglas ordenadas y ejemplos ancla |
+| [`PROTOCOLO_ANOTACION.md`](anotacion/PROTOCOLO_ANOTACION.md) | Protocolo: muestreo estratificado, roles, métricas de acuerdo y adjudicación |
+| `generar_planillas.py` | Genera una planilla XLSX por anotador (orden aleatorizado, sin predicción del modelo) |
+| `consolidar_anotacion.py` | Calcula α de Krippendorff, Fleiss κ, Cohen por pares y consolida el gold |
+
+Muestra: **335 comentarios** del corpus real, estratificados y enriquecidos en casos
+fronterizos (185 de evaluación con triple anotación + 150 de entrenamiento). ~35 min por
+persona.
 
 ## ⚠️ Naturaleza y limitaciones de los datos
 
