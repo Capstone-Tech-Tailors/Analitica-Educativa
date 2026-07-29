@@ -121,7 +121,11 @@ Los notebooks `01_*` son material de referencia/apoyo (catálogo de modelos y ED
 - `01_catalogo_modelos_espanol` — catálogo comparativo de modelos de sentimiento en español.
 - `02_sentimiento_evaluaciones` — pipeline con 3 modelos + votación por mayoría + *gold standard*.
 - `03_benchmark_modelos` — benchmark de los 3 modelos contra el *gold* humano; recomendación.
-- `04_finetuning_sentimiento` — fine-tuning de BETO por destilación de RoBERTuito sobre comentarios reales (avanzado; ejecutable en GPU Apple/MPS).
+- `04_finetuning_sentimiento` — **fine-tuning** de BETO por destilación de RoBERTuito sobre
+  11.697 comentarios reales balanceados. Documentado académicamente (marco teórico,
+  hiperparámetros justificados, curvas de aprendizaje, glosario y referencias). Ejecutable
+  en GPU Apple/MPS en ~6 min. Resultado: el ajuste mejora el modelo base (macro-F1 0.626 →
+  0.708) e iguala al maestro sin superarlo (0.706), confirmando el límite de la destilación.
 
 **Análisis de datos** (`analisis_datos/notebooks/`)
 - `01_eda_techtailors_referencia` — análisis exploratorio (material de referencia del compañero).
