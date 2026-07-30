@@ -1,0 +1,750 @@
+orden,texto,tipo,esperada,anotador,clave
+1,Es uno de los mejores profesores de aiub.,eval,,A1,A1-52E5E5
+2,Todos los demás están bien.,train,,A1,A1-548DD0
+3,Un buen profesor,eval,,A1,A1-9C738D
+4,"Es nueva, así que necesita mucho más tiempo para familiarizarse con la enseñanza.",eval,,A1,A1-5B99C0
+5,¡Nadie puede preguntarle nada!,eval,,A1,A1-5495FE
+6,Buen profesor.,eval,,A1,A1-86A8AC
+7,Desempeño sobresaliente.,eval,,A1,A1-4CF7BD
+8,El profesor tiene buen conocimiento de la materia y es comprensible.,train,,A1,A1-6563F3
+9,"Es un buen profesor, pero no es atento con los estudiantes más flojos. Debería dar más tiempo a los estudiantes para entender su clase.",eval,,A1,A1-C65B1E
+10,Debería ser más abierto con los estudiantes en cuanto a la enseñanza.,train,,A1,A1-066AFF
+11,"Es una profesora agradable, además de muy estricta y amable.",eval,,A1,A1-A2DFDC
+12,Es un profesor realmente bueno para los estudiantes.,eval,,A1,A1-DCC155
+13,Necesita ir un poco más despacio al dar la clase.,eval,,A1,A1-3753F4
+14,Su cara agradable y alegre es notable. Buen profesor.,eval,,A1,A1-049738
+15,"Es un profesor ideal, pero tiene que hacer su sistema de enseñanza más fácil.",train,,A1,A1-07FAD9
+16,Tiene buen dominio.,eval,,A1,A1-EA24C9
+17,es un excelente profesor.,eval,,A1,A1-53BD8F
+18,creo que es realmente perfecto para dictar el laboratorio de a.c,eval,,A1,A1-F03F73
+19,Buenos modales.,eval,,A1,A1-CA2FA5
+20,Responsable.,eval,,A1,A1-4B857E
+21,muy buen profesor y ante todo sincero,eval,,A1,A1-55741A
+22,El profesor más equilibrado que he visto,eval,,A1,A1-D6585F
+23,Es extraordinario.,eval,,A1,A1-68578B
+24,A veces él mismo no tiene claro lo que está enseñando. Para mí no es suficientemente bueno.,eval,,A1,A1-CA31D0
+25,Debe mejorar como profesor.,eval,,A1,A1-ADC564
+26,La clase es muy aburrida y monótona.,ancla,NEG,A1,A1-E10F0D
+27,no dio puntos parciales,eval,,A1,A1-C218BB
+28,"Bueno, debería dedicar más tiempo a ciertos puntos relacionados con la clase.",eval,,A1,A1-52A829
+29,Es regular. Solo regular.,eval,,A1,A1-7AB15D
+30,"Nuestro respetable profesor. Habla bastante rápido, con énfasis, de modo que a veces no entendemos lo que quiere decir. Es bueno.",eval,,A1,A1-57906E
+31,creo que es una buena profesora. Su método de enseñanza es bueno.,repetido,,A1,A1-9AD555
+32,Muy mal profesor.,ancla,NEG,A1,A1-B370D2
+33,"Es buena, pero debería ser más moderada al poner notas.",eval,,A1,A1-E853A0
+34,"un docente excelente. de verdad hace que el estudiante entienda muy bien en clase. después de entender, nuestro concepto queda absolutamente claro. da excelentes ejemplos relacionados con el mundo real para hacernos entender un tema. hace la clase muy interesante. en general, un docente excelente.",train,,A1,A1-832311
+35,No es un buen profesor.,eval,,A1,A1-2CE655
+36,Es honesto conmigo.,train,,A1,A1-E258EB
+37,Bueno y cuidadoso.,eval,,A1,A1-B0AA5D
+38,"Siempre nos da tareas todo el tiempo, pero nos ensena un curso corto.",train,,A1,A1-24457C
+39,El maestro más divertido y con más personalidad que he visto.,eval,,A1,A1-1D21A4
+40,Es cooperativa,eval,,A1,A1-95E150
+41,Un profesor que trata de preparar a los estudiantes para enfrentar la vida practica o profesional de forma independiente. Gracias tanto al profesor como a la administracion de la universidad.,eval,,A1,A1-959778
+42,Su estilo de enseñanza no es muy bueno y los estudiantes no sienten interés por esta materia.,eval,,A1,A1-315675
+43,"El Sr. Mujibur Rahman es un buen profesor, aunque los estudiantes más lentos podrían encontrarlo un poco demasiado rápido.",eval,,A1,A1-032C22
+44,Es muy buen profesor.,eval,,A1,A1-0FBADB
+45,La clase es muy dinámica y entretenida.,ancla,POS,A1,A1-7B3630
+46,Uno de mis profesores favoritos. Me gusta asistir a cada una de sus clases. Me gusta su método de enseñanza. Especialmente me gustan los trabajos en grupo que nos da en clase y que de verdad nos ayudan.,eval,,A1,A1-53F95A
+47,"Es un muy buen profesor, pero a veces te tomas demasiado en serio cosas simples.",eval,,A1,A1-384683
+48,No.,eval,,A1,A1-A532CA
+49,es un buen profesor y muy divertido. lo único es que se ríe demasiado en clase.,eval,,A1,A1-49A403
+50,"Bienvenido y felicidades. Espero que nos esperen mejores empleos. Buena suerte, profesor, y cuídese.",eval,,A1,A1-B65F76
+51,Es un profesor excelente. Espero que la universidad lo trate como corresponde.,eval,,A1,A1-4E1A25
+52,"Tiene conocimientos y experiencia excepcionales sobre arquitectura. Ilustra con ejemplos. Como profesor, es muy franco y abierto con los estudiantes.",eval,,A1,A1-0AB5FF
+53,Necesita saber cómo enseñar a los estudiantes.,eval,,A1,A1-8E2B8A
+54,Es bueno. Tiene algo en su actitud que realmente ayuda al estudiante a mantenerse en clase. Buen profesor.,eval,,A1,A1-94F152
+55,Profesor respetable.,eval,,A1,A1-787631
+56,"Es experimentado, pero es un perdedor. Además es una persona habladora. No tiene ninguna simpatía por los estudiantes hombres, pero tiene predilección por las estudiantes mujeres.",eval,,A1,A1-90294F
+57,"Es muy, muy estricta.",train,,A1,A1-66B310
+58,No entendemos lo que nos quiere enseñar. Tarda mucho tiempo en hacer entender cualquier cosa.,eval,,A1,A1-61E73B
+59,"No explica bien, me siento perdido.",ancla,NEG,A1,A1-CBDABC
+60,No tiene habilidad para enseñar. Solo tiene un conocimiento memorizado.,eval,,A1,A1-337D97
+61,"Es un profesor muy agradable, pero es muy duro con el sistema de calificación.",eval,,A1,A1-BB3767
+62,Es un buen profesor.,eval,,A1,A1-B145D2
+63,Es un profesor agradable.,eval,,A1,A1-4D0EE3
+64,Hombre culto.,eval,,A1,A1-905F8F
+65,Es muy bueno en diseño de compiladores. Creo que es uno de los mejores en este curso,eval,,A1,A1-3937DF
+66,"es un profesor nuevo en nuestra universidad, pero es un muy buen profesor.",train,,A1,A1-91A648
+67,Gran profesor,eval,,A1,A1-2361E6
+68,Puntual,eval,,A1,A1-18FD34
+69,Explica muy bien los temas.,ancla,POS,A1,A1-00D87A
+70,Profesor.,eval,,A1,A1-104084
+71,"Persona muy educada, culta y de buen comportamiento. Muy agradable y muy respetable como profesor.",train,,A1,A1-ECA9D8
+72,Es uno de los mejores profesores de aiub. Tiene muchos conocimientos y sabe cómo hacer que sus estudiantes aprendan más que solo los materiales de estudio.,eval,,A1,A1-1C9BF0
+73,creo que no es tan bueno como se suponía que sería y espero que lo haga mejor la próxima vez.,eval,,A1,A1-CB8514
+74,"La situación actual es buena para nosotros; si AIUB organizara un curso básico de inglés para los estudiantes, nos sería aún más útil.",eval,,A1,A1-2F1A6A
+75,"Es el mejor en esta sección. Pero, profesor, sea constante.",train,,A1,A1-7B0EEB
+76,Es el profesor más cariñoso.,eval,,A1,A1-6D5621
+77,Siempre esta bien preparado.,eval,,A1,A1-6D0BBC
+78,Buen profesor. Fácil de entender,train,,A1,A1-CE2328
+79,Su estilo de enseñanza es de nivel B+.,eval,,A1,A1-933289
+80,Realmente malo,eval,,A1,A1-24BA75
+81,Ninguno.,eval,,A1,A1-CF784C
+82,"su estilo de ensenanza es bueno. cada clase revisa, despues de ensenar, si entendimos el tema.",eval,,A1,A1-89442F
+83,Es un profesor excelente.,eval,,A1,A1-B8CB9E
+84,Tiene muy buen método de enseñanza.,train,,A1,A1-4F5611
+85,"En general, es un buen profesor.",eval,,A1,A1-5B4EA8
+86,El mejor,eval,,A1,A1-0623DD
+87,no da puntos parciales,eval,,A1,A1-D550EC
+88,"entiendo la clase de la profesora, ella es capaz de aclarar nuestros conceptos sobre los temas de aprendizaje.",eval,,A1,A1-63DF30
+89,Bueno.,eval,,A1,A1-5550F7
+90,creo que es una buena profesora. Su método de enseñanza es bueno.,eval,,A1,A1-0F4CEF
+91,Realmente es un profesor servicial.,train,,A1,A1-9E4DAA
+92,Excelente,eval,,A1,A1-8C4349
+93,Excelentes habilidades.,eval,,A1,A1-E9B8D8
+94,"Es un profesor bueno e inteligente. Nos enseña bien, pero lo único es que no nos da tantas calificaciones como quisiéramos.",train,,A1,A1-9D33AF
+95,"No tengo ningún comentario sobre él, porque no puedo entenderlo bien.",train,,A1,A1-162518
+96,"Es un buen profesor, pero debería mejorar la interacción con los estudiantes",train,,A1,A1-0757F7
+97,Básicamente es agradable. Pero es demasiado estricto durante los exámenes. Y a veces es parcial con algunos estudiantes.,eval,,A1,A1-FB88DF
+98,"es un profesor maravilloso. es el mejor, pero su voz es demasiado baja.",eval,,A1,A1-B34A93
+99,una tontería.,eval,,A1,A1-6AFEA1
+100,"Creo que tiene buen conocimiento de computación, pero debería seguir las diapositivas o el libro. A veces no sabemos cómo debemos estudiar ni de dónde. Es un buen profesor.",train,,A1,A1-70FD45
+101,Tiene conocimientos limitados sobre este curso.,train,,A1,A1-96A0CF
+102,Su estilo de enseñanza no es muy bueno y los estudiantes no sienten interés por esta materia.,repetido,,A1,A1-85A861
+103,Está bien.,eval,,A1,A1-62EB93
+104,gracias,eval,,A1,A1-E1FC57
+105,Lo quiero y él nos quiere. El profesor Obaidul es muy buen profesor.,eval,,A1,A1-6A99FE
+106,Muy listo,eval,,A1,A1-E53E7B
+107,"Se esfuerza al máximo, pero los estudiantes no logran aprender del todo.",train,,A1,A1-4C068E
+108,"Es un buen tipo, pero hay un problema con el. A veces agranda mucho las cosas pequeñas. Aun asi, es un muy buen profesor.",eval,,A1,A1-5F78F5
+109,Es un profesor bien entrenado.,train,,A1,A1-9EEB59
+110,Es un robot.,train,,A1,A1-8DD62D
+111,"Es un profesor excelente, pero su método de enseñanza es muy difícil. Por ejemplo, su sistema de exámenes sorpresa a menudo perjudica nuestra calificación.",eval,,A1,A1-E47EFD
+112,"Es una buena persona y tambien un buen profesor, pero su comportamiento no es muy bueno.",train,,A1,A1-6BA28E
+113,es el mejor profesor.,eval,,A1,A1-329EF9
+114,Tiene una personalidad agradable. Explica las cosas de una manera muy loable.,eval,,A1,A1-7ACADA
+115,Me cae bien por su inteligencia y su buen comportamiento.,train,,A1,A1-F40BF1
+116,"Lo que intenta hacernos entender, nunca lo comprendemos por su forma de hablar.",train,,A1,A1-B656EF
+117,creo que es una buena profesora. hace todo lo posible para que las lecciones nos queden claras. pero a la mayoría de nosotros no.,eval,,A1,A1-616514
+118,Explica teorias complejas de una manera facil.,train,,A1,A1-EE66A3
+119,Es un buen profesor. Creo que AIUB necesita este tipo de profesores.,eval,,A1,A1-4A0F93
+120,Es un profesor con mucha experiencia y bueno.,eval,,A1,A1-69435E
+121,"Es un buen profesor pero su voz es muy baja, lo que dificulta entender con claridad y también dificulta escuchar lo que dice. Aun así, sabe dar ejemplos y conceptos relevantes. Debería subir la voz.",train,,A1,A1-BC940E
+122,Los talleres son muy útiles para aprender.,ancla,POS,A1,A1-2D1510
+123,Es bueno enseñando. Pero,train,,A1,A1-677C4B
+124,"mmm, es un buen profesor. Me gusta su enseñanza. :-)",eval,,A1,A1-75D64F
+125,Es un buen profesor de finanzas.,train,,A1,A1-610BBE
+126,Es un buen profesor. Le deseo suerte.,eval,,A1,A1-0179AA
+127,Más o menos.,eval,,A1,A1-9025E2
+128,nos hace entender la materia muy claramente.,eval,,A1,A1-628D04
+129,es magnífico.,eval,,A1,A1-D25B49
+130,Creo que tiene un enorme conocimiento de la materia de mi curso. Su comportamiento es simplemente relajado. Esa es la clave principal de cualquier profesor. Por eso aprendimos bien.,eval,,A1,A1-BD556D
+131,Esta entre el punado de buenos profesores de EEE.,eval,,A1,A1-E18427
+132,El mejor profesor,eval,,A1,A1-B357DE
+133,Quiere hacerlo mejor para ayudar a los estudiantes a mejorar su desempeño en clase y su conocimiento. Trata de identificar especialmente a los más lentos que no logran entender las materias. Por eso es un buen profesor.,eval,,A1,A1-334042
+134,"Buena persona con buen comportamiento, muy buen conocimiento de bases de datos y VB, con gran profundidad de conocimiento.",eval,,A1,A1-97EB4C
+135,Está dibujando.,eval,,A1,A1-C11C6E
+136,Realmente es un buen profesor.,eval,,A1,A1-072B11
+137,"Es un buen profesor. Debería explicar los experimentos de laboratorio, sus procedimientos y resultados de forma más detallada a los estudiantes.",eval,,A1,A1-672666
+138,Su forma de enseñar es realmente buena,train,,A1,A1-35F1BD
+139,Es un buen profesor. Yo también lo apoyo.,eval,,A1,A1-12004B
+140,"Ha sido muy efectivo y tiene un vasto conocimiento del tema. Es la persona indicada para impartir este curso; en una palabra, 'dinámico'. Debería mostrar un poco más su sonrisa.",train,,A1,A1-D69EDE
+141,Es un gran profesor. Su desempeño es excelente. Nos enseña muy muy bien. En general es el mejor profesor.,eval,,A1,A1-54D058
+142,Es un profesor bueno y responsable.,eval,,A1,A1-4B7541
+143,"considérenos, por favor.",eval,,A1,A1-D7C1C0
+144,Mantiene un buen y adecuado horario de clases.,eval,,A1,A1-A1E9C7
+145,"Disfruto mucho su clase, porque la hace amena con buenos ejemplos.",eval,,A1,A1-49DA0A
+146,Es muy buen profesor. Me gusta mucho. Creo que la mayoría de los profesores deberían ser como Emdad,train,,A1,A1-619188
+148,"Sabe todo sobre la materia, pero no puede enseñarnos adecuadamente.",eval,,A1,A1-4ADBEB
+149,es el mejor,eval,,A1,A1-8231EE
+150,No tiene capacidad para enseñar a los estudiantes. Siempre pierde el tiempo en clase.,eval,,A1,A1-614D8B
+151,"agresiva en su forma de vestir y su actitud, desnuda (obscena e indecente), no es una profesora para enseñar, como una bailarina de striptease, baila en clase, muestra su cuerpo y siempre se presenta como una mujer provocativa, usa fotua (tan delgada que se ve realmente desnuda), los estudiantes sienten vergüenza de verla y temor de ver su cuerpo. pedimos a las autoridades que cambien su forma de vestir en clase. los estudiantes vienen a la universidad a aprender algo, no a ver a una mujer desnuda y desagradable en clase.",train,,A1,A1-6846C2
+152,"El profesor es agradable y amable, no hay nada de qué quejarse.",train,,A1,A1-6F5721
+153,"Necesitamos cada vez más docentes jóvenes. Por supuesto, tendrán la orientación de los docentes veteranos.",train,,A1,A1-E02216
+154,"Es una buena profesora, pero debería desarrollar su técnica de enseñanza.",eval,,A1,A1-E029CB
+155,Creo que es un profesor de nivel promedio.,eval,,A1,A1-D1DBA4
+156,Es un profesor muy agradable.,eval,,A1,A1-C03AE8
+157,Básicamente es agradable. Pero es demasiado estricto durante los exámenes. Y a veces es parcial con algunos estudiantes.,repetido,,A1,A1-45EE2E
+158,Es un gran profesor.,eval,,A1,A1-59C922
+159,Creo que es un buen profesor.,eval,,A1,A1-112110
+160,"Bueno, pero a veces pierde la paciencia.",eval,,A1,A1-FFD892
+161,Es un profesor brillante y talentoso. Su comportamiento es muy bueno.,eval,,A1,A1-4C7E7F
+162,Enseña su lección de forma muy comprensible y es muy efectivo para el estudiante.,eval,,A1,A1-FD97D7
+163,"No tan bueno. Él entiende todo, pero no se lo transmite al estudiante.",eval,,A1,A1-69B4A7
+164,es un buen profesor y trata de ayudar a todos los estudiantes,eval,,A1,A1-18B905
+165,Puntual,repetido,,A1,A1-2C9366
+166,Es una muy buena profesora.,eval,,A1,A1-C0EDE4
+167,"Es nuevo, pero es el mejor en economía.",train,,A1,A1-E5354C
+168,Bien.,eval,,A1,A1-E80150
+169,Desempeño promedio.,eval,,A1,A1-CF9863
+170,Responsable.,repetido,,A1,A1-C7AAC1
+171,¡Es realmente bueno!,eval,,A1,A1-7F5A76
+172,"Su forma sólida, segura y bien fundamentada de enseñar muestra claramente cuánto importa la experiencia. Aunque la física no es una materia central de mi carrera, creo que mis bases sobre una materia fundamental como la física deberían ser claras, y me considero afortunado de tenerlo como profesor. Mi única petición para él sería: ""Profesor, nosotros, sus estudiantes, somos simples humanos y errar es humano, así que incluso con nuestro intento más sincero a veces terminamos cometiendo errores, y entonces solo nos queda esperar un poco de su clemencia. Realmente esperamos que sea amable como siempre y valore nuestros esfuerzos, gracias"".",train,,A1,A1-9CDD4F
+173,es un buen profesor y es muy servicial.,eval,,A1,A1-34D1E4
+174,Es un muy buen profesor.,eval,,A1,A1-E7724C
+175,profesor brillante,eval,,A1,A1-601850
+176,Es un buen profesor. Sabe enseñar derecho comercial.,eval,,A1,A1-9D209F
+177,Es bueno. Tiene algo en su actitud que realmente ayuda al estudiante a mantenerse en clase. Buen profesor.,repetido,,A1,A1-20C1F6
+178,Debería dar puntos extra.,eval,,A1,A1-5F1E7E
+179,Debería tener más cuidado con los estudiantes al responderles de manera correcta. Debería modificar su política de exámenes porque está muy orientada a la teoría.,eval,,A1,A1-15A5AE
+180,"tiene amplio conocimiento, pero su estilo no es suficiente. las clases a veces son aburridas. pero es un buen profesor.",train,,A1,A1-92EF20
+181,"Excelente profesor, muy claro.",ancla,POS,A1,A1-B5833D
+182,No tiene suficiente confianza. Creo que debería capacitarse mejor. A veces confunde su material de enseñanza.,eval,,A1,A1-E1AE01
+183,Me cae muy bien. Siempre se preocupa por mí. Es muy amable.,eval,,A1,A1-6756C2
+184,Califica de forma injusta.,ancla,NEG,A1,A1-7D7B41
+185,No es mala para electrónica analógica.,train,,A1,A1-D740A5
+186,"Es un buen profesor. Como estudiante de MBA, espero un comportamiento más profesional.",eval,,A1,A1-881E5D
+187,Buena persona y nos enseña muy bien.,eval,,A1,A1-156E23
+188,"Muy buen profesor, pero deberia haber ensenado mas sobre la materia.",eval,,A1,A1-7DDBE8
+189,No es adecuado para todos los tipos de estudiantes. No logró motivar a los estudiantes débiles.,eval,,A1,A1-EB1BA5
+190,Creo que tiene un enorme conocimiento de la materia de mi curso. Su comportamiento es simplemente relajado. Esa es la clave principal de cualquier profesor. Por eso aprendimos bien.,repetido,,A1,A1-557D29
+191,"Es un buen profesor, pero debería preocuparse por los estudiantes que son débiles. Y prestar más atención a la calificación.",train,,A1,A1-352C0E
+192,"Está bien, pero no domina la materia. Otro problema es su forma de hablar.",train,,A1,A1-03253D
+193,Es muy buen profesor y se asegura de que el estudiante haya entendido bien su lección.,eval,,A1,A1-FAC8F0
+194,Muy activo y deberia ser ascendido.,train,,A1,A1-CE8A65
+195,es muy agradable y todos disfrutamos su clase.,eval,,A1,A1-C86B54
+196,Es una profesora agradable y tiene un buen método para hacer que la clase se entienda.,eval,,A1,A1-F24928
+197,"Sí, el estilo de enseñanza es bastante bueno y favorable. Debería desarrollarse más la interacción.",eval,,A1,A1-800A5B
+198,Es un buen profesor que no regala calificaciones.,train,,A1,A1-6F88EB
+199,muy buen profesor,eval,,A1,A1-797E7B
+200,"Es bueno pero a veces su actitud se vuelve irritante, especialmente con los horarios de sus clases de recuperación o adicionales.",eval,,A1,A1-74127C
+201,siempre miente sobre su posición,eval,,A1,A1-011A0E
+202,"Es una de las mejores profesoras de aiub. Ha mejorado mucho respecto al pasado. Su estilo de enseñanza, su política de exámenes y su comportamiento son simplemente buenos. Debería continuar así. Aprendemos algo de ella.",eval,,A1,A1-7C3754
+203,"Está bien, pero no excepcional.",eval,,A1,A1-D6B608
+204,No es idóneo como docente de este curso.,eval,,A1,A1-7BB986
+205,Es genial.,eval,,A1,A1-724016
+206,el material es difícil.,eval,,A1,A1-9701A3
+207,"Bien, pero debería ser más amigable.",eval,,A1,A1-EED0C8
+208,Nada.,eval,,A1,A1-E9D8BF
+209,Ojalá pudiera quedarse para siempre. :(,train,,A1,A1-C23534
+210,El profesor Shafiqul es mi profesor favorito favorito. Su estilo de enseñanza es muy bueno.,eval,,A1,A1-8324EB
+211,Debes mejorar tu conocimiento.,eval,,A1,A1-39798D
+212,Ayuda a entender la materia y a hacerla más fácil de comprender.,eval,,A1,A1-FB28A2
+213,"Estoy orgulloso de ser estudiante de este profesor. Creo que Ghani, Md. Bayzid es un buen profesor por su buena enseñanza, comprensión, buen desempeño docente y buen comportamiento.",eval,,A1,A1-DD48D1
+214,Puede que hayas olvidado de dónde te graduaste.,eval,,A1,A1-B9F431
+215,Me cae bien porque enseña bien el laboratorio y da buenas clases.,eval,,A1,A1-05D096
+216,"No está mal, pero tampoco tan bueno.",eval,,A1,A1-89EB6F
+217,Necesita algo de conocimiento sobre enseñanza.,eval,,A1,A1-9D6FD3
+218,Es un buen profesor. Su forma de enseñar es excelente. Creo que es uno de los mejores profesores de AIUB.,train,,A1,A1-AD3A4D
+219,Sin comentarios.,eval,,A1,A1-50EB3A
+220,Es muy puntual para la clase.,eval,,A1,A1-5853A3
+221,Muy bueno.,eval,,A1,A1-2428B6
+222,"si hablo con honestidad, es un profesor realmente bueno para los conceptos de contabilidad; es cierto que tuvimos la mala suerte de no tenerlo desde el comienzo de este curso.",eval,,A1,A1-59E25B
+223,Es bueno.,eval,,A1,A1-CD6B6C
+224,La profesora Usha es una gran persona.,train,,A1,A1-8AA742
+225,"si los estudiantes pudieran ver su examen de cuestionario y de parcial, entonces podrían entender sus errores y hacerlo bien en el final.",eval,,A1,A1-204D88
+226,"Para hacer entender las matemáticas de forma más fácil y sencilla, trata de poner al estudiante en la mejor posición.",eval,,A1,A1-7F5B00
+228,Su conocimiento sobre este tema es bueno. Pero a veces no entendemos. El 50% de los estudiantes viene del departamento de ciencias. Es difícil de entender.,eval,,A1,A1-8A7D62
+229,Profesor excelente,eval,,A1,A1-E98657
+230,Es una profesora muy agradable. Estamos aprendiendo algo de ella.,eval,,A1,A1-6235C0
+231,Es muy bueno,eval,,A1,A1-71DC1F
+232,Es una buena profesora.,eval,,A1,A1-6B1948
+233,el dr. bijoy bhushon das es un profesor para ser modelo a seguir de los estudiantes.,train,,A1,A1-F5238B
+234,creo que debería ser más flexible y averiguar qué tipo de problemas enfrentan los estudiantes.,eval,,A1,A1-788D8E
+235,Debería ser más comprensible.,eval,,A1,A1-BB9589
+236,El profesor es simplemente el mejor.,eval,,A1,A1-2239DF
+237,"Esta bien, pero siempre posterga las respuestas a las preguntas de los estudiantes sobre los materiales de estudio que no se entendieron.",train,,A1,A1-FF9A72
+238,No me gusta la política de la clase.,eval,,A1,A1-8F0BF5
+239,No está mal.,eval,,A1,A1-870E8E
+240,Necesita mejorar.,eval,,A1,A1-06A481
+241,"Esta bien, pero deberia aclarar mas sus materiales de clase, especialmente para los estudiantes de BBA.",eval,,A1,A1-6ADA49
+242,"Islam, M.M. Obaidul es eficaz, calificado, cooperativo y muy cercano a nosotros.",eval,,A1,A1-F97225
+243,No tiene suficiente confianza. Creo que debería capacitarse mejor. A veces confunde su material de enseñanza.,repetido,,A1,A1-D6DFFA
+244,"El profesor nos da ejemplos de muy buena manera y motiva a los estudiantes, lo cual es algo bueno.",train,,A1,A1-8B3C6B
+245,Es una buena persona.,eval,,A1,A1-83616D
+246,gracias! esperaba tenerlo como profesor en algun curso. finalmente tuve la oportunidad de tener clase con usted.,eval,,A1,A1-EBCD14
+247,Necesita ser un poco más detallado en cuanto a la clase,eval,,A1,A1-21C2E9
+248,es un profesor muy honesto.,eval,,A1,A1-F3AD37
+249,Es muy buen profesor para esta materia,eval,,A1,A1-FB76E9
+250,"es muy servicial y amigable, pero en la clase de laboratorio va muy rápido. si diera más tiempo a cada tema sería más útil",eval,,A1,A1-16238A
+251,Es buena,eval,,A1,A1-E77DB7
+1,muy buen profesor y ante todo sincero,eval,,A2,A2-21A2EC
+2,Es un buen profesor.,eval,,A2,A2-410E2A
+3,Un profesor que trata de preparar a los estudiantes para enfrentar la vida practica o profesional de forma independiente. Gracias tanto al profesor como a la administracion de la universidad.,repetido,,A2,A2-3BD09D
+4,muy buen profesor,eval,,A2,A2-FB46B0
+5,Es bueno pero no queda en la mente de los estudiantes por su actitud.,train,,A2,A2-66068B
+6,Necesita mejorar.,eval,,A2,A2-2F74F2
+7,es muy servicial y querido,train,,A2,A2-B75CCB
+8,"Buena persona con buen comportamiento, muy buen conocimiento de bases de datos y VB, con gran profundidad de conocimiento.",eval,,A2,A2-785330
+9,"Muy buen profesor, pero deberia haber ensenado mas sobre la materia.",eval,,A2,A2-117B0B
+10,Puntual,eval,,A2,A2-D2C244
+11,No tiene suficiente confianza. Creo que debería capacitarse mejor. A veces confunde su material de enseñanza.,eval,,A2,A2-CA5526
+12,"Enseña bien, pero nos beneficiaría mucho un poco más de dinamismo en su enseñanza.",train,,A2,A2-890550
+13,"Esta bien, pero deberia aclarar mas sus materiales de clase, especialmente para los estudiantes de BBA.",eval,,A2,A2-ECBF7A
+14,Debería tener más cuidado con los estudiantes al responderles de manera correcta. Debería modificar su política de exámenes porque está muy orientada a la teoría.,eval,,A2,A2-ADBC0F
+15,no cuida a todos los estudiantes. se porta mal con algunos. no enseña bien la lección.,train,,A2,A2-FAED5E
+16,No me gusta la política de la clase.,eval,,A2,A2-BDD1AF
+17,quizás sea bueno.,train,,A2,A2-333EEC
+18,es un buen profesor y trata de ayudar a todos los estudiantes,eval,,A2,A2-4AFC77
+19,"Es un buen profesor, pero no toma en cuenta las enfermedades físicas de los estudiantes.",train,,A2,A2-722987
+20,Es un profesor excelente. Espero que la universidad lo trate como corresponde.,eval,,A2,A2-230147
+21,"entiendo la clase de la profesora, ella es capaz de aclarar nuestros conceptos sobre los temas de aprendizaje.",repetido,,A2,A2-D28C8E
+22,No.,eval,,A2,A2-F18E6B
+23,Puedo decir que el profesor Tareq tiene muy buen conocimiento de su materia y su comportamiento es el de un profesor ejemplar.,train,,A2,A2-5BE791
+24,Excelente,eval,,A2,A2-5A7280
+25,No es adecuado para todos los tipos de estudiantes. No logró motivar a los estudiantes débiles.,eval,,A2,A2-0F2D44
+26,gracias,eval,,A2,A2-657336
+27,Su conocimiento sobre este tema es bueno. Pero a veces no entendemos. El 50% de los estudiantes viene del departamento de ciencias. Es difícil de entender.,eval,,A2,A2-0ACF37
+28,Es un buen profesor. Sabe enseñar derecho comercial.,eval,,A2,A2-1B050E
+29,no da puntos parciales,eval,,A2,A2-B7561D
+30,"Bueno, debería dedicar más tiempo a ciertos puntos relacionados con la clase.",eval,,A2,A2-D98D8B
+31,Es atenta en nuestra clase.,train,,A2,A2-4C5056
+32,Es cooperativa,eval,,A2,A2-18F178
+33,creo que es una buena profesora. hace todo lo posible para que las lecciones nos queden claras. pero a la mayoría de nosotros no.,eval,,A2,A2-8280EE
+34,Es extraordinario.,eval,,A2,A2-1B3F28
+35,"En general, es un buen profesor.",eval,,A2,A2-F69B5B
+36,Muy listo,eval,,A2,A2-BC603C
+37,"El profesor es bastante bueno, pero debería hacer los temas un poco más interesantes.",train,,A2,A2-FEFE7E
+38,Simplemente es el mejor profesor de ingeniería de software.,train,,A2,A2-A37A6C
+39,"creo que el señor md. shafiqul islam es un profesor muy responsable, con personalidad y puntual.",train,,A2,A2-C2D42C
+40,Muy bueno.,eval,,A2,A2-439204
+41,"considérenos, por favor.",eval,,A2,A2-EFC22F
+42,Quiere hacerlo mejor para ayudar a los estudiantes a mejorar su desempeño en clase y su conocimiento. Trata de identificar especialmente a los más lentos que no logran entender las materias. Por eso es un buen profesor.,eval,,A2,A2-E68BE8
+43,Es lo suficientemente bueno en su trabajo particular.,train,,A2,A2-568386
+44,Está dibujando.,eval,,A2,A2-C49A4D
+45,"Respetado profesor, es guapo e inteligente también. Pero no atiende a todos los estudiantes de la clase. Solo atiende a algunos alumnos que conocen el software, pero los estudiantes promedio no tienen esa oportunidad. Realmente estoy molesto por este asunto. Ese es su único problema, pero salvo eso su estilo de enseñanza está bien. Cuídese, profesor. Rece por nosotros. Que Dios lo bendiga.",train,,A2,A2-D08769
+46,Es muy buen profesor.,eval,,A2,A2-9AF26F
+47,"No explica bien, me siento perdido.",ancla,NEG,A2,A2-B8D46B
+48,"Bien, pero debería ser más amigable.",eval,,A2,A2-0C9EA4
+49,No tiene capacidad para enseñar a los estudiantes. Siempre pierde el tiempo en clase.,eval,,A2,A2-275DB3
+50,Enseña su lección de forma muy comprensible y es muy efectivo para el estudiante.,eval,,A2,A2-75BEE4
+51,"Tiene conocimientos y experiencia excepcionales sobre arquitectura. Ilustra con ejemplos. Como profesor, es muy franco y abierto con los estudiantes.",eval,,A2,A2-39BE5B
+52,Puede que hayas olvidado de dónde te graduaste.,eval,,A2,A2-20A4D2
+53,Es muy buen profesor para esta materia,eval,,A2,A2-B3A8A2
+54,Es muy bueno en diseño de compiladores. Creo que es uno de los mejores en este curso,eval,,A2,A2-BB840A
+55,El mejor profesor,eval,,A2,A2-7532C6
+56,"Es bueno pero a veces su actitud se vuelve irritante, especialmente con los horarios de sus clases de recuperación o adicionales.",eval,,A2,A2-260735
+57,No lo suficientemente bueno.,train,,A2,A2-F65E2D
+58,"Bueno, pero muy estricto.",train,,A2,A2-8E6F53
+59,Desempeño sobresaliente.,eval,,A2,A2-A89A68
+60,Debería dar puntos extra.,eval,,A2,A2-75C15A
+61,Es una buena persona.,eval,,A2,A2-1C5B28
+62,"No tiene un buen dominio de la materia de tributación. Puede que sea bueno en otra materia, pero no en tributación.",train,,A2,A2-5A99BD
+63,"si los estudiantes pudieran ver su examen de cuestionario y de parcial, entonces podrían entender sus errores y hacerlo bien en el final.",eval,,A2,A2-55D007
+64,"Es un profesor de matemáticas promedio, pero necesita ser más amable con los estudiantes.",train,,A2,A2-B0C662
+65,Realmente es un buen profesor.,eval,,A2,A2-E551DE
+66,No es un buen profesor.,eval,,A2,A2-B9B184
+67,siempre miente sobre su posición,eval,,A2,A2-A84944
+68,Es bueno. Tiene algo en su actitud que realmente ayuda al estudiante a mantenerse en clase. Buen profesor.,eval,,A2,A2-7CD4E7
+69,"Con buenos modales, un poco confuso al principio, pero ahora me parece bien.",train,,A2,A2-14DBF8
+70,Necesita algo de conocimiento sobre enseñanza.,eval,,A2,A2-35D289
+71,"mmm, es bueno",train,,A2,A2-D426EF
+72,Es buena,eval,,A2,A2-762071
+73,Buen profesor.,eval,,A2,A2-68A47F
+74,"No está mal, pero tampoco tan bueno.",eval,,A2,A2-368BB1
+75,Es una muy buena profesora.,eval,,A2,A2-7389BF
+76,es un buen profesor y trata de ayudar a todos los estudiantes,repetido,,A2,A2-CACFD0
+77,Desempeño promedio.,eval,,A2,A2-176B90
+78,Gran profesor,eval,,A2,A2-BDB4FB
+79,Es un buen profesor. Yo también lo apoyo.,eval,,A2,A2-07D327
+80,"entiendo la clase de la profesora, ella es capaz de aclarar nuestros conceptos sobre los temas de aprendizaje.",eval,,A2,A2-44F6AD
+81,Esta entre el punado de buenos profesores de EEE.,eval,,A2,A2-EC5294
+82,"Es un buen tipo, pero hay un problema con el. A veces agranda mucho las cosas pequeñas. Aun asi, es un muy buen profesor.",eval,,A2,A2-012D4C
+83,"Puedo describir su calidad. Es uno de los grandes profesores de AIUB. No solo es profesor, sino también amigo.",train,,A2,A2-1C395B
+84,nos hace entender la materia muy claramente.,eval,,A2,A2-57236E
+85,Es bueno.,eval,,A2,A2-93A918
+86,"Sí, el estilo de enseñanza es bastante bueno y favorable. Debería desarrollarse más la interacción.",eval,,A2,A2-1A9C18
+87,Es muy bueno,eval,,A2,A2-7FF54A
+88,"Lo dije una vez y lo digo de nuevo: es un muy buen profesor. Tiene un buen conocimiento de la enseñanza. Explica las cosas de una forma muy fácil. A veces algunos estudiantes dicen que no entendieron lo que explicó el profesor, pero yo los encontré distraídos en clase. No estoy mintiendo. Explica las cosas dos o tres veces si alguien quiere entenderlas de nuevo. Y nunca habla de forma grosera, incluso si vamos a su oficina a entender algo simple y fácil. Es simplemente muy bueno.",train,,A2,A2-41395D
+89,Necesita ser un poco más detallado en cuanto a la clase,eval,,A2,A2-913940
+90,El mejor,eval,,A2,A2-824610
+91,Creo que tiene un enorme conocimiento de la materia de mi curso. Su comportamiento es simplemente relajado. Esa es la clave principal de cualquier profesor. Por eso aprendimos bien.,eval,,A2,A2-FE93FA
+92,Un profesor que trata de preparar a los estudiantes para enfrentar la vida practica o profesional de forma independiente. Gracias tanto al profesor como a la administracion de la universidad.,eval,,A2,A2-F383C8
+93,Buenos modales.,eval,,A2,A2-15AE5A
+94,Su cara agradable y alegre es notable. Buen profesor.,eval,,A2,A2-26ACBB
+95,"En general, es un buen profesor.",repetido,,A2,A2-0905A3
+96,"A veces reacciona de forma exagerada, pero como profesora es aceptable.",train,,A2,A2-E219D2
+97,creo que no es tan bueno como se suponía que sería y espero que lo haga mejor la próxima vez.,eval,,A2,A2-4C481D
+98,creo que es realmente perfecto para dictar el laboratorio de a.c,eval,,A2,A2-30615B
+99,Un buen profesor,eval,,A2,A2-4FD1D4
+100,Debería ser menos estricto.,train,,A2,A2-E6F0AE
+101,Es una buena profesora.,eval,,A2,A2-7B6978
+102,Quiere hacerlo mejor para ayudar a los estudiantes a mejorar su desempeño en clase y su conocimiento. Trata de identificar especialmente a los más lentos que no logran entender las materias. Por eso es un buen profesor.,repetido,,A2,A2-B51C78
+103,Más o menos.,eval,,A2,A2-1C551D
+104,Es eficiente y eficaz.,train,,A2,A2-5BE670
+105,Es un gran profesor. Su desempeño es excelente. Nos enseña muy muy bien. En general es el mejor profesor.,eval,,A2,A2-501F30
+106,Ayuda a entender la materia y a hacerla más fácil de comprender.,eval,,A2,A2-A08EAD
+107,Es el profesor más cariñoso.,eval,,A2,A2-4CE93C
+108,Es un profesor con mucha experiencia y bueno.,eval,,A2,A2-FA00B8
+109,Uno de mis profesores favoritos. Me gusta asistir a cada una de sus clases. Me gusta su método de enseñanza. Especialmente me gustan los trabajos en grupo que nos da en clase y que de verdad nos ayudan.,eval,,A2,A2-0E77FA
+110,Es muy buen profesor y se asegura de que el estudiante haya entendido bien su lección.,eval,,A2,A2-382A6B
+111,"No es cortés cuando los estudiantes le hacen preguntas y además es totalmente impredecible. Es muy desalentador para los estudiantes hacerle cualquier pregunta. Debería cambiar ese tipo de comportamiento; por lo demás, es un buen profesor para nosotros.",train,,A2,A2-2401E1
+112,"No tan bueno. Él entiende todo, pero no se lo transmite al estudiante.",eval,,A2,A2-160A2F
+113,Muy mal profesor.,ancla,NEG,A2,A2-1708DC
+114,La clase es muy dinámica y entretenida.,ancla,POS,A2,A2-275E5B
+115,Es regular. Solo regular.,eval,,A2,A2-D50EFF
+116,"Es buena, pero debería ser más moderada al poner notas.",eval,,A2,A2-6D5DCC
+117,Tiene buen dominio.,eval,,A2,A2-BD9652
+118,Su estilo de enseñanza es de nivel B+.,eval,,A2,A2-AA6B65
+119,Su estilo de enseñanza no es muy bueno y los estudiantes no sienten interés por esta materia.,eval,,A2,A2-2A1124
+120,Me cae bien porque enseña bien el laboratorio y da buenas clases.,eval,,A2,A2-67AF59
+121,no dio puntos parciales,eval,,A2,A2-E58A89
+122,Es un profesor muy agradable.,eval,,A2,A2-62BCA3
+123,Es un buen profesor. Le deseo suerte.,eval,,A2,A2-199D2A
+124,Es un profesor bueno y responsable.,eval,,A2,A2-80053B
+125,El profesor Farhad está bien.,train,,A2,A2-7D4C5A
+126,"Disfruto mucho su clase, porque la hace amena con buenos ejemplos.",eval,,A2,A2-DD0E8A
+127,Excelentes habilidades.,eval,,A2,A2-CE203E
+128,Tiene buena personalidad.,train,,A2,A2-26227C
+129,es magnífico.,eval,,A2,A2-4A276C
+130,es un buen profesor y es muy servicial.,eval,,A2,A2-E4F8A1
+131,"Bueno, pero a veces pierde la paciencia.",eval,,A2,A2-9CD127
+132,Creo que es un profesor de nivel promedio.,eval,,A2,A2-2CF5C5
+133,es el mejor,eval,,A2,A2-121756
+134,Buen hombre y buen profesor. Sonrisa dulce.,train,,A2,A2-416CED
+135,"Es un buen profesor, pero su método de enseñanza no es tan bueno. Cree en la memorización. Es muy difícil para el estudiante memorizar todo. Por eso le pido que cambie este método de enseñanza basado en la memorización.",train,,A2,A2-693C81
+136,Es una profesora muy agradable. Estamos aprendiendo algo de ella.,eval,,A2,A2-42F0B2
+137,gracias! esperaba tenerlo como profesor en algun curso. finalmente tuve la oportunidad de tener clase con usted.,eval,,A2,A2-4E8A3C
+138,es muy agradable y todos disfrutamos su clase.,eval,,A2,A2-E483BE
+139,"Es una de las mejores profesoras de aiub. Ha mejorado mucho respecto al pasado. Su estilo de enseñanza, su política de exámenes y su comportamiento son simplemente buenos. Debería continuar así. Aprendemos algo de ella.",eval,,A2,A2-8C8230
+140,el material es difícil.,eval,,A2,A2-1318E9
+141,Se necesita algo de claridad sobre su comprensión,train,,A2,A2-E3053D
+142,Está bien.,eval,,A2,A2-02F1F8
+143,¡Es realmente bueno!,eval,,A2,A2-82576A
+144,Es una profesora agradable y tiene un buen método para hacer que la clase se entienda.,eval,,A2,A2-DE948C
+145,Es un profesor sobresaliente.,train,,A2,A2-D3BCB1
+146,"todos los estudiantes están bastante confundidos con su forma de calificar. no podemos entender lo que nos enseña. de hecho, termina algunos temas difíciles en una sola clase, lo cual es muy difícil de entender para nosotros, mientras que en otras secciones los profesores tomaron al menos 2 o 3 clases para terminar esos temas.",train,,A2,A2-CE2ED6
+147,Siempre calificas bajo.,train,,A2,A2-358893
+148,es un buen profesor y muy divertido. lo único es que se ríe demasiado en clase.,eval,,A2,A2-ABA5A6
+149,Buena persona y nos enseña muy bien.,eval,,A2,A2-17358E
+150,Debe mejorar como profesor.,eval,,A2,A2-BEC92E
+151,Bien.,eval,,A2,A2-CAC50D
+152,Es buena enseñando inglés.,train,,A2,A2-A02A22
+153,es un profesor muy honesto.,eval,,A2,A2-606B91
+154,Debería ser amable con los estudiantes.,train,,A2,A2-A624DA
+155,El profesor Shafiqul es mi profesor favorito favorito. Su estilo de enseñanza es muy bueno.,eval,,A2,A2-570AB8
+156,"Para hacer entender las matemáticas de forma más fácil y sencilla, trata de poner al estudiante en la mejor posición.",eval,,A2,A2-26969F
+157,Debería ser más comprensible.,eval,,A2,A2-45C9E1
+158,No es idóneo como docente de este curso.,eval,,A2,A2-EAAA10
+159,"es un profesor maravilloso. es el mejor, pero su voz es demasiado baja.",eval,,A2,A2-DF03DD
+160,"Es nueva, así que necesita mucho más tiempo para familiarizarse con la enseñanza.",eval,,A2,A2-411F94
+161,Tiene una personalidad agradable. Explica las cosas de una manera muy loable.,eval,,A2,A2-A6B0A6
+163,Hombre culto.,eval,,A2,A2-254ACC
+164,No entendemos lo que nos quiere enseñar. Tarda mucho tiempo en hacer entender cualquier cosa.,eval,,A2,A2-C90CC9
+165,Sin comentarios.,eval,,A2,A2-F0B43A
+166,es un excelente profesor.,eval,,A2,A2-C9CFD7
+167,"Excelente profesor, muy claro.",ancla,POS,A2,A2-5C6DFF
+168,Es un buen profesor para todos los profesores,train,,A2,A2-90BCE6
+169,"Es un buen profesor, pero no es atento con los estudiantes más flojos. Debería dar más tiempo a los estudiantes para entender su clase.",eval,,A2,A2-14EF5F
+170,A veces él mismo no tiene claro lo que está enseñando. Para mí no es suficientemente bueno.,eval,,A2,A2-FA2B8C
+171,"Bueno, pero demasiado estricto.",train,,A2,A2-8B3483
+172,Lo quiero y él nos quiere. El profesor Obaidul es muy buen profesor.,eval,,A2,A2-96C76B
+173,"Es una buena profesora, pero debería desarrollar su técnica de enseñanza.",eval,,A2,A2-5D9F0E
+174,profesor brillante,eval,,A2,A2-BF813D
+175,"Bienvenido y felicidades. Espero que nos esperen mejores empleos. Buena suerte, profesor, y cuídese.",eval,,A2,A2-900D47
+176,Responsable.,eval,,A2,A2-48E298
+177,"Es un buen profesor. Debería explicar los experimentos de laboratorio, sus procedimientos y resultados de forma más detallada a los estudiantes.",eval,,A2,A2-67BE32
+178,Debería ser más sincero.,train,,A2,A2-36311D
+179,"Es una profesora agradable, además de muy estricta y amable.",eval,,A2,A2-4A2F5B
+180,Necesita saber cómo enseñar a los estudiantes.,eval,,A2,A2-80ED0B
+181,Es muy puntual para la clase.,eval,,A2,A2-2595A6
+182,"Es un profesor excelente, pero su método de enseñanza es muy difícil. Por ejemplo, su sistema de exámenes sorpresa a menudo perjudica nuestra calificación.",eval,,A2,A2-8F3FF1
+183,"su estilo de ensenanza es bueno. cada clase revisa, despues de ensenar, si entendimos el tema.",eval,,A2,A2-E0FBF2
+184,Básicamente es agradable. Pero es demasiado estricto durante los exámenes. Y a veces es parcial con algunos estudiantes.,eval,,A2,A2-11530B
+185,"Tiene buen método de enseñanza; en general, un buen profesor.",train,,A2,A2-14AEC6
+186,No está mal.,eval,,A2,A2-70B9D0
+187,"Nuestro respetable profesor. Habla bastante rápido, con énfasis, de modo que a veces no entendemos lo que quiere decir. Es bueno.",eval,,A2,A2-D3301D
+188,"Islam, M.M. Obaidul es eficaz, calificado, cooperativo y muy cercano a nosotros.",eval,,A2,A2-97D149
+189,el profesor mohiuddin es un buen docente.,train,,A2,A2-85A1EC
+190,Necesita ir un poco más despacio al dar la clase.,eval,,A2,A2-0BA320
+191,Me cae bien porque enseña bien el laboratorio y da buenas clases.,repetido,,A2,A2-29100B
+192,Califica de forma injusta.,ancla,NEG,A2,A2-81F5E6
+193,Muy listo,repetido,,A2,A2-D55548
+194,"el profesor mannan es un docente muy firme y estricto. debería mejorar su comportamiento con los estudiantes, especialmente con los que estudiaron en inglés. tiene la tendencia de odiar a los estudiantes de habla inglesa sin importar qué.",train,,A2,A2-6B3E18
+195,Es genial.,eval,,A2,A2-0D2A21
+196,Profesor excelente,eval,,A2,A2-AD067E
+197,"Es un buen profesor. Como estudiante de MBA, espero un comportamiento más profesional.",eval,,A2,A2-F1C932
+198,Es un muy buen profesor.,eval,,A2,A2-3A5CF4
+199,Mantiene un buen y adecuado horario de clases.,eval,,A2,A2-CDDDF8
+200,Bueno.,eval,,A2,A2-D3721F
+201,creo que debería ser más flexible y averiguar qué tipo de problemas enfrentan los estudiantes.,eval,,A2,A2-AA9E3A
+202,"Está bien, pero no excepcional.",eval,,A2,A2-C8CC91
+203,"es muy trabajador, y eso hace que todos sus defectos desaparezcan",train,,A2,A2-0FA637
+204,"Es un muy buen profesor, pero a veces te tomas demasiado en serio cosas simples.",eval,,A2,A2-2C5711
+205,Es uno de los mejores profesores de aiub.,eval,,A2,A2-6693E4
+206,Es un profesor agradable.,eval,,A2,A2-9B6DBC
+207,Debería mejorar su método de enseñanza.,train,,A2,A2-D9B469
+208,Siempre esta bien preparado.,eval,,A2,A2-15CCA4
+209,Se volvió al banquillo.,train,,A2,A2-A24251
+210,La clase es muy aburrida y monótona.,ancla,NEG,A2,A2-0E85B2
+211,una tontería.,eval,,A2,A2-EDD9EA
+212,¡Nadie puede preguntarle nada!,eval,,A2,A2-E54C75
+213,es el mejor profesor.,eval,,A2,A2-E68E9E
+214,"Sabe todo sobre la materia, pero no puede enseñarnos adecuadamente.",eval,,A2,A2-52F308
+215,No tiene habilidad para enseñar. Solo tiene un conocimiento memorizado.,eval,,A2,A2-CE69B2
+216,Creo que es un buen profesor.,eval,,A2,A2-430803
+217,Profesor respetable.,eval,,A2,A2-2A6C37
+218,"Es un profesor muy agradable, pero es muy duro con el sistema de calificación.",eval,,A2,A2-6AB8C4
+219,Buen profesor. Sin duda. Que Dios lo bendiga.,train,,A2,A2-1DBBF5
+220,"Es experimentado, pero es un perdedor. Además es una persona habladora. No tiene ninguna simpatía por los estudiantes hombres, pero tiene predilección por las estudiantes mujeres.",eval,,A2,A2-0613D5
+221,El profesor es simplemente el mejor.,eval,,A2,A2-CAB902
+222,Me cae muy bien. Siempre se preocupa por mí. Es muy amable.,eval,,A2,A2-4501F6
+223,Profesor.,eval,,A2,A2-1DF39A
+224,Es un profesor realmente bueno para los estudiantes.,eval,,A2,A2-61155F
+225,Es un profesor excelente.,eval,,A2,A2-7A5904
+226,Nada.,eval,,A2,A2-2ED190
+227,El maestro más divertido y con más personalidad que he visto.,eval,,A2,A2-545598
+228,"si hablo con honestidad, es un profesor realmente bueno para los conceptos de contabilidad; es cierto que tuvimos la mala suerte de no tenerlo desde el comienzo de este curso.",eval,,A2,A2-4A82F8
+229,Bueno y cuidadoso.,eval,,A2,A2-59055A
+230,"Estoy orgulloso de ser estudiante de este profesor. Creo que Ghani, Md. Bayzid es un buen profesor por su buena enseñanza, comprensión, buen desempeño docente y buen comportamiento.",eval,,A2,A2-F925EC
+231,No tengo nada que decir sobre ella.,train,,A2,A2-93784D
+232,"El Sr. Mujibur Rahman es un buen profesor, aunque los estudiantes más lentos podrían encontrarlo un poco demasiado rápido.",eval,,A2,A2-5B3892
+233,Es un buen profesor. Creo que AIUB necesita este tipo de profesores.,eval,,A2,A2-A0BB8E
+234,Es un gran profesor.,eval,,A2,A2-8B85F0
+235,Solo da la clase leyendo el libro del curso. No conoce el temario del curso.,train,,A2,A2-04AFC1
+236,Realmente malo,eval,,A2,A2-465507
+237,"mmm, es un buen profesor. Me gusta su enseñanza. :-)",eval,,A2,A2-C7F243
+238,"es muy servicial y amigable, pero en la clase de laboratorio va muy rápido. si diera más tiempo a cada tema sería más útil",eval,,A2,A2-F90686
+239,"Es buena, pero no cuenta la asistencia si alguien llega tarde por cualquier motivo. Además da notas muy bajas.",train,,A2,A2-38A8DC
+240,Ninguno.,eval,,A2,A2-5439F2
+241,Explica muy bien los temas.,ancla,POS,A2,A2-69D4AB
+242,El profesor más equilibrado que he visto,eval,,A2,A2-BCF2EB
+243,Debes mejorar tu conocimiento.,eval,,A2,A2-441E7D
+244,Los talleres son muy útiles para aprender.,ancla,POS,A2,A2-D45D4A
+245,"La situación actual es buena para nosotros; si AIUB organizara un curso básico de inglés para los estudiantes, nos sería aún más útil.",eval,,A2,A2-867D91
+246,Debería tener más cuidado con los estudiantes al responderles de manera correcta. Debería modificar su política de exámenes porque está muy orientada a la teoría.,repetido,,A2,A2-CF6AC0
+247,Es un profesor brillante y talentoso. Su comportamiento es muy bueno.,eval,,A2,A2-0C2829
+248,"Mi comentario es simplemente wow. Dudo que haya alguien en la universidad que pueda explicar tan bien como él. Una vez que explica algo, se queda grabado en la cabeza.",train,,A2,A2-146F84
+249,Es una profesora de primer nivel.,train,,A2,A2-DC2178
+250,creo que es una buena profesora. Su método de enseñanza es bueno.,eval,,A2,A2-2B03BC
+251,Es uno de los mejores profesores de aiub. Tiene muchos conocimientos y sabe cómo hacer que sus estudiantes aprendan más que solo los materiales de estudio.,eval,,A2,A2-CC427B
+1,Hombre culto.,eval,,A3,A3-863F0F
+2,Bueno y cuidadoso.,eval,,A3,A3-CAFFD9
+3,No tiene capacidad para enseñar a los estudiantes. Siempre pierde el tiempo en clase.,eval,,A3,A3-FC5073
+4,es el mejor,eval,,A3,A3-1EA874
+5,"Es una buena profesora, pero debería desarrollar su técnica de enseñanza.",eval,,A3,A3-1D8EB5
+6,No muy hábil como profesor.,train,,A3,A3-3A8CFD
+7,"Su proceso de enseñanza es muy bueno para que el estudiante pueda entender. Es muy inteligente, lo que se refleja en el estudiante. Siempre se preocupa por los estudiantes. Tiene muchas ideas sobre toda la materia, lo cual es muy agradable.",train,,A3,A3-42DB5A
+8,"Es un muy buen profesor, pero nos estresa mucho.",train,,A3,A3-B02405
+9,Es una profesora muy agradable. Estamos aprendiendo algo de ella.,eval,,A3,A3-4BAA79
+10,Ayuda a entender la materia y a hacerla más fácil de comprender.,eval,,A3,A3-213A4B
+11,es un buen profesor pero su nivel de enseñanza es demasiado alto para mí.,train,,A3,A3-DC4101
+12,Me cae muy bien. Siempre se preocupa por mí. Es muy amable.,eval,,A3,A3-B9B404
+13,"No conozco a este profesor, ¿quién es? Mi profesor de tesis es Moinul, pero aparece Jahidul. Estoy muy confundido con esto. Completé mi TBI hace muchos días.",train,,A3,A3-5CE180
+14,Profesor respetable.,repetido,,A3,A3-4F992F
+15,"Es una gran profesora, una buena profesora.",train,,A3,A3-EC4229
+16,"No puede impartir bien las ensenanzas y, cuando se le pide que repita un tema, se burla e insulta a los estudiantes en lugar de explicar el tema con mas claridad. Esto hace la materia aun mas dificil de lo que es y tambien hace que estudiarla sea molesto.",train,,A3,A3-A415F7
+17,¡Es realmente bueno!,eval,,A3,A3-9165DF
+18,"Es buena, pero debería ser más moderada al poner notas.",eval,,A3,A3-45AB01
+19,Esta materia se ha vuelto un pánico para nosotros por las malas notas. Deberían darnos algunos puntos extra. Nos será muy difícil continuar con esta nota. También sería muy doloroso perder puntos en esta materia.,train,,A3,A3-66F843
+20,Es bueno. Tiene algo en su actitud que realmente ayuda al estudiante a mantenerse en clase. Buen profesor.,eval,,A3,A3-B52A06
+21,"Es un buen profesor, pero habla muy rápido.",train,,A3,A3-766A7C
+22,"Es un muy buen profesor, pero debe mejorar su inglés hablado para nosotros (estudiantes de medio inglés).",train,,A3,A3-DE9F8F
+23,El profesor más equilibrado que he visto,eval,,A3,A3-C1AFDA
+24,No tiene suficiente confianza. Creo que debería capacitarse mejor. A veces confunde su material de enseñanza.,eval,,A3,A3-1F91E2
+25,Su conocimiento sobre este tema es bueno. Pero a veces no entendemos. El 50% de los estudiantes viene del departamento de ciencias. Es difícil de entender.,eval,,A3,A3-650DBD
+26,Es un profesor bueno y responsable.,eval,,A3,A3-F3E202
+27,Es un gran profesor.,eval,,A3,A3-DE0B97
+28,Es una profesora eficiente,train,,A3,A3-A657C9
+29,Esta entre el punado de buenos profesores de EEE.,eval,,A3,A3-E70D58
+30,Desempeño sobresaliente.,eval,,A3,A3-95132F
+31,"La situación actual es buena para nosotros; si AIUB organizara un curso básico de inglés para los estudiantes, nos sería aún más útil.",eval,,A3,A3-4AADC6
+32,Es un profesor agradable.,eval,,A3,A3-E35A95
+33,"Sabe todo sobre la materia, pero no puede enseñarnos adecuadamente.",eval,,A3,A3-EACCC5
+34,una tontería.,repetido,,A3,A3-AE4EF2
+35,Es bueno.,eval,,A3,A3-9470E5
+36,El mejor,eval,,A3,A3-9674F3
+37,Es una muy buena profesora.,eval,,A3,A3-9157AA
+38,Buen profesor.,eval,,A3,A3-478D68
+39,Nunca ve las cosas desde la perspectiva del estudiante. No sabe enseñar aunque sabe mucho.,train,,A3,A3-722033
+40,No entendemos lo que nos quiere enseñar. Tarda mucho tiempo en hacer entender cualquier cosa.,eval,,A3,A3-BD22FB
+41,"Es un profesor muy agradable, pero es muy duro con el sistema de calificación.",eval,,A3,A3-ED1598
+42,El mejor profesor,eval,,A3,A3-03BBDC
+43,Su cara agradable y alegre es notable. Buen profesor.,eval,,A3,A3-EA8454
+44,Es perfecto como profesor,train,,A3,A3-DA0025
+45,Realmente es un buen profesor.,eval,,A3,A3-E901BA
+46,Realmente malo,eval,,A3,A3-560A7F
+47,Excelentes habilidades.,eval,,A3,A3-8F7FB8
+48,Es una buena profesora.,eval,,A3,A3-8A4C08
+49,Es muy bueno,eval,,A3,A3-B42886
+50,es muy agradable y todos disfrutamos su clase.,eval,,A3,A3-958608
+51,no dio puntos parciales,eval,,A3,A3-D8AA26
+52,"es muy servicial y amigable, pero en la clase de laboratorio va muy rápido. si diera más tiempo a cada tema sería más útil",eval,,A3,A3-C27592
+53,nos hace entender la materia muy claramente.,eval,,A3,A3-642FC5
+54,El profesor es simplemente el mejor.,eval,,A3,A3-A19A76
+55,Es el profesor más cariñoso.,eval,,A3,A3-F097A7
+56,muy buen profesor. pero nunca sonríe en clase. queremos ver su cara sonriente.,train,,A3,A3-3C68C4
+57,Responsable.,eval,,A3,A3-337AB0
+58,gracias! esperaba tenerlo como profesor en algun curso. finalmente tuve la oportunidad de tener clase con usted.,eval,,A3,A3-E6BDA6
+59,"Aunque no soy uno de los estudiantes de su primer lote del primer semestre, por eso puedo dar un 100% de garantía de que es uno de los mejores profesores que he visto en toda mi vida universitaria. Mucha suerte, profesor.",train,,A3,A3-8F6C2E
+60,"No tan bueno. Él entiende todo, pero no se lo transmite al estudiante.",eval,,A3,A3-074B2E
+61,es un profesor muy guapo y agradable en aiub.,train,,A3,A3-FA7C94
+62,"Es una profesora agradable, además de muy estricta y amable.",eval,,A3,A3-E9BE39
+63,Muy bueno.,eval,,A3,A3-CCB789
+64,"Es un buen profesor. Debería explicar los experimentos de laboratorio, sus procedimientos y resultados de forma más detallada a los estudiantes.",eval,,A3,A3-F31F2F
+65,Buenos modales.,eval,,A3,A3-A09782
+66,Un profesor que trata de preparar a los estudiantes para enfrentar la vida practica o profesional de forma independiente. Gracias tanto al profesor como a la administracion de la universidad.,eval,,A3,A3-4A29CF
+67,Es un buen profesor. Le deseo suerte.,eval,,A3,A3-96D6B7
+68,Sin comentarios.,eval,,A3,A3-C369FB
+69,No es idóneo como docente de este curso.,eval,,A3,A3-B67DD7
+70,No es un buen profesor.,eval,,A3,A3-E90BE6
+71,gracias,eval,,A3,A3-EC9374
+72,Profesor excelente,eval,,A3,A3-0823E0
+73,"el tema es subjetivo, sin embargo podria hacerse mas interesante.",train,,A3,A3-A20E30
+74,Profesor respetable.,eval,,A3,A3-048362
+75,Mantiene un buen y adecuado horario de clases.,eval,,A3,A3-51AA43
+76,Necesita saber cómo enseñar a los estudiantes.,eval,,A3,A3-08FE46
+77,"Es bueno pero a veces su actitud se vuelve irritante, especialmente con los horarios de sus clases de recuperación o adicionales.",eval,,A3,A3-0D2F10
+78,"Muy buen profesor, pero deberia haber ensenado mas sobre la materia.",eval,,A3,A3-AD31B2
+79,"Es una de las mejores profesoras de aiub. Ha mejorado mucho respecto al pasado. Su estilo de enseñanza, su política de exámenes y su comportamiento son simplemente buenos. Debería continuar así. Aprendemos algo de ella.",eval,,A3,A3-080108
+80,Excelente,eval,,A3,A3-04770E
+81,Nada.,eval,,A3,A3-69CB19
+82,El profesor más equilibrado que he visto,repetido,,A3,A3-3FE86C
+83,Bueno. Pero debería dar buenas notas cuando las merecemos,train,,A3,A3-0317F8
+84,mejorate a ti mismo,train,,A3,A3-59E371
+85,"En general, es un buen profesor.",eval,,A3,A3-AC9C82
+86,"No es para nada un buen profesor. Su comportamiento también es muy malo. Necesitamos cambiar a este profesor para mejorar la educación en AIUB. Los estudiantes no aprenden nada de él. No tiene una idea clara de su materia. Si le preguntas algo sobre la materia, dice: ""Intenta resolverlo tú mismo. No vengo aquí a resolver tus problemas"". Siempre se confunde cuando nos enseña algo. Le pido a la rectora que lo cambie lo antes posible.",train,,A3,A3-3B8B79
+87,no da puntos parciales,eval,,A3,A3-EF1847
+88,Es muy buen profesor y se asegura de que el estudiante haya entendido bien su lección.,eval,,A3,A3-F787B6
+89,Enseña su lección de forma muy comprensible y es muy efectivo para el estudiante.,eval,,A3,A3-C3E6FD
+90,"si hablo con honestidad, es un profesor realmente bueno para los conceptos de contabilidad; es cierto que tuvimos la mala suerte de no tenerlo desde el comienzo de este curso.",eval,,A3,A3-B45B98
+91,"Es una muy buena profesora, pero es muy débil en inglés.",train,,A3,A3-D571A8
+92,"Es un buen tipo, pero hay un problema con el. A veces agranda mucho las cosas pequeñas. Aun asi, es un muy buen profesor.",eval,,A3,A3-F47672
+93,una tontería.,eval,,A3,A3-BB4C11
+94,"mmm, es un buen profesor. Me gusta su enseñanza. :-)",eval,,A3,A3-265748
+95,Debería ser más comprensible.,eval,,A3,A3-22E394
+96,Tiene una personalidad agradable. Explica las cosas de una manera muy loable.,eval,,A3,A3-D07991
+97,Bueno.,eval,,A3,A3-119BAA
+98,Ninguno.,eval,,A3,A3-BCCC16
+99,Es un buen profesor. Sabe enseñar derecho comercial.,eval,,A3,A3-816C37
+100,Bien.,eval,,A3,A3-0B454B
+101,Un profesor muy bueno y comprensivo. Pero seria muy util si diera la clase en ingles.,train,,A3,A3-B8D237
+102,creo que es una buena profesora. hace todo lo posible para que las lecciones nos queden claras. pero a la mayoría de nosotros no.,eval,,A3,A3-41D0FF
+103,Es uno de los mejores profesores de aiub.,eval,,A3,A3-8284BF
+104,"No está mal, pero tampoco tan bueno.",eval,,A3,A3-E182A0
+105,"Nuestro respetable profesor. Habla bastante rápido, con énfasis, de modo que a veces no entendemos lo que quiere decir. Es bueno.",eval,,A3,A3-AABFC6
+106,Debería dar puntos extra.,eval,,A3,A3-5988E1
+107,Es muy buen profesor para esta materia,eval,,A3,A3-CA1D76
+108,Está dibujando.,eval,,A3,A3-169E41
+109,Nos hace entender lo difícil con mucha facilidad.,train,,A3,A3-48C503
+110,"Es experimentado, pero es un perdedor. Además es una persona habladora. No tiene ninguna simpatía por los estudiantes hombres, pero tiene predilección por las estudiantes mujeres.",eval,,A3,A3-2CF542
+111,"profesor muy honorable, amable y de trato suave.",train,,A3,A3-2E337E
+112,"considérenos, por favor.",eval,,A3,A3-437B12
+113,Me cae bien porque enseña bien el laboratorio y da buenas clases.,eval,,A3,A3-12A01A
+114,creo que no es tan bueno como se suponía que sería y espero que lo haga mejor la próxima vez.,eval,,A3,A3-6A7310
+115,Profesor veterano y constante.,train,,A3,A3-6C6C3E
+116,Responsable.,repetido,,A3,A3-8270F8
+117,Necesita mejorar.,eval,,A3,A3-82D4D9
+118,Es buena,eval,,A3,A3-91CD6B
+119,Necesita ir un poco más despacio al dar la clase.,eval,,A3,A3-22CE88
+120,No.,eval,,A3,A3-9BF321
+121,Buena persona y nos enseña muy bien.,eval,,A3,A3-4F0725
+122,Nuestro profesor es genial enseñando y motivando a sus estudiantes; realmente lo aprecio.,train,,A3,A3-5D5F40
+123,"Es un buen profesor, pero no es atento con los estudiantes más flojos. Debería dar más tiempo a los estudiantes para entender su clase.",eval,,A3,A3-C73022
+124,"su estilo de ensenanza es bueno. cada clase revisa, despues de ensenar, si entendimos el tema.",eval,,A3,A3-18BD53
+125,¡Nadie puede preguntarle nada!,eval,,A3,A3-61875D
+126,Creo que tiene un enorme conocimiento de la materia de mi curso. Su comportamiento es simplemente relajado. Esa es la clave principal de cualquier profesor. Por eso aprendimos bien.,eval,,A3,A3-CD327D
+127,Es un buen profesor. Le deseo suerte.,repetido,,A3,A3-14E876
+128,Los talleres son muy útiles para aprender.,ancla,POS,A3,A3-DFB630
+129,"Bueno, debería dedicar más tiempo a ciertos puntos relacionados con la clase.",eval,,A3,A3-F38DEA
+130,No está mal.,eval,,A3,A3-A6C8F1
+131,Puntual,eval,,A3,A3-86D992
+132,Necesita ser un poco más detallado en cuanto a la clase,repetido,,A3,A3-B13EF2
+133,es un buen profesor y trata de ayudar a todos los estudiantes,eval,,A3,A3-3AF299
+134,Es un buen profesor.,eval,,A3,A3-3A9AE3
+135,creo que es una buena profesora. Su método de enseñanza es bueno.,eval,,A3,A3-9BF9F2
+136,Es una profesora muy agradable. Estamos aprendiendo algo de ella.,repetido,,A3,A3-DD5F36
+137,Debería cambiar su actitud hacia los estudiantes.,train,,A3,A3-25AC80
+138,Puede que hayas olvidado de dónde te graduaste.,eval,,A3,A3-E20CF6
+139,Es un gran profesor. Su desempeño es excelente. Nos enseña muy muy bien. En general es el mejor profesor.,eval,,A3,A3-B17BDF
+140,creo que debería ser más flexible y averiguar qué tipo de problemas enfrentan los estudiantes.,eval,,A3,A3-B66FE5
+141,Más o menos.,eval,,A3,A3-3A98DD
+142,"Bueno, pero necesita cuestionarios como el quiz 3. Debe tener más cuidado al hablar. Necesita más práctica en redes de computadoras. Esta materia es aburrida, hay que hacer la lección interesante.",train,,A3,A3-0D4DD6
+143,"Debería tratar de ser más claro con la materia; simplemente avanza rápido, sin considerar si lo estamos siguiendo o no.",train,,A3,A3-5E4BF1
+144,"Sí, el estilo de enseñanza es bastante bueno y favorable. Debería desarrollarse más la interacción.",eval,,A3,A3-2F834C
+145,"Tiene conocimientos y experiencia excepcionales sobre arquitectura. Ilustra con ejemplos. Como profesor, es muy franco y abierto con los estudiantes.",eval,,A3,A3-60A447
+146,Básicamente es agradable. Pero es demasiado estricto durante los exámenes. Y a veces es parcial con algunos estudiantes.,eval,,A3,A3-B67697
+147,No tiene mucha idea sobre IA.,train,,A3,A3-A9FFF5
+148,Creo que es un profesor de nivel promedio.,eval,,A3,A3-A2884D
+149,Habla demasiado de temas que no tienen relación con el estudio de la geografía económica.,train,,A3,A3-5C2AC1
+150,creo que es realmente perfecto para dictar el laboratorio de a.c,eval,,A3,A3-78026C
+151,"Islam, M.M. Obaidul es eficaz, calificado, cooperativo y muy cercano a nosotros.",eval,,A3,A3-D8DC45
+152,No tiene habilidad para enseñar. Solo tiene un conocimiento memorizado.,eval,,A3,A3-FEAC74
+153,"Esta bien, pero deberia aclarar mas sus materiales de clase, especialmente para los estudiantes de BBA.",eval,,A3,A3-28027C
+154,El maestro más divertido y con más personalidad que he visto.,eval,,A3,A3-C111E5
+155,es un excelente profesor.,eval,,A3,A3-CC4D18
+156,"Bien, pero debería ser más amigable.",eval,,A3,A3-415008
+157,Es regular. Solo regular.,eval,,A3,A3-028D68
+158,"No explica bien, me siento perdido.",ancla,NEG,A3,A3-91BA3D
+159,La clase es muy aburrida y monótona.,ancla,NEG,A3,A3-C2AED9
+160,Es un robot. Pero me gusta su actitud.,train,,A3,A3-96E94A
+161,"Para hacer entender las matemáticas de forma más fácil y sencilla, trata de poner al estudiante en la mejor posición.",eval,,A3,A3-2755E4
+162,Me gusta bien su sistema de enseñanza.,train,,A3,A3-27EB94
+163,No es adecuado para todos los tipos de estudiantes. No logró motivar a los estudiantes débiles.,eval,,A3,A3-B6BDF9
+164,No me gusta la política de la clase.,eval,,A3,A3-754636
+165,"Bueno, pero a veces pierde la paciencia.",eval,,A3,A3-CCBC50
+166,Es extraordinario.,eval,,A3,A3-E0931E
+167,El profesor necesita ser un poco más estricto con el ruido en clase y no debería dejar entrar tarde a los estudiantes. Es bastante distractor.,train,,A3,A3-8712AD
+168,"Buen profesor. A veces estricto, pero apropiado para algunos estudiantes.",train,,A3,A3-61FA4C
+169,Creo que es un buen profesor.,eval,,A3,A3-48607A
+170,Debe mejorar como profesor.,repetido,,A3,A3-37A5A8
+171,Es un profesor excelente.,eval,,A3,A3-450282
+172,Necesita algo de conocimiento sobre enseñanza.,eval,,A3,A3-76E22C
+173,es magnífico.,eval,,A3,A3-163D32
+174,Es un buen profesor. Yo también lo apoyo.,eval,,A3,A3-A504A4
+175,Debes mejorar tu conocimiento.,eval,,A3,A3-8E9397
+176,Debería desempeñarse bien en los cursos superiores.,train,,A3,A3-DFC37E
+177,el material es difícil.,eval,,A3,A3-972A46
+178,Un buen profesor,eval,,A3,A3-DCF27C
+179,Es un muy buen profesor.,eval,,A3,A3-7821D3
+180,Es un profesor con mucha experiencia y bueno.,eval,,A3,A3-078A6F
+181,No es apta para aiub.,train,,A3,A3-59E197
+182,Necesita mucha más capacidad de comprensión y debería ser más amigable con los estudiantes. Necesita más capacidad de comprensión.,train,,A3,A3-D39BAA
+183,"Buena persona con buen comportamiento, muy buen conocimiento de bases de datos y VB, con gran profundidad de conocimiento.",eval,,A3,A3-13ABF5
+184,es un buen profesor y muy divertido. lo único es que se ríe demasiado en clase.,eval,,A3,A3-E5B627
+185,"En general, el profesor es bueno.",train,,A3,A3-E86FB8
+186,Lo quiero y él nos quiere. El profesor Obaidul es muy buen profesor.,eval,,A3,A3-CD6C8E
+187,Está bien.,eval,,A3,A3-2E5F80
+188,"Sabe muchas cosas, pero no las transmite adecuadamente.",train,,A3,A3-E5567A
+189,Desempeño promedio.,eval,,A3,A3-BDB4CA
+190,Debería tener más cuidado con los estudiantes al responderles de manera correcta. Debería modificar su política de exámenes porque está muy orientada a la teoría.,eval,,A3,A3-F14F6A
+191,Necesita ser un poco más detallado en cuanto a la clase,eval,,A3,A3-AD4E41
+192,"entiendo la clase de la profesora, ella es capaz de aclarar nuestros conceptos sobre los temas de aprendizaje.",eval,,A3,A3-38A84B
+193,Es un profesor muy agradable.,eval,,A3,A3-A2A624
+194,"Bienvenido y felicidades. Espero que nos esperen mejores empleos. Buena suerte, profesor, y cuídese.",eval,,A3,A3-2BC7A2
+195,es un buen profesor y un buen hombre. pero no permite que sus estudiantes se expresen.,train,,A3,A3-3149C7
+196,es el mejor profesor.,eval,,A3,A3-BF0338
+197,Trata de terminar el temario demasiado rápido.,train,,A3,A3-281DD7
+198,Es muy puntual para la clase.,eval,,A3,A3-EF3248
+199,es un profesor muy honesto.,eval,,A3,A3-7877F6
+200,Quiere hacerlo mejor para ayudar a los estudiantes a mejorar su desempeño en clase y su conocimiento. Trata de identificar especialmente a los más lentos que no logran entender las materias. Por eso es un buen profesor.,eval,,A3,A3-323646
+201,"Es nueva, así que necesita mucho más tiempo para familiarizarse con la enseñanza.",eval,,A3,A3-02B5D4
+202,"es un profesor maravilloso. es el mejor, pero su voz es demasiado baja.",eval,,A3,A3-AB21E8
+203,Es muy buen profesor.,eval,,A3,A3-3F2A2B
+204,El profesor Shafiqul es mi profesor favorito favorito. Su estilo de enseñanza es muy bueno.,eval,,A3,A3-22D215
+205,Es un profesor realmente bueno para los estudiantes.,eval,,A3,A3-20279E
+206,muy buen profesor y ante todo sincero,eval,,A3,A3-02016C
+207,Su pronunciación tiene acento regional; a veces es difícil de entender en clase,train,,A3,A3-B07071
+208,"Disfruto mucho su clase, porque la hace amena con buenos ejemplos.",eval,,A3,A3-F89043
+209,La clase es muy dinámica y entretenida.,ancla,POS,A3,A3-964B8D
+210,Explica muy bien los temas.,ancla,POS,A3,A3-D37480
+211,Bien. No hay ningún problema. Buen desempeño.,train,,A3,A3-CD2BA7
+212,Es genial.,eval,,A3,A3-732708
+213,profesor brillante,eval,,A3,A3-EA4490
+214,Profesor.,eval,,A3,A3-B9A915
+215,"El Sr. Mujibur Rahman es un buen profesor, aunque los estudiantes más lentos podrían encontrarlo un poco demasiado rápido.",eval,,A3,A3-9CBB7F
+216,"Excelente, pero pone preguntas difíciles.",train,,A3,A3-23ECCD
+217,Es una profesora agradable y tiene un buen método para hacer que la clase se entienda.,eval,,A3,A3-564C28
+218,"Es un buen profesor, pero a veces es tan rápido que no se le entiende.",train,,A3,A3-179383
+219,Califica de forma injusta.,ancla,NEG,A3,A3-92F37E
+220,A veces él mismo no tiene claro lo que está enseñando. Para mí no es suficientemente bueno.,eval,,A3,A3-11CCDC
+221,"Es un profesor excelente, pero su método de enseñanza es muy difícil. Por ejemplo, su sistema de exámenes sorpresa a menudo perjudica nuestra calificación.",eval,,A3,A3-CBF6E4
+222,"Excelente profesor, muy claro.",ancla,POS,A3,A3-BB38A0
+223,Es un buen profesor. Creo que AIUB necesita este tipo de profesores.,eval,,A3,A3-39F23E
+224,"En general, es un buen profesor y estaríamos más contentos si diera ejemplos y casos más realistas",train,,A3,A3-367B4C
+225,Su estilo de enseñanza no es muy bueno y los estudiantes no sienten interés por esta materia.,eval,,A3,A3-AFD3B4
+226,Tiene buen dominio.,eval,,A3,A3-2F2CB4
+228,"si los estudiantes pudieran ver su examen de cuestionario y de parcial, entonces podrían entender sus errores y hacerlo bien en el final.",eval,,A3,A3-73B8ED
+229,Es una buena persona.,eval,,A3,A3-652BD7
+230,Debe mejorar como profesor.,eval,,A3,A3-B07201
+231,es un buen profesor y es muy servicial.,eval,,A3,A3-3E2440
+232,Siempre esta bien preparado.,eval,,A3,A3-BA47D6
+233,Es muy alentador.,train,,A3,A3-B361FC
+234,Su estilo de enseñanza es de nivel B+.,eval,,A3,A3-52B378
+235,Es cooperativa,eval,,A3,A3-CDC920
+236,"Es un muy buen profesor, pero a veces te tomas demasiado en serio cosas simples.",eval,,A3,A3-F86948
+237,Es un profesor brillante y talentoso. Su comportamiento es muy bueno.,eval,,A3,A3-60C52C
+238,"Estoy orgulloso de ser estudiante de este profesor. Creo que Ghani, Md. Bayzid es un buen profesor por su buena enseñanza, comprensión, buen desempeño docente y buen comportamiento.",eval,,A3,A3-F05EB9
+239,Es duro pero buen profesor.,train,,A3,A3-272FE2
+240,Es uno de los mejores profesores de aiub. Tiene muchos conocimientos y sabe cómo hacer que sus estudiantes aprendan más que solo los materiales de estudio.,eval,,A3,A3-B6DCCE
+241,Muy mal profesor.,ancla,NEG,A3,A3-41CA0F
+242,Muy listo,eval,,A3,A3-0FF2C4
+243,"desde mi perspectiva, es una de las mejores profesoras de aiub. Hay algunas razones. Una es que revisa a todos y cada uno de los estudiantes para ver si entienden o no.",train,,A3,A3-E97E2F
+244,"Está bien, pero no excepcional.",eval,,A3,A3-131A7A
+245,Gran profesor,eval,,A3,A3-D5DA7F
+246,Uno de mis profesores favoritos. Me gusta asistir a cada una de sus clases. Me gusta su método de enseñanza. Especialmente me gustan los trabajos en grupo que nos da en clase y que de verdad nos ayudan.,eval,,A3,A3-6B9C91
+247,Es un profesor excelente. Espero que la universidad lo trate como corresponde.,eval,,A3,A3-6C6918
+248,muy buen profesor,eval,,A3,A3-F166B5
+249,"Es un buen profesor. Como estudiante de MBA, espero un comportamiento más profesional.",eval,,A3,A3-C5D6AC
+250,siempre miente sobre su posición,eval,,A3,A3-D40943
+251,Es muy bueno en diseño de compiladores. Creo que es uno de los mejores en este curso,eval,,A3,A3-F88664

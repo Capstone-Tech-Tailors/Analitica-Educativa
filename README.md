@@ -12,6 +12,10 @@ basado en reglas hacia uno **predictivo y accionable**, combinando **análisis d
 de los comentarios (modelos de lenguaje en español) con un **modelo de clasificación** de la
 tendencia de desempeño (`Mejora` / `Estable` / `En riesgo`).
 
+> 📄 **[INFORME FINAL DEL PROYECTO](INFORME_FINAL.ipynb)** — análisis completo del proceso,
+> inventario y ubicación de todos los modelos, **modelo seleccionado para producción**
+> (`modelo_sentimiento_humano`), guía de despliegue en la nube y construcción del DOFA.
+
 ## 📑 Tabla de contenido
 
 1. [Problema y objetivo](#-problema-y-objetivo)
@@ -22,7 +26,8 @@ tendencia de desempeño (`Mejora` / `Estable` / `En riesgo`).
 6. [Descripción de los notebooks](#-descripción-de-los-notebooks)
 7. [Naturaleza y limitaciones de los datos](#-naturaleza-y-limitaciones-de-los-datos)
 8. [Créditos](#-créditos)
-9. [Licencia](#-licencia)
+9. [Guía de aprendizaje](#-guía-de-aprendizaje)
+10. [Licencia](#-licencia)
 
 ## 🎯 Problema y objetivo
 
@@ -77,7 +82,8 @@ de texto (detalle en [Naturaleza y limitaciones de los datos](#-naturaleza-y-lim
 │   └── notebooks/
 │       ├── 01_catalogo_modelos_espanol.ipynb   # catálogo de modelos de sentimiento (referencia)
 │       ├── 02_sentimiento_evaluaciones.ipynb   # pipeline de sentimiento → data/processed
-│       └── 03_benchmark_modelos.ipynb          # comparación de los 3 modelos vs gold
+│       ├── 03_benchmark_modelos.ipynb          # comparación de los 3 modelos vs gold
+│       └── 04_finetuning_sentimiento.ipynb     # fine-tuning (destilación) de BETO — avanzado
 ├── analisis_datos/
 │   ├── notebooks/
 │   │   ├── 01_eda_techtailors_referencia.ipynb # EDA de referencia (compañero del equipo)
@@ -85,7 +91,8 @@ de texto (detalle en [Naturaleza y limitaciones de los datos](#-naturaleza-y-lim
 │   │   └── 03_modelado_tendencia_docente.ipynb # entrena, valida y exporta el modelo
 │   ├── reports/        # informe de revisión, justificaciones y gráficos
 │   └── models/         # artefactos del modelo (.pkl ignorado por git; metadatos versionados)
-├── src/                # código reutilizable: rutas.py, sentimiento.py, modelo_utils.py
+├── anotacion/          # rúbrica, protocolo y planillas de anotación humana
+├── src/                # código reutilizable: rutas.py, sentimiento.py, modelo_utils.py, acuerdo.py
 ├── requirements.txt
 ├── LICENSE
 └── README.md
@@ -120,6 +127,11 @@ Los notebooks `01_*` son material de referencia/apoyo (catálogo de modelos y ED
 - `01_catalogo_modelos_espanol` — catálogo comparativo de modelos de sentimiento en español.
 - `02_sentimiento_evaluaciones` — pipeline con 3 modelos + votación por mayoría + *gold standard*.
 - `03_benchmark_modelos` — benchmark de los 3 modelos contra el *gold* humano; recomendación.
+- `04_finetuning_sentimiento` — **fine-tuning** de BETO por destilación de RoBERTuito sobre
+  11.697 comentarios reales balanceados. Documentado académicamente (marco teórico,
+  hiperparámetros justificados, curvas de aprendizaje, glosario y referencias). Ejecutable
+  en GPU Apple/MPS en ~6 min. Resultado: el ajuste mejora el modelo base (macro-F1 0.626 →
+  0.708) e iguala al maestro sin superarlo (0.706), confirmando el límite de la destilación.
 
 **Análisis de datos** (`analisis_datos/notebooks/`)
 - `01_eda_techtailors_referencia` — análisis exploratorio (material de referencia del compañero).
@@ -129,6 +141,23 @@ Los notebooks `01_*` son material de referencia/apoyo (catálogo de modelos y ED
 
 Informes de apoyo en [`analisis_datos/reports/`](analisis_datos/reports/): revisión del EDA,
 justificación de los comentarios repetidos y la sección de limitaciones de datos.
+
+## 🏷️ Anotación humana (siguiente fase)
+
+El componente de texto tiene un techo demostrado: el modelo ajustado aprende de etiquetas
+generadas por RoBERTuito y por tanto **no puede superarlo**. La carpeta
+[`anotacion/`](anotacion/) contiene todo lo necesario para romperlo mediante anotación humana:
+
+| Archivo | Contenido |
+|---|---|
+| [`RUBRICA_ANOTACION.md`](anotacion/RUBRICA_ANOTACION.md) | Rúbrica v1.0 con reglas ordenadas y ejemplos ancla |
+| [`PROTOCOLO_ANOTACION.md`](anotacion/PROTOCOLO_ANOTACION.md) | Protocolo: muestreo estratificado, roles, métricas de acuerdo y adjudicación |
+| `generar_planillas.py` | Genera una planilla XLSX por anotador (orden aleatorizado, sin predicción del modelo) |
+| `consolidar_anotacion.py` | Calcula α de Krippendorff, Fleiss κ, Cohen por pares y consolida el gold |
+
+Muestra: **335 comentarios** del corpus real, estratificados y enriquecidos en casos
+fronterizos (185 de evaluación con triple anotación + 150 de entrenamiento). ~35 min por
+persona.
 
 ## ⚠️ Naturaleza y limitaciones de los datos
 
@@ -152,6 +181,14 @@ Rosario): Juan David Ríos · Natalia Remolina · Giovanni Balza.
 
 El notebook `01_eda_techtailors_referencia.ipynb` es un análisis exploratorio elaborado por un
 integrante del equipo; se incluye como referencia y solo se ajustaron sus rutas de datos.
+
+## 📚 Guía de aprendizaje
+
+[`GUIA_APRENDIZAJE.md`](GUIA_APRENDIZAJE.md) explica en lenguaje accesible **qué se hizo, por
+qué se decidió cada cosa y qué conceptos hay detrás** (transfer learning, sobreajuste,
+macro-F1, destilación). Incluye las decisiones metodológicas con su justificación, preguntas
+frecuentes y las líneas de continuación del proyecto. Recomendada para incorporarse al
+proyecto o para preparar la exposición ante el jurado.
 
 ## 📄 Licencia
 

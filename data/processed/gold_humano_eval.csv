@@ -1,0 +1,173 @@
+comentario,gold,acuerdo,marcado_dificil
+A veces él mismo no tiene claro lo que está enseñando. Para mí no es suficientemente bueno.,NEG,unanime,0
+Ayuda a entender la materia y a hacerla más fácil de comprender.,POS,unanime,0
+Bien.,NEU,mayoria,1
+"Bienvenido y felicidades. Espero que nos esperen mejores empleos. Buena suerte, profesor, y cuídese.",POS,mayoria,1
+Buen profesor.,POS,unanime,0
+"Buena persona con buen comportamiento, muy buen conocimiento de bases de datos y VB, con gran profundidad de conocimiento.",POS,unanime,0
+Buena persona y nos enseña muy bien.,POS,unanime,0
+Bueno y cuidadoso.,POS,unanime,0
+"Bueno, debería dedicar más tiempo a ciertos puntos relacionados con la clase.",NEU,mayoria,1
+"Bueno, pero a veces pierde la paciencia.",NEG,unanime,2
+Bueno.,POS,mayoria,0
+Buenos modales.,POS,unanime,0
+Básicamente es agradable. Pero es demasiado estricto durante los exámenes. Y a veces es parcial con algunos estudiantes.,POS,mayoria,0
+Creo que es un buen profesor.,POS,unanime,0
+Creo que es un profesor de nivel promedio.,NEU,unanime,2
+Creo que tiene un enorme conocimiento de la materia de mi curso. Su comportamiento es simplemente relajado. Esa es la clave principal de cualquier profesor. Por eso aprendimos bien.,POS,unanime,0
+Debe mejorar como profesor.,NEG,mayoria,0
+Debería dar puntos extra.,NEU,mayoria,2
+Debería ser más comprensible.,NEG,mayoria,1
+Debería tener más cuidado con los estudiantes al responderles de manera correcta. Debería modificar su política de exámenes porque está muy orientada a la teoría.,NEU,mayoria,2
+Debes mejorar tu conocimiento.,NEG,mayoria,1
+Desempeño promedio.,NEU,unanime,2
+Desempeño sobresaliente.,POS,unanime,0
+"Disfruto mucho su clase, porque la hace amena con buenos ejemplos.",POS,unanime,0
+"El Sr. Mujibur Rahman es un buen profesor, aunque los estudiantes más lentos podrían encontrarlo un poco demasiado rápido.",POS,mayoria,2
+El maestro más divertido y con más personalidad que he visto.,POS,unanime,0
+El mejor,POS,unanime,0
+El mejor profesor,POS,unanime,0
+El profesor Shafiqul es mi profesor favorito favorito. Su estilo de enseñanza es muy bueno.,POS,unanime,0
+El profesor es simplemente el mejor.,POS,unanime,0
+El profesor más equilibrado que he visto,POS,unanime,0
+"En general, es un buen profesor.",POS,unanime,0
+Enseña su lección de forma muy comprensible y es muy efectivo para el estudiante.,POS,unanime,0
+Es buena,POS,unanime,0
+"Es bueno pero a veces su actitud se vuelve irritante, especialmente con los horarios de sus clases de recuperación o adicionales.",NEG,mayoria,1
+Es bueno.,POS,unanime,0
+Es bueno. Tiene algo en su actitud que realmente ayuda al estudiante a mantenerse en clase. Buen profesor.,POS,unanime,0
+Es cooperativa,POS,unanime,0
+Es el profesor más cariñoso.,POS,unanime,0
+"Es experimentado, pero es un perdedor. Además es una persona habladora. No tiene ninguna simpatía por los estudiantes hombres, pero tiene predilección por las estudiantes mujeres.",NEG,unanime,0
+Es extraordinario.,POS,unanime,0
+Es genial.,POS,mayoria,0
+Es muy buen profesor para esta materia,POS,unanime,0
+Es muy buen profesor y se asegura de que el estudiante haya entendido bien su lección.,POS,unanime,0
+Es muy buen profesor.,POS,unanime,0
+Es muy bueno,POS,unanime,0
+Es muy bueno en diseño de compiladores. Creo que es uno de los mejores en este curso,POS,unanime,0
+Es muy puntual para la clase.,POS,mayoria,0
+"Es nueva, así que necesita mucho más tiempo para familiarizarse con la enseñanza.",NEG,mayoria,3
+Es regular. Solo regular.,NEU,unanime,2
+"Es un buen profesor, pero no es atento con los estudiantes más flojos. Debería dar más tiempo a los estudiantes para entender su clase.",NEG,mayoria,2
+Es un buen profesor.,POS,unanime,0
+Es un buen profesor. Creo que AIUB necesita este tipo de profesores.,POS,unanime,0
+"Es un buen profesor. Debería explicar los experimentos de laboratorio, sus procedimientos y resultados de forma más detallada a los estudiantes.",NEG,mayoria,2
+Es un buen profesor. Le deseo suerte.,POS,unanime,0
+Es un buen profesor. Sabe enseñar derecho comercial.,POS,unanime,0
+Es un buen profesor. Yo también lo apoyo.,POS,unanime,0
+"Es un buen tipo, pero hay un problema con el. A veces agranda mucho las cosas pequeñas. Aun asi, es un muy buen profesor.",POS,mayoria,1
+Es un gran profesor.,POS,unanime,0
+Es un gran profesor. Su desempeño es excelente. Nos enseña muy muy bien. En general es el mejor profesor.,POS,unanime,0
+"Es un muy buen profesor, pero a veces te tomas demasiado en serio cosas simples.",POS,mayoria,1
+Es un muy buen profesor.,POS,unanime,0
+Es un profesor agradable.,POS,unanime,0
+Es un profesor brillante y talentoso. Su comportamiento es muy bueno.,POS,unanime,0
+Es un profesor bueno y responsable.,POS,unanime,0
+Es un profesor con mucha experiencia y bueno.,POS,unanime,0
+"Es un profesor excelente, pero su método de enseñanza es muy difícil. Por ejemplo, su sistema de exámenes sorpresa a menudo perjudica nuestra calificación.",NEG,mayoria,2
+Es un profesor excelente.,POS,unanime,0
+Es un profesor excelente. Espero que la universidad lo trate como corresponde.,POS,unanime,0
+Es un profesor muy agradable.,POS,unanime,0
+Es un profesor realmente bueno para los estudiantes.,POS,unanime,0
+Es una buena persona.,POS,unanime,0
+"Es una buena profesora, pero debería desarrollar su técnica de enseñanza.",POS,mayoria,1
+Es una buena profesora.,POS,unanime,0
+"Es una de las mejores profesoras de aiub. Ha mejorado mucho respecto al pasado. Su estilo de enseñanza, su política de exámenes y su comportamiento son simplemente buenos. Debería continuar así. Aprendemos algo de ella.",POS,unanime,0
+Es una muy buena profesora.,POS,unanime,0
+Es una profesora agradable y tiene un buen método para hacer que la clase se entienda.,POS,unanime,0
+"Es una profesora agradable, además de muy estricta y amable.",POS,unanime,0
+Es una profesora muy agradable. Estamos aprendiendo algo de ella.,POS,unanime,0
+Es uno de los mejores profesores de aiub.,POS,unanime,0
+Es uno de los mejores profesores de aiub. Tiene muchos conocimientos y sabe cómo hacer que sus estudiantes aprendan más que solo los materiales de estudio.,POS,unanime,0
+"Esta bien, pero deberia aclarar mas sus materiales de clase, especialmente para los estudiantes de BBA.",NEU,mayoria,1
+Esta entre el punado de buenos profesores de EEE.,POS,unanime,0
+"Estoy orgulloso de ser estudiante de este profesor. Creo que Ghani, Md. Bayzid es un buen profesor por su buena enseñanza, comprensión, buen desempeño docente y buen comportamiento.",POS,unanime,0
+"Está bien, pero no excepcional.",NEU,unanime,2
+Está bien.,POS,mayoria,1
+Excelente,POS,unanime,0
+Excelentes habilidades.,POS,unanime,0
+Gran profesor,POS,unanime,0
+Hombre culto.,POS,mayoria,0
+"Islam, M.M. Obaidul es eficaz, calificado, cooperativo y muy cercano a nosotros.",POS,mayoria,0
+"La situación actual es buena para nosotros; si AIUB organizara un curso básico de inglés para los estudiantes, nos sería aún más útil.",NEU,mayoria,2
+Lo quiero y él nos quiere. El profesor Obaidul es muy buen profesor.,POS,unanime,0
+Mantiene un buen y adecuado horario de clases.,POS,unanime,0
+Me cae bien porque enseña bien el laboratorio y da buenas clases.,POS,unanime,0
+Me cae muy bien. Siempre se preocupa por mí. Es muy amable.,POS,unanime,0
+Muy bueno.,POS,unanime,0
+Muy listo,POS,unanime,0
+Más o menos.,NEU,unanime,2
+Necesita algo de conocimiento sobre enseñanza.,NEG,unanime,0
+Necesita ir un poco más despacio al dar la clase.,NEG,mayoria,1
+Necesita mejorar.,NEG,mayoria,1
+Necesita saber cómo enseñar a los estudiantes.,NEG,mayoria,0
+Necesita ser un poco más detallado en cuanto a la clase,NEG,mayoria,1
+No entendemos lo que nos quiere enseñar. Tarda mucho tiempo en hacer entender cualquier cosa.,NEG,unanime,0
+No es adecuado para todos los tipos de estudiantes. No logró motivar a los estudiantes débiles.,NEG,unanime,0
+No es idóneo como docente de este curso.,NEG,unanime,0
+No es un buen profesor.,NEG,unanime,0
+"No está mal, pero tampoco tan bueno.",NEU,unanime,2
+No está mal.,NEU,mayoria,1
+No me gusta la política de la clase.,NEU,mayoria,1
+"No tan bueno. Él entiende todo, pero no se lo transmite al estudiante.",NEG,unanime,0
+No tiene capacidad para enseñar a los estudiantes. Siempre pierde el tiempo en clase.,NEG,unanime,0
+No tiene habilidad para enseñar. Solo tiene un conocimiento memorizado.,NEG,mayoria,0
+No tiene suficiente confianza. Creo que debería capacitarse mejor. A veces confunde su material de enseñanza.,NEG,unanime,0
+"Para hacer entender las matemáticas de forma más fácil y sencilla, trata de poner al estudiante en la mejor posición.",POS,unanime,0
+Profesor excelente,POS,unanime,0
+Profesor respetable.,POS,unanime,0
+Puede que hayas olvidado de dónde te graduaste.,NEU,unanime,2
+Puntual,POS,unanime,0
+Quiere hacerlo mejor para ayudar a los estudiantes a mejorar su desempeño en clase y su conocimiento. Trata de identificar especialmente a los más lentos que no logran entender las materias. Por eso es un buen profesor.,POS,unanime,0
+Realmente es un buen profesor.,POS,unanime,0
+Realmente malo,NEG,unanime,0
+Responsable.,POS,mayoria,0
+"Sabe todo sobre la materia, pero no puede enseñarnos adecuadamente.",NEG,mayoria,1
+Siempre esta bien preparado.,POS,unanime,0
+Sin comentarios.,NEU,unanime,2
+Su cara agradable y alegre es notable. Buen profesor.,POS,unanime,0
+Su conocimiento sobre este tema es bueno. Pero a veces no entendemos. El 50% de los estudiantes viene del departamento de ciencias. Es difícil de entender.,NEG,mayoria,2
+Su estilo de enseñanza es de nivel B+.,POS,mayoria,1
+Su estilo de enseñanza no es muy bueno y los estudiantes no sienten interés por esta materia.,NEG,unanime,0
+"Sí, el estilo de enseñanza es bastante bueno y favorable. Debería desarrollarse más la interacción.",POS,mayoria,1
+Tiene buen dominio.,POS,unanime,0
+"Tiene conocimientos y experiencia excepcionales sobre arquitectura. Ilustra con ejemplos. Como profesor, es muy franco y abierto con los estudiantes.",POS,unanime,0
+Tiene una personalidad agradable. Explica las cosas de una manera muy loable.,POS,unanime,0
+Un buen profesor,POS,unanime,0
+Un profesor que trata de preparar a los estudiantes para enfrentar la vida practica o profesional de forma independiente. Gracias tanto al profesor como a la administracion de la universidad.,POS,unanime,0
+Uno de mis profesores favoritos. Me gusta asistir a cada una de sus clases. Me gusta su método de enseñanza. Especialmente me gustan los trabajos en grupo que nos da en clase y que de verdad nos ayudan.,POS,unanime,0
+creo que debería ser más flexible y averiguar qué tipo de problemas enfrentan los estudiantes.,NEG,unanime,1
+creo que es realmente perfecto para dictar el laboratorio de a.c,POS,unanime,0
+creo que es una buena profesora. Su método de enseñanza es bueno.,POS,unanime,0
+creo que es una buena profesora. hace todo lo posible para que las lecciones nos queden claras. pero a la mayoría de nosotros no.,NEU,mayoria,2
+creo que no es tan bueno como se suponía que sería y espero que lo haga mejor la próxima vez.,NEG,unanime,1
+el material es difícil.,NEU,mayoria,1
+"entiendo la clase de la profesora, ella es capaz de aclarar nuestros conceptos sobre los temas de aprendizaje.",POS,unanime,0
+es el mejor,POS,unanime,0
+es el mejor profesor.,POS,mayoria,0
+es magnífico.,POS,unanime,0
+es muy agradable y todos disfrutamos su clase.,POS,unanime,0
+"es muy servicial y amigable, pero en la clase de laboratorio va muy rápido. si diera más tiempo a cada tema sería más útil",NEG,mayoria,1
+es un buen profesor y es muy servicial.,POS,unanime,0
+es un buen profesor y muy divertido. lo único es que se ríe demasiado en clase.,POS,unanime,1
+es un buen profesor y trata de ayudar a todos los estudiantes,POS,unanime,0
+es un excelente profesor.,POS,unanime,0
+"es un profesor maravilloso. es el mejor, pero su voz es demasiado baja.",POS,mayoria,1
+es un profesor muy honesto.,POS,unanime,0
+gracias,NEU,mayoria,1
+gracias! esperaba tenerlo como profesor en algun curso. finalmente tuve la oportunidad de tener clase con usted.,POS,unanime,0
+"mmm, es un buen profesor. Me gusta su enseñanza. :-)",POS,unanime,0
+muy buen profesor,POS,unanime,0
+muy buen profesor y ante todo sincero,POS,unanime,0
+no da puntos parciales,NEG,mayoria,1
+no dio puntos parciales,NEG,mayoria,1
+nos hace entender la materia muy claramente.,POS,unanime,0
+profesor brillante,POS,unanime,0
+"si hablo con honestidad, es un profesor realmente bueno para los conceptos de contabilidad; es cierto que tuvimos la mala suerte de no tenerlo desde el comienzo de este curso.",POS,unanime,1
+"si los estudiantes pudieran ver su examen de cuestionario y de parcial, entonces podrían entender sus errores y hacerlo bien en el final.",NEG,unanime,2
+siempre miente sobre su posición,NEG,unanime,0
+"su estilo de ensenanza es bueno. cada clase revisa, despues de ensenar, si entendimos el tema.",POS,unanime,1
+una tontería.,NEU,mayoria,2
+¡Es realmente bueno!,POS,unanime,0
+¡Nadie puede preguntarle nada!,NEG,mayoria,1
