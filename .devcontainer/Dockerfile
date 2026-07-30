@@ -1,18 +1,10 @@
 FROM ghcr.io/benoitc/gunicorn:24.1.0
 LABEL authors="jrios"
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    curl \
-    && rm -rf /var/lib/apt/lists/*
+COPY --chown=gunicorn:gunicorn ./requirements.txt /tmp/requirements.txt
+RUN pip install --no-cache-dir -r /tmp/requirements.txt && rm /tmp/requirements.txt
+COPY --chown=gunicorn:gunicorn ./src ./
 
-RUN useradd --create-home appuser
-WORKDIR /home/appuser/app
-
-COPY ../requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt && rm requirements.txt
-COPY --chown=appuser:appuser src/ ./
-
-USER appuser
 ENV GUNICORN_CMD_ARGS="--workers=4 --worker-class=uvicorn.workers.UvicornWorker --bind=0.0.0.0:8000"
 EXPOSE 8000
 
