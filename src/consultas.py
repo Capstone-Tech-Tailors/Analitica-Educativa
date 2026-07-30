@@ -1,9 +1,5 @@
-# %%
-# %pip install unidecode
-# %%
 import pandas as pd
 import unidecode
-# %%
 valid_days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"]
 get_valid_day = lambda day: next(filter(lambda valid_day: unidecode.unidecode(day.strip()).startswith(unidecode.unidecode(valid_day)), valid_days), None)
 is_valid_day = lambda day: any(filter(lambda valid_day: unidecode.unidecode(day.strip()).startswith(unidecode.unidecode(valid_day)), valid_days))
