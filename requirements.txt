@@ -1,0 +1,11 @@
+fastapi
+python-multipart
+pydantic-settings
+aiofiles
+cron-converter
+sqlalchemy
+asyncpg
+unidecode
+pandas
+uvicorn[standard]
+pydantic-extra-types[cron]
