@@ -1,0 +1,21 @@
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text=auto
+
+# Explicitly declare text files you want to always be normalized and converted
+# to native line endings on checkout.
+*.java text encoding=UTF-8 diff=java
+*.javascript text encoding=UTF-8
+*.css text encoding=UTF-8 diff=css
+*.scss text encoding=UTF-8 diff=css
+*.html text encoding=UTF-8 diff=html
+*.xhtml text encoding=UTF-8
+*.xml text encoding=UTF-8
+*.json text encoding=UTF-8
+*.properties text encoding=UTF-8
+*.txt text encoding=UTF-8
+*.md text encoding=UTF-8 diff=markdown
+*.py text encoding=UTF-8 diff=python
+*.sh text encoding=UTF-8 eol=lf
+*.jpg binary
+*.jpeg binary
+*.png binary
