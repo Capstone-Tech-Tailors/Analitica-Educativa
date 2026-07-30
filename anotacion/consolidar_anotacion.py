@@ -38,6 +38,35 @@ ESCALA = [(0.20, "pobre"), (0.40, "aceptable"), (0.60, "moderado"),
           (0.80, "sustancial"), (1.01, "casi perfecto")]
 
 
+# ─────────────────────────── Exclusión de ítems no evaluables ───────────────────────────
+# Lista explícita y auditable (preferida a una heurística frágil: son pocos ítems y la
+# decisión debe poder revisarse). Se apoya en el motivo "sin_sentido" marcado por los
+# anotadores, pero la clasificación final es una decisión metodológica documentada.
+#
+# NO se excluyen los comentarios que confundieron al anotador pero SÍ tienen polaridad
+# (sarcasmo, metáfora, elogio tibio): eliminarlos dejaría el gold solo con casos fáciles
+# e inflaría artificialmente las métricas.
+
+ILEGIBLE = {                      # secuencias sin significado: nadie puede etiquetarlas
+    "gseb ndfg",
+    "fgfhdo kruyriewto87to87ruirtrierui rfiuoe yreg irye ire iid ore oy iierw ie re yror yuryureyoiryoe",
+}
+SIN_CONTENIDO = {                 # legibles, pero no dicen nada del docente
+    "No.", "Ninguno.", "Nada.", "Profesor.", "Está dibujando.",
+    "considérenos, por favor.", "No tengo nada que decir sobre ella.",
+}
+NO_EVALUABLE = ILEGIBLE | SIN_CONTENIDO
+
+
+def motivo_exclusion(texto: str) -> str | None:
+    t = str(texto).strip()
+    if t in ILEGIBLE:
+        return "ilegible"
+    if t in SIN_CONTENIDO:
+        return "sin_contenido_evaluable"
+    return None
+
+
 def interpretar(v: float) -> str:
     return next(txt for lim, txt in ESCALA if v < lim)
 
@@ -59,6 +88,7 @@ def cargar() -> pd.DataFrame:
     df = df.merge(km[["anotador", "orden", "tipo", "esperada"]],
                   on=["anotador", "orden"], how="left")
     df["etiqueta"] = df["etiqueta"].astype(str).str.strip().str.upper()
+    df["exclusion"] = df["comentario"].map(motivo_exclusion)
     return df
 
 
@@ -85,9 +115,30 @@ def control_calidad(df: pd.DataFrame) -> list[str]:
     return lineas
 
 
+def reporte_exclusiones(df: pd.DataFrame) -> list[str]:
+    """Documenta qué ítems se excluyen del gold y por qué."""
+    exc = df[df["exclusion"].notna()].drop_duplicates("comentario")
+    votos = (df[df["motivo"].astype(str).str.strip() == "sin_sentido"]
+               .groupby("comentario").size())
+
+    L = ["## 2 · Ítems excluidos por no ser evaluables\n",
+         f"Se excluyen **{len(exc)}** comentarios del gold. La lista es explícita y auditable "
+         "(`NO_EVALUABLE` en este script), apoyada en el motivo `sin_sentido` marcado por los "
+         "anotadores.\n",
+         "| Comentario | Motivo | Votos `sin_sentido` |", "|---|---|--:|"]
+    for _, r in exc.iterrows():
+        v = int(votos.get(r["comentario"], 0))
+        L.append(f"| `{str(r['comentario'])[:60]}` | {r['exclusion']} | {v}/3 |")
+    L += ["",
+          "> **No se excluyen** los comentarios que los anotadores marcaron difíciles pero que "
+          "sí tienen polaridad (sarcasmo, metáfora, elogio tibio). Eliminarlos dejaría el gold "
+          "solo con casos fáciles e inflaría artificialmente las métricas.\n"]
+    return L
+
+
 def matriz_eval(df: pd.DataFrame) -> tuple[np.ndarray, list[str], list[str]]:
     """Matriz (anotadores x ítems) del bloque EVAL, con NaN en los faltantes."""
-    ev = df[(df["tipo"] == "eval") & df["etiqueta"].isin(ETIQUETAS)]
+    ev = df[(df["tipo"] == "eval") & df["etiqueta"].isin(ETIQUETAS) & df["exclusion"].isna()]
     textos = sorted(ev["comentario"].unique())
     anot = sorted(ev["anotador"].unique())
     M = np.full((len(anot), len(textos)), np.nan)
@@ -112,7 +163,7 @@ def acuerdo(M: np.ndarray, anot: list[str]) -> list[str]:
     unan, may, sin_may = observed_agreement_triples(M[:, completos])
     media, detalle = mean_pairwise_cohen(M, labels=list(range(3)))
 
-    L = ["## 2 · Acuerdo entre anotadores\n",
+    L = ["## 3 · Acuerdo entre anotadores\n",
          f"**α de Krippendorff (nominal) = {a_nom:.3f}** → acuerdo *{interpretar(a_nom)}* "
          "(métrica titular)\n",
          "| Métrica | Valor | Rol |", "|---|--:|---|",
@@ -166,7 +217,7 @@ def acuerdo(M: np.ndarray, anot: list[str]) -> list[str]:
 
 def adjudicar(df: pd.DataFrame, textos: list[str]) -> tuple[pd.DataFrame, list[str]]:
     """Gold por mayoría; los ítems sin mayoría se marcan ambiguos y se excluyen."""
-    ev = df[(df["tipo"] == "eval") & df["etiqueta"].isin(ETIQUETAS)]
+    ev = df[(df["tipo"] == "eval") & df["etiqueta"].isin(ETIQUETAS) & df["exclusion"].isna()]
     filas = []
     for t, g in ev.groupby("comentario"):
         votos = Counter(g["etiqueta"])
@@ -184,7 +235,7 @@ def adjudicar(df: pd.DataFrame, textos: list[str]) -> tuple[pd.DataFrame, list[s
     n_amb = int(gold["ambiguo"].sum())
     dist = gold[~gold["ambiguo"]]["gold"].value_counts().reindex(ETIQUETAS).fillna(0).astype(int)
 
-    L = ["## 3 · Adjudicación del gold\n",
+    L = ["## 4 · Adjudicación del gold\n",
          "| Situación | Ítems |", "|---|--:|",
          f"| Unanimidad (3/3) | {int((gold['acuerdo']=='unanime').sum())} |",
          f"| Mayoría (2/1) | {int((gold['acuerdo']=='mayoria').sum())} |",
@@ -206,6 +257,7 @@ def main() -> None:
     L = ["# Informe de acuerdo y consolidación\n",
          f"*Anotadores: {df['anotador'].nunique()} · anotaciones totales: {len(df)}*\n"]
     L += control_calidad(df)
+    L += reporte_exclusiones(df)
 
     M, textos, anot = matriz_eval(df)
     L += acuerdo(M, anot)
@@ -217,15 +269,15 @@ def main() -> None:
     util = gold[~gold["ambiguo"]][["comentario", "gold", "acuerdo", "marcado_dificil"]]
     util.to_csv(rutas.datos_processed("gold_humano_eval.csv"), index=False)
 
-    tr = df[(df["tipo"] == "train") & df["etiqueta"].isin(ETIQUETAS)]
+    tr = df[(df["tipo"] == "train") & df["etiqueta"].isin(ETIQUETAS) & df["exclusion"].isna()]
     tr[["comentario", "etiqueta", "anotador", "dificil"]].to_csv(
         rutas.datos_processed("train_humano.csv"), index=False)
 
-    L += ["## 4 · Archivos generados\n",
+    L += ["## 5 · Archivos generados\n",
           f"- `data/processed/gold_humano_eval.csv` — {len(util)} ítems adjudicados (evaluación)",
           f"- `data/processed/train_humano.csv` — {len(tr)} ítems (entrenamiento con verdad humana)",
           "",
-          "## 5 · Siguiente paso\n",
+          "## 6 · Siguiente paso\n",
           "Reentrenar el notebook 04 sustituyendo las pseudo-etiquetas por `train_humano.csv` y "
           "evaluar contra `gold_humano_eval.csv`. Solo entonces la afirmación *«superamos al "
           "maestro»* será defendible.\n"]

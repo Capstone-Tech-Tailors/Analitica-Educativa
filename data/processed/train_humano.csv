@@ -1,0 +1,149 @@
+comentario,etiqueta,anotador,dificil
+Todos los demás están bien.,POS,A1,0
+El profesor tiene buen conocimiento de la materia y es comprensible.,POS,A1,0
+Debería ser más abierto con los estudiantes en cuanto a la enseñanza.,NEG,A1,0
+"Es un profesor ideal, pero tiene que hacer su sistema de enseñanza más fácil.",NEU,A1,1
+"un docente excelente. de verdad hace que el estudiante entienda muy bien en clase. después de entender, nuestro concepto queda absolutamente claro. da excelentes ejemplos relacionados con el mundo real para hacernos entender un tema. hace la clase muy interesante. en general, un docente excelente.",POS,A1,0
+Es honesto conmigo.,POS,A1,0
+"Siempre nos da tareas todo el tiempo, pero nos ensena un curso corto.",NEG,A1,1
+"Es muy, muy estricta.",NEG,A1,0
+"es un profesor nuevo en nuestra universidad, pero es un muy buen profesor.",POS,A1,0
+"Persona muy educada, culta y de buen comportamiento. Muy agradable y muy respetable como profesor.",POS,A1,0
+"Es el mejor en esta sección. Pero, profesor, sea constante.",POS,A1,0
+Buen profesor. Fácil de entender,POS,A1,0
+Tiene muy buen método de enseñanza.,POS,A1,0
+Realmente es un profesor servicial.,POS,A1,0
+"Es un profesor bueno e inteligente. Nos enseña bien, pero lo único es que no nos da tantas calificaciones como quisiéramos.",POS,A1,0
+"No tengo ningún comentario sobre él, porque no puedo entenderlo bien.",NEU,A1,0
+"Es un buen profesor, pero debería mejorar la interacción con los estudiantes",POS,A1,0
+"Creo que tiene buen conocimiento de computación, pero debería seguir las diapositivas o el libro. A veces no sabemos cómo debemos estudiar ni de dónde. Es un buen profesor.",POS,A1,0
+Tiene conocimientos limitados sobre este curso.,NEG,A1,0
+"Se esfuerza al máximo, pero los estudiantes no logran aprender del todo.",NEU,A1,1
+Es un profesor bien entrenado.,POS,A1,0
+Es un robot.,NEG,A1,1
+"Es una buena persona y tambien un buen profesor, pero su comportamiento no es muy bueno.",NEU,A1,1
+Me cae bien por su inteligencia y su buen comportamiento.,POS,A1,0
+"Lo que intenta hacernos entender, nunca lo comprendemos por su forma de hablar.",NEG,A1,0
+Explica teorias complejas de una manera facil.,POS,A1,0
+"Es un buen profesor pero su voz es muy baja, lo que dificulta entender con claridad y también dificulta escuchar lo que dice. Aun así, sabe dar ejemplos y conceptos relevantes. Debería subir la voz.",POS,A1,0
+Es bueno enseñando. Pero,POS,A1,0
+Es un buen profesor de finanzas.,POS,A1,0
+Su forma de enseñar es realmente buena,POS,A1,0
+"Ha sido muy efectivo y tiene un vasto conocimiento del tema. Es la persona indicada para impartir este curso; en una palabra, 'dinámico'. Debería mostrar un poco más su sonrisa.",POS,A1,0
+Es muy buen profesor. Me gusta mucho. Creo que la mayoría de los profesores deberían ser como Emdad,POS,A1,0
+"agresiva en su forma de vestir y su actitud, desnuda (obscena e indecente), no es una profesora para enseñar, como una bailarina de striptease, baila en clase, muestra su cuerpo y siempre se presenta como una mujer provocativa, usa fotua (tan delgada que se ve realmente desnuda), los estudiantes sienten vergüenza de verla y temor de ver su cuerpo. pedimos a las autoridades que cambien su forma de vestir en clase. los estudiantes vienen a la universidad a aprender algo, no a ver a una mujer desnuda y desagradable en clase.",NEG,A1,0
+"El profesor es agradable y amable, no hay nada de qué quejarse.",POS,A1,0
+"Necesitamos cada vez más docentes jóvenes. Por supuesto, tendrán la orientación de los docentes veteranos.",POS,A1,0
+"Es nuevo, pero es el mejor en economía.",POS,A1,0
+"Su forma sólida, segura y bien fundamentada de enseñar muestra claramente cuánto importa la experiencia. Aunque la física no es una materia central de mi carrera, creo que mis bases sobre una materia fundamental como la física deberían ser claras, y me considero afortunado de tenerlo como profesor. Mi única petición para él sería: ""Profesor, nosotros, sus estudiantes, somos simples humanos y errar es humano, así que incluso con nuestro intento más sincero a veces terminamos cometiendo errores, y entonces solo nos queda esperar un poco de su clemencia. Realmente esperamos que sea amable como siempre y valore nuestros esfuerzos, gracias"".",POS,A1,1
+"tiene amplio conocimiento, pero su estilo no es suficiente. las clases a veces son aburridas. pero es un buen profesor.",POS,A1,1
+No es mala para electrónica analógica.,NEG,A1,0
+"Es un buen profesor, pero debería preocuparse por los estudiantes que son débiles. Y prestar más atención a la calificación.",POS,A1,1
+"Está bien, pero no domina la materia. Otro problema es su forma de hablar.",NEU,A1,1
+Muy activo y deberia ser ascendido.,POS,A1,0
+Es un buen profesor que no regala calificaciones.,POS,A1,0
+Ojalá pudiera quedarse para siempre. :(,NEU,A1,1
+Es un buen profesor. Su forma de enseñar es excelente. Creo que es uno de los mejores profesores de AIUB.,POS,A1,0
+La profesora Usha es una gran persona.,POS,A1,0
+el dr. bijoy bhushon das es un profesor para ser modelo a seguir de los estudiantes.,POS,A1,0
+"Esta bien, pero siempre posterga las respuestas a las preguntas de los estudiantes sobre los materiales de estudio que no se entendieron.",NEU,A1,1
+"El profesor nos da ejemplos de muy buena manera y motiva a los estudiantes, lo cual es algo bueno.",POS,A1,0
+Es bueno pero no queda en la mente de los estudiantes por su actitud.,NEU,A2,0
+es muy servicial y querido,POS,A2,0
+"Enseña bien, pero nos beneficiaría mucho un poco más de dinamismo en su enseñanza.",NEU,A2,0
+no cuida a todos los estudiantes. se porta mal con algunos. no enseña bien la lección.,NEG,A2,0
+quizás sea bueno.,NEU,A2,0
+"Es un buen profesor, pero no toma en cuenta las enfermedades físicas de los estudiantes.",NEU,A2,0
+Puedo decir que el profesor Tareq tiene muy buen conocimiento de su materia y su comportamiento es el de un profesor ejemplar.,POS,A2,0
+Es atenta en nuestra clase.,POS,A2,0
+"El profesor es bastante bueno, pero debería hacer los temas un poco más interesantes.",NEU,A2,0
+Simplemente es el mejor profesor de ingeniería de software.,POS,A2,0
+"creo que el señor md. shafiqul islam es un profesor muy responsable, con personalidad y puntual.",POS,A2,0
+Es lo suficientemente bueno en su trabajo particular.,POS,A2,0
+"Respetado profesor, es guapo e inteligente también. Pero no atiende a todos los estudiantes de la clase. Solo atiende a algunos alumnos que conocen el software, pero los estudiantes promedio no tienen esa oportunidad. Realmente estoy molesto por este asunto. Ese es su único problema, pero salvo eso su estilo de enseñanza está bien. Cuídese, profesor. Rece por nosotros. Que Dios lo bendiga.",NEU,A2,0
+No lo suficientemente bueno.,NEG,A2,0
+"Bueno, pero muy estricto.",NEU,A2,0
+"No tiene un buen dominio de la materia de tributación. Puede que sea bueno en otra materia, pero no en tributación.",NEG,A2,0
+"Es un profesor de matemáticas promedio, pero necesita ser más amable con los estudiantes.",NEU,A2,0
+"Con buenos modales, un poco confuso al principio, pero ahora me parece bien.",NEU,A2,0
+"mmm, es bueno",POS,A2,0
+"Puedo describir su calidad. Es uno de los grandes profesores de AIUB. No solo es profesor, sino también amigo.",POS,A2,0
+"Lo dije una vez y lo digo de nuevo: es un muy buen profesor. Tiene un buen conocimiento de la enseñanza. Explica las cosas de una forma muy fácil. A veces algunos estudiantes dicen que no entendieron lo que explicó el profesor, pero yo los encontré distraídos en clase. No estoy mintiendo. Explica las cosas dos o tres veces si alguien quiere entenderlas de nuevo. Y nunca habla de forma grosera, incluso si vamos a su oficina a entender algo simple y fácil. Es simplemente muy bueno.",POS,A2,0
+"A veces reacciona de forma exagerada, pero como profesora es aceptable.",POS,A2,0
+Debería ser menos estricto.,NEU,A2,0
+Es eficiente y eficaz.,POS,A2,0
+"No es cortés cuando los estudiantes le hacen preguntas y además es totalmente impredecible. Es muy desalentador para los estudiantes hacerle cualquier pregunta. Debería cambiar ese tipo de comportamiento; por lo demás, es un buen profesor para nosotros.",NEG,A2,0
+El profesor Farhad está bien.,POS,A2,0
+Tiene buena personalidad.,POS,A2,0
+Buen hombre y buen profesor. Sonrisa dulce.,POS,A2,0
+"Es un buen profesor, pero su método de enseñanza no es tan bueno. Cree en la memorización. Es muy difícil para el estudiante memorizar todo. Por eso le pido que cambie este método de enseñanza basado en la memorización.",NEG,A2,0
+Se necesita algo de claridad sobre su comprensión,NEG,A2,0
+Es un profesor sobresaliente.,POS,A2,0
+"todos los estudiantes están bastante confundidos con su forma de calificar. no podemos entender lo que nos enseña. de hecho, termina algunos temas difíciles en una sola clase, lo cual es muy difícil de entender para nosotros, mientras que en otras secciones los profesores tomaron al menos 2 o 3 clases para terminar esos temas.",NEG,A2,0
+Siempre calificas bajo.,NEG,A2,0
+Es buena enseñando inglés.,NEU,A2,0
+Debería ser amable con los estudiantes.,NEG,A2,0
+Es un buen profesor para todos los profesores,NEU,A2,0
+"Bueno, pero demasiado estricto.",NEG,A2,0
+Debería ser más sincero.,NEG,A2,0
+"Tiene buen método de enseñanza; en general, un buen profesor.",POS,A2,0
+el profesor mohiuddin es un buen docente.,NEU,A2,0
+"el profesor mannan es un docente muy firme y estricto. debería mejorar su comportamiento con los estudiantes, especialmente con los que estudiaron en inglés. tiene la tendencia de odiar a los estudiantes de habla inglesa sin importar qué.",NEG,A2,0
+"es muy trabajador, y eso hace que todos sus defectos desaparezcan",POS,A2,0
+Debería mejorar su método de enseñanza.,NEG,A2,0
+Se volvió al banquillo.,POS,A2,0
+Buen profesor. Sin duda. Que Dios lo bendiga.,POS,A2,0
+Solo da la clase leyendo el libro del curso. No conoce el temario del curso.,NEG,A2,0
+"Es buena, pero no cuenta la asistencia si alguien llega tarde por cualquier motivo. Además da notas muy bajas.",NEG,A2,0
+"Mi comentario es simplemente wow. Dudo que haya alguien en la universidad que pueda explicar tan bien como él. Una vez que explica algo, se queda grabado en la cabeza.",POS,A2,0
+Es una profesora de primer nivel.,POS,A2,0
+No muy hábil como profesor.,NEG,A3,0
+"Su proceso de enseñanza es muy bueno para que el estudiante pueda entender. Es muy inteligente, lo que se refleja en el estudiante. Siempre se preocupa por los estudiantes. Tiene muchas ideas sobre toda la materia, lo cual es muy agradable.",POS,A3,0
+"Es un muy buen profesor, pero nos estresa mucho.",NEG,A3,1
+es un buen profesor pero su nivel de enseñanza es demasiado alto para mí.,NEG,A3,1
+"No conozco a este profesor, ¿quién es? Mi profesor de tesis es Moinul, pero aparece Jahidul. Estoy muy confundido con esto. Completé mi TBI hace muchos días.",NEU,A3,1
+"Es una gran profesora, una buena profesora.",POS,A3,0
+"No puede impartir bien las ensenanzas y, cuando se le pide que repita un tema, se burla e insulta a los estudiantes en lugar de explicar el tema con mas claridad. Esto hace la materia aun mas dificil de lo que es y tambien hace que estudiarla sea molesto.",NEG,A3,0
+Esta materia se ha vuelto un pánico para nosotros por las malas notas. Deberían darnos algunos puntos extra. Nos será muy difícil continuar con esta nota. También sería muy doloroso perder puntos en esta materia.,NEG,A3,1
+"Es un buen profesor, pero habla muy rápido.",NEG,A3,1
+"Es un muy buen profesor, pero debe mejorar su inglés hablado para nosotros (estudiantes de medio inglés).",NEG,A3,1
+Es una profesora eficiente,POS,A3,0
+Nunca ve las cosas desde la perspectiva del estudiante. No sabe enseñar aunque sabe mucho.,NEG,A3,0
+Es perfecto como profesor,POS,A3,0
+muy buen profesor. pero nunca sonríe en clase. queremos ver su cara sonriente.,POS,A3,1
+"Aunque no soy uno de los estudiantes de su primer lote del primer semestre, por eso puedo dar un 100% de garantía de que es uno de los mejores profesores que he visto en toda mi vida universitaria. Mucha suerte, profesor.",POS,A3,0
+es un profesor muy guapo y agradable en aiub.,POS,A3,0
+"el tema es subjetivo, sin embargo podria hacerse mas interesante.",NEG,A3,1
+Bueno. Pero debería dar buenas notas cuando las merecemos,NEG,A3,1
+mejorate a ti mismo,NEG,A3,1
+"No es para nada un buen profesor. Su comportamiento también es muy malo. Necesitamos cambiar a este profesor para mejorar la educación en AIUB. Los estudiantes no aprenden nada de él. No tiene una idea clara de su materia. Si le preguntas algo sobre la materia, dice: ""Intenta resolverlo tú mismo. No vengo aquí a resolver tus problemas"". Siempre se confunde cuando nos enseña algo. Le pido a la rectora que lo cambie lo antes posible.",NEG,A3,0
+"Es una muy buena profesora, pero es muy débil en inglés.",NEG,A3,1
+Un profesor muy bueno y comprensivo. Pero seria muy util si diera la clase en ingles.,NEG,A3,1
+Nos hace entender lo difícil con mucha facilidad.,POS,A3,0
+"profesor muy honorable, amable y de trato suave.",POS,A3,0
+Profesor veterano y constante.,POS,A3,0
+Nuestro profesor es genial enseñando y motivando a sus estudiantes; realmente lo aprecio.,POS,A3,0
+Debería cambiar su actitud hacia los estudiantes.,NEG,A3,0
+"Bueno, pero necesita cuestionarios como el quiz 3. Debe tener más cuidado al hablar. Necesita más práctica en redes de computadoras. Esta materia es aburrida, hay que hacer la lección interesante.",NEG,A3,1
+"Debería tratar de ser más claro con la materia; simplemente avanza rápido, sin considerar si lo estamos siguiendo o no.",NEG,A3,0
+No tiene mucha idea sobre IA.,NEG,A3,0
+Habla demasiado de temas que no tienen relación con el estudio de la geografía económica.,NEG,A3,0
+Es un robot. Pero me gusta su actitud.,NEU,A3,1
+Me gusta bien su sistema de enseñanza.,POS,A3,0
+El profesor necesita ser un poco más estricto con el ruido en clase y no debería dejar entrar tarde a los estudiantes. Es bastante distractor.,NEG,A3,1
+"Buen profesor. A veces estricto, pero apropiado para algunos estudiantes.",POS,A3,1
+Debería desempeñarse bien en los cursos superiores.,NEG,A3,1
+No es apta para aiub.,NEG,A3,0
+Necesita mucha más capacidad de comprensión y debería ser más amigable con los estudiantes. Necesita más capacidad de comprensión.,NEG,A3,0
+"En general, el profesor es bueno.",POS,A3,0
+"Sabe muchas cosas, pero no las transmite adecuadamente.",NEG,A3,0
+es un buen profesor y un buen hombre. pero no permite que sus estudiantes se expresen.,NEG,A3,1
+Trata de terminar el temario demasiado rápido.,NEG,A3,0
+Su pronunciación tiene acento regional; a veces es difícil de entender en clase,NEG,A3,1
+Bien. No hay ningún problema. Buen desempeño.,POS,A3,0
+"Excelente, pero pone preguntas difíciles.",POS,A3,1
+"Es un buen profesor, pero a veces es tan rápido que no se le entiende.",NEG,A3,1
+"En general, es un buen profesor y estaríamos más contentos si diera ejemplos y casos más realistas",NEG,A3,1
+Es muy alentador.,POS,A3,0
+Es duro pero buen profesor.,POS,A3,1
+"desde mi perspectiva, es una de las mejores profesoras de aiub. Hay algunas razones. Una es que revisa a todos y cada uno de los estudiantes para ver si entienden o no.",POS,A3,0

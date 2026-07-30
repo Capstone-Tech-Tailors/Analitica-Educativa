@@ -145,7 +145,6 @@ orden,texto,tipo,esperada,anotador,clave
 144,Mantiene un buen y adecuado horario de clases.,eval,,A1,A1-A1E9C7
 145,"Disfruto mucho su clase, porque la hace amena con buenos ejemplos.",eval,,A1,A1-49DA0A
 146,Es muy buen profesor. Me gusta mucho. Creo que la mayoría de los profesores deberían ser como Emdad,train,,A1,A1-619188
-147,gseb ndfg,eval,,A1,A1-8541C5
 148,"Sabe todo sobre la materia, pero no puede enseñarnos adecuadamente.",eval,,A1,A1-4ADBEB
 149,es el mejor,eval,,A1,A1-8231EE
 150,No tiene capacidad para enseñar a los estudiantes. Siempre pierde el tiempo en clase.,eval,,A1,A1-614D8B
@@ -225,7 +224,6 @@ orden,texto,tipo,esperada,anotador,clave
 224,La profesora Usha es una gran persona.,train,,A1,A1-8AA742
 225,"si los estudiantes pudieran ver su examen de cuestionario y de parcial, entonces podrían entender sus errores y hacerlo bien en el final.",eval,,A1,A1-204D88
 226,"Para hacer entender las matemáticas de forma más fácil y sencilla, trata de poner al estudiante en la mejor posición.",eval,,A1,A1-7F5B00
-227,fgfhdo kruyriewto87to87ruirtrierui rfiuoe yreg irye ire iid ore oy iierw ie re yror yuryureyoiryoe,train,,A1,A1-DAA81D
 228,Su conocimiento sobre este tema es bueno. Pero a veces no entendemos. El 50% de los estudiantes viene del departamento de ciencias. Es difícil de entender.,eval,,A1,A1-8A7D62
 229,Profesor excelente,eval,,A1,A1-E98657
 230,Es una profesora muy agradable. Estamos aprendiendo algo de ella.,eval,,A1,A1-6235C0
@@ -411,7 +409,6 @@ orden,texto,tipo,esperada,anotador,clave
 159,"es un profesor maravilloso. es el mejor, pero su voz es demasiado baja.",eval,,A2,A2-DF03DD
 160,"Es nueva, así que necesita mucho más tiempo para familiarizarse con la enseñanza.",eval,,A2,A2-411F94
 161,Tiene una personalidad agradable. Explica las cosas de una manera muy loable.,eval,,A2,A2-A6B0A6
-162,gseb ndfg,eval,,A2,A2-C71C0B
 163,Hombre culto.,eval,,A2,A2-254ACC
 164,No entendemos lo que nos quiere enseñar. Tarda mucho tiempo en hacer entender cualquier cosa.,eval,,A2,A2-C90CC9
 165,Sin comentarios.,eval,,A2,A2-F0B43A
@@ -727,7 +724,6 @@ orden,texto,tipo,esperada,anotador,clave
 224,"En general, es un buen profesor y estaríamos más contentos si diera ejemplos y casos más realistas",train,,A3,A3-367B4C
 225,Su estilo de enseñanza no es muy bueno y los estudiantes no sienten interés por esta materia.,eval,,A3,A3-AFD3B4
 226,Tiene buen dominio.,eval,,A3,A3-2F2CB4
-227,gseb ndfg,eval,,A3,A3-76B92E
 228,"si los estudiantes pudieran ver su examen de cuestionario y de parcial, entonces podrían entender sus errores y hacerlo bien en el final.",eval,,A3,A3-73B8ED
 229,Es una buena persona.,eval,,A3,A3-652BD7
 230,Debe mejorar como profesor.,eval,,A3,A3-B07201
