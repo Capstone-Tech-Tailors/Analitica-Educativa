@@ -26,5 +26,6 @@ Thumbs.db
 */models/*_ft/
 modelo_sentimiento_ft/
 modelo_sentimiento_ft_robertuito/
+modelo_sentimiento_humano/
 *.safetensors
 checkpoint-*/
