@@ -7,20 +7,22 @@ from pydantic_settings import BaseSettings
     Default values will be overridden by cloud environment
 """
 
+
 class Settings(BaseSettings):
-    db_user: str = "app_encuestas_docente"
-    db_password: str = "1234"
-    db_host: str = "localhost"
-    db_port: int = 5432
-    db_name: str = "analitica_educativa"
+    postgres_user: str = "app_encuestas_docente"
+    postgres_password: str = "1234"
+    postgres_db: str = "analitica_educativa"
+    postgres_host: str = "localhost"
+    postgres_port: int = 5432
 
     @property
     def database_url(self) -> str:
         dialect = "postgresql"
         driver = "asyncpg"
-        return f"{dialect}{'+' if driver else ''}{driver}://{quote_plus(self.db_user)}:{quote_plus(self.db_password)}@{self.db_host}:{self.db_port}/{quote_plus(self.db_name)}"
+        return f"{dialect}{'+' if driver else ''}{driver}://{quote_plus(self.postgres_user)}:{quote_plus(self.postgres_password)}@{self.postgres_host}:{self.postgres_port}/{quote_plus(self.postgres_db)}"
 
     class Config:
         case_sensitive = False
+
 
 settings = Settings()
