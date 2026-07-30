@@ -12,7 +12,7 @@ basado en reglas hacia uno **predictivo y accionable**, combinando **análisis d
 de los comentarios (modelos de lenguaje en español) con un **modelo de clasificación** de la
 tendencia de desempeño (`Mejora` / `Estable` / `En riesgo`).
 
-> 📄 **[INFORME FINAL DEL PROYECTO](INFORME_FINAL.md)** — análisis completo del proceso,
+> 📄 **[INFORME FINAL DEL PROYECTO](INFORME_FINAL.ipynb)** — análisis completo del proceso,
 > inventario y ubicación de todos los modelos, **modelo seleccionado para producción**
 > (`modelo_sentimiento_humano`), guía de despliegue en la nube y construcción del DOFA.
 
