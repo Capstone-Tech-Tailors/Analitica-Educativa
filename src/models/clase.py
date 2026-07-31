@@ -1,4 +1,6 @@
-from sqlalchemy import String, Text, Integer, Float
+import datetime
+
+from sqlalchemy import String, Text, Integer, Float, Time
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 
@@ -30,8 +32,8 @@ class Clase(Base):
     dias_clase: Mapped[str] = mapped_column(String(100))
 
     # Time limits
-    hora_inicio: Mapped[str] = mapped_column(String(10))
-    hora_fin: Mapped[str] = mapped_column(String(10))
+    hora_inicio: Mapped[datetime.time] = mapped_column(Time())
+    hora_fin: Mapped[datetime.time] = mapped_column(Time())
     franja_horaria: Mapped[str] = mapped_column(String(10))
 
     # Performance numbers

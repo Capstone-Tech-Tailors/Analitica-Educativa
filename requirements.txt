@@ -7,5 +7,6 @@ sqlalchemy
 asyncpg
 unidecode
 pandas
+alembic
 uvicorn[standard]
 pydantic-extra-types[cron]

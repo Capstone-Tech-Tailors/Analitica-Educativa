@@ -1,8 +1,8 @@
-"""create clase table
+"""baseline reset 5am
 
-Revision ID: a36798586a9e
+Revision ID: e9a66f38da10
 Revises: 
-Create Date: 2026-07-31 08:21:47.675250
+Create Date: 2026-07-31 10:26:53.461625
 
 """
 from typing import Sequence, Union
@@ -12,7 +12,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = 'a36798586a9e'
+revision: str = 'e9a66f38da10'
 down_revision: Union[str, Sequence[str], None] = None
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
@@ -35,8 +35,8 @@ def upgrade() -> None:
     sa.Column('clases_pactadas', sa.Integer(), nullable=False),
     sa.Column('clases_dictadas', sa.Integer(), nullable=False),
     sa.Column('dias_clase', sa.String(length=100), nullable=False),
-    sa.Column('hora_inicio', sa.String(length=10), nullable=False),
-    sa.Column('hora_fin', sa.String(length=10), nullable=False),
+    sa.Column('hora_inicio', sa.Time(), nullable=False),
+    sa.Column('hora_fin', sa.Time(), nullable=False),
     sa.Column('franja_horaria', sa.String(length=10), nullable=False),
     sa.Column('promedio_asistencias_estudiantes', sa.Float(), nullable=False),
     sa.Column('numero_estudiantes_aprobaron', sa.Integer(), nullable=False),
