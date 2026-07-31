@@ -1,0 +1,5 @@
+Generic single-database configuration with an async dbapi.
+
+Run this nonsense:
+alembic revision --autogenerate -m "create clase table"
+alembic upgrade head
