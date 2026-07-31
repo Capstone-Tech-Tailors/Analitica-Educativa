@@ -3,6 +3,29 @@
 // https://containers.dev/guide/dockerfile#docker-compose-dockerfile
 {
     "dockerComposeFile": "docker-compose.yml",
-    "service": "devcontainer",
-    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}"
+    "service": "fastapi",
+    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+    "customizations": {
+        "jetbrains": {
+            "backend": "PyCharm",
+            "plugins": [
+                "IdeaVim"
+            ],
+            "settings": {
+                "com.intellij:app:HttpConfigurable.use_proxy_pac": true,
+                "com.intellij.database:app:DatabaseSettings.enable-local-filter-by-default": false
+            }
+        },
+        "vscode": {
+            "extensions": [
+                "editorconfig.editorconfig",
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "esbenp.prettier-vscode",
+                "ms-python.black-formatter",
+                "charliermarsh.ruff",
+                "ms-python.debugpy"
+            ]
+        }
+    }
 }
