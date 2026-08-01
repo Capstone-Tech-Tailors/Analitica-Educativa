@@ -104,10 +104,9 @@ async def seguimiento_docente(
         .groupby(level=["Docente"], group_keys=False)
         .apply(agregar_metricas_generales_docente, include_groups=False)
         .reset_index()
-        .convert_dtypes()
     )
 
-    return df.to_dict(orient="records")
+    return df.convert_dtypes().to_dict(orient="records")
 
 
 @app.get("/seguimiento_docente_por_asignatura")
@@ -197,6 +196,6 @@ async def seguimiento_asignaturas(
 
     result = await db.execute(stmt)
     rows = result.mappings().all()
-    df = pd.DataFrame(rows).convert_dtypes()
+    df = pd.DataFrame(rows)
 
-    return df.to_dict(orient="records")
+    return df.convert_dtypes().to_dict(orient="records")
