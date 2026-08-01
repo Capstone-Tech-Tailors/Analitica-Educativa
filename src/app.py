@@ -159,12 +159,12 @@ async def seguimiento_docente_por_asignatura(
         .groupby(level=["Docente", "Asignatura"], group_keys=False)
         .apply(agregar_metricas_docente_por_asignatura, include_groups=False)
         .reset_index()
+        .dropna(subset=["Reingreso"])
     )
 
-    df["Semestre"] = df["Semestre"].apply(period_to_string)
+    df["Semestre"] = df["Semestre"].apply(period_to_string).astype("category")
 
-    df = df.dropna(subset=["Reingreso"])
-    return df.to_dict(orient="records")
+    return df.convert_dtypes().to_dict(orient="records")
 
 @app.get("/seguimiento_asignaturas")
 async def seguimiento_asignaturas(
