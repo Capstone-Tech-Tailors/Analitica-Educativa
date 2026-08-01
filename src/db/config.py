@@ -19,7 +19,7 @@ class Settings(BaseSettings):
     def database_url(self) -> str:
         dialect = "postgresql"
         driver = "asyncpg"
-        return f"{dialect}{'+' if driver else ''}{driver}://{quote_plus(self.postgres_user)}:{quote_plus(self.postgres_password)}@{self.postgres_host}:{self.postgres_port}/{quote_plus(self.postgres_db)}"
+        return f"{dialect}{'+' + driver if driver else ''}://{quote_plus(self.postgres_user)}:{quote_plus(self.postgres_password)}@{self.postgres_host}:{self.postgres_port}/{quote_plus(self.postgres_db)}"
 
     class Config:
         case_sensitive = False
