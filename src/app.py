@@ -10,6 +10,12 @@ from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy import select, func, distinct, case, asc, desc
 from models.clase import Clase
 
+from utils import (
+    agregar_metricas_generales_docente,
+    completar_semestres, agregar_metricas_docente_por_asignatura,
+    period_to_string
+)
+
 gunicorn_logger = logging.getLogger("gunicorn.error")
 logger = logging.getLogger("uvicorn.error")
 logger.handlers = gunicorn_logger.handlers
@@ -62,41 +68,6 @@ async def etl(file: UploadFile, background_tasks: BackgroundTasks, db: AsyncSess
 
     return {"status": "processing", "message": f"File {file.filename} was uploaded."}
 
-def agregar_metricas_generales_docente(muestras_docente):
-    muestras = muestras_docente.copy(deep=True)
-    muestras.reset_index(inplace=True) # drop multi-index
-
-    muestras.reset_index(inplace=True)  # creates 'index' column with original positions
-    muestras["Max Acumulado Cantidad Asignaturas"] = muestras["Cantidad Asignaturas"].cummax()
-    muestras["Max Acumulado Cantidad Grupos"] = muestras["Cantidad Grupos"].cummax()
-    muestras["Max Acumulado Horas Lectivas"] = muestras["Horas Lectivas"].cummax()
-
-    # Campos temporales para hacerle seguimiento a la primera occurencia de maximos locales
-    mask_materias = (muestras["Cantidad Asignaturas"] == muestras["Max Acumulado Cantidad Asignaturas"])
-    mask_grupos = (muestras["Cantidad Grupos"] == muestras["Max Acumulado Cantidad Grupos"])
-    mask_horas_lectivas = (muestras["Horas Lectivas"] == muestras["Max Acumulado Horas Lectivas"])
-    muestras["last_max_idx_materias"] = muestras["index"].where(mask_materias).ffill().astype(int)
-    muestras["last_max_idx_grupos"] = muestras["index"].where(mask_grupos).ffill().astype(int)
-    muestras["last_max_idx_horas_lectivas"] = muestras["index"].where(mask_horas_lectivas).ffill().astype(int)
-
-    muestras["Cantidad Semestres sin Sobrecarga de Asignaturas"] = muestras["index"] - muestras["last_max_idx_materias"]
-    muestras["Cantidad Semestres sin Sobrecarga de Grupos"] = muestras["index"] - muestras["last_max_idx_grupos"]
-    muestras["Cantidad Semestres sin Sobrecarga Horaria"] = muestras["index"] - muestras["last_max_idx_horas_lectivas"]
-
-    muestras["Indice de Carga Asignaturas"] = muestras["Cantidad Asignaturas"] / muestras["Max Acumulado Cantidad Asignaturas"]
-    muestras["Indice de Carga Grupos"] = muestras["Cantidad Grupos"] / muestras["Max Acumulado Cantidad Grupos"]
-    muestras["Indice de Carga Horaria"] = muestras["Horas Lectivas"] / muestras["Max Acumulado Horas Lectivas"]
-
-    muestras.drop(columns=[
-        "index",
-        "Max Acumulado Cantidad Asignaturas",
-        "Max Acumulado Cantidad Grupos",
-        "Max Acumulado Horas Lectivas",
-        "last_max_idx_materias", "last_max_idx_grupos", "last_max_idx_horas_lectivas"
-    ], inplace=True)
-    muestras.set_index(["Docente"], inplace=True)
-    return muestras
-
 @app.get("/seguimiento_docente")
 async def seguimiento_docente(
     page: int = 1,
@@ -126,13 +97,14 @@ async def seguimiento_docente(
 
     result = await db.execute(stmt)
     rows = result.mappings().all()
-    df = pd.DataFrame(rows)
+    df = pd.DataFrame(rows).convert_dtypes()
 
     df = (
         df.set_index(["Docente"], append=False)
         .groupby(level=["Docente"], group_keys=False)
         .apply(agregar_metricas_generales_docente, include_groups=False)
         .reset_index()
+        .convert_dtypes()
     )
 
     return df.to_dict(orient="records")
@@ -146,18 +118,51 @@ async def seguimiento_docente_por_asignatura(
 ):
     offset_value = (page - 1) * limit
     stmt = (
-        select(Clase)
+        select(
+            Clase.id_docente.label("Docente"),
+            Clase.semestre.label("Semestre"),
+            Clase.asignatura.label("Asignatura"),
+            func.count(Clase.id_curso_grupo).label("Cantidad Grupos"),
+            func.sum(Clase.numero_estudiantes).label("Numero Estudiantes"),
+            func.avg(Clase.puntaje_claridad).label("Puntaje Claridad"),
+            func.avg(Clase.puntaje_metodologia).label("Puntaje Metodología"),
+            func.avg(Clase.puntaje_evaluacion).label("Puntaje Evaluación"),
+            func.array_agg(distinct(Clase.comentario)).label("Comentarios"),
+            func.sum(
+                Clase.clases_dictadas * (func.extract("epoch", Clase.hora_fin - Clase.hora_inicio) / 3600.0)
+            ).label("Horas Lectivas"),
+            func.sum(Clase.numero_estudiantes_aprobaron).label("Estudiantes Aprobados"),
+            func.sum(case((Clase.tendencia_desempeno == "Estable", 1), else_=0)).label("Comentarios Estables"),
+            func.sum(case((Clase.tendencia_desempeno == "En riesgo", 1), else_=0)).label("Comentarios En Riesgo"),
+            func.sum(case((Clase.tendencia_desempeno == "Mejora", 1), else_=0)).label("Comentarios En Mejora"),
+        ).group_by(Clase.id_docente, Clase.semestre, Clase.asignatura)
+        .order_by(asc("Docente"), asc("Asignatura"), asc("Semestre"))
         .offset(offset_value)
         .limit(limit)
     )
 
     result = await db.execute(stmt)
-    rows = result.scalars().all()
+    rows = result.mappings().all()
+    df = pd.DataFrame(rows).convert_dtypes()
+    df["Semestre"] = df["Semestre"].apply(
+        lambda s: pd.Period(s.strip().replace("-1", "Q1").replace("-2", "Q3"), freq="2Q-DEC")
+    ).astype("period[2Q-DEC]")
 
-    df = pd.DataFrame([row.__dict__ for row in rows])
+    df = (
+        df.set_index(["Docente", "Asignatura"], append=False)
+        .groupby(level=["Docente", "Asignatura"], group_keys=False)
+        .apply(completar_semestres, include_groups=False)
+        .reset_index()
+    )
 
-    # Clean up SQLAlchemy internal state keys if necessary
-    if not df.empty:
-        df = df.drop(columns=["_sa_instance_state"], errors="ignore")
+    df = (
+        df.set_index(["Docente", "Asignatura"], append=False)
+        .groupby(level=["Docente", "Asignatura"], group_keys=False)
+        .apply(agregar_metricas_docente_por_asignatura, include_groups=False)
+        .reset_index()
+    )
 
+    df["Semestre"] = df["Semestre"].apply(period_to_string)
+
+    df = df.dropna(subset=["Reingreso"])
     return df.to_dict(orient="records")
