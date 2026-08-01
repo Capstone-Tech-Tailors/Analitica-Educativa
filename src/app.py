@@ -166,3 +166,37 @@ async def seguimiento_docente_por_asignatura(
 
     df = df.dropna(subset=["Reingreso"])
     return df.to_dict(orient="records")
+
+@app.get("/seguimiento_asignaturas")
+async def seguimiento_asignaturas(
+    page: int = 1,
+    limit: int = 50,
+    db: AsyncSession = Depends(db_session)
+):
+    offset_value = (page - 1) * limit
+    stmt = (
+        select(
+            Clase.asignatura.label("Asignatura"),
+            Clase.semestre.label("Semestre"),
+            func.count(distinct(Clase.id_docente)).label("Cantidad Docentes"),
+            func.count(Clase.id_curso_grupo).label("Cantidad Grupos"),
+            func.sum(Clase.numero_estudiantes).label("Numero Estudiantes"),
+            func.sum(Clase.promedio_asistencias_estudiantes).label("Asistencia Típica Estudiantes"),
+            func.sum(
+                Clase.clases_dictadas * (func.extract("epoch", Clase.hora_fin - Clase.hora_inicio) / 3600.0)
+            ).label("Horas Lectivas"),
+            func.sum(Clase.numero_estudiantes_aprobaron).label("Estudiantes Aprobados"),
+            func.sum(Clase.numero_estudiantes_perdieron).label("Estudiantes Perdieron"),
+            func.sum(Clase.numero_estudiantes_desistieron).label("Estudiantes Desistieron"),
+            func.sum(Clase.clases_dictadas).label("Clases Dictadas"),
+        ).group_by(Clase.asignatura, Clase.semestre)
+        .order_by(asc("Asignatura"), asc("Semestre"))
+        .offset(offset_value)
+        .limit(limit)
+    )
+
+    result = await db.execute(stmt)
+    rows = result.mappings().all()
+    df = pd.DataFrame(rows).convert_dtypes()
+
+    return df.to_dict(orient="records")
