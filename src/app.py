@@ -186,7 +186,7 @@ async def seguimiento_docente_por_asignatura(
         .groupby(level=["Docente", "Asignatura"], group_keys=False)
         .apply(agregar_metricas_docente_por_asignatura, include_groups=False)
         .reset_index()
-        .dropna(subset=["Reingreso"])
+        .dropna(subset=["Comentarios"])
     )
 
     df["Semestre"] = df["Semestre"].apply(period_to_string).astype("category")
