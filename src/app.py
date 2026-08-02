@@ -156,7 +156,6 @@ async def seguimiento_docente_por_asignatura(
     page: int | None = None,
     limit: int | None = None,
     docente: str | None = None,
-    semestre: str | None = None,
     asignatura: str | None = None,
     db: AsyncSession = Depends(db_session)
 ) -> list[SeguimientoDocenteAsignatura]:
@@ -187,7 +186,7 @@ async def seguimiento_docente_por_asignatura(
     )
 
     stmt = grouping_and_paginating(stmt, page, limit,
-        id_docente=docente, asignatura=asignatura, semestre=semestre
+        id_docente=docente, asignatura=asignatura, semestre=None
     )
 
     result = await db.execute(stmt)
@@ -223,11 +222,10 @@ async def seguimiento_docente_por_asignatura(
 @app.get("/seguimiento_docente_por_asignatura/count")
 async def seguimiento_docente_por_asignatura_count(
     docente: str | None = None,
-    semestre: str | None = None,
     asignatura: str | None = None,
     db: AsyncSession = Depends(db_session)
 ) -> int:
-    return await count(db, id_docente=docente, semestre=semestre, asignatura=asignatura)
+    return await count(db, id_docente=docente, asignatura=asignatura, semestre=None)
 
 @app.get("/seguimiento_asignaturas")
 async def seguimiento_asignaturas(
@@ -279,7 +277,7 @@ async def seguimiento_asignaturas_count(
     asignatura: str | None = None,
     db: AsyncSession = Depends(db_session)
 ) -> int:
-    return await count(db, semestre=semestre, asignatura=asignatura)
+    return await count(db, asignatura=asignatura, semestre=semestre)
 
 
 async def count(db: AsyncSession, **fields) -> int:
