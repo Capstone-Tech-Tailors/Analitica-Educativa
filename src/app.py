@@ -286,8 +286,10 @@ async def count(db: AsyncSession, **fields) -> int:
     conditions = []
     main_select_fields = []
     for field, value in fields.items():
-        conditions.append(getattr(Clase, field) == value)
         main_select_fields.append(getattr(Clase, field))
+        if not value:
+            continue
+        conditions.append(getattr(Clase, field) == value)
 
     subq = select(*main_select_fields)
     
@@ -305,8 +307,10 @@ def grouping_and_paginating(stmt, page: int, limit: int, **fields):
     conditions = []
     main_select_fields = []
     for field, value in fields.items():
-        conditions.append(getattr(Clase, field) == value)
         main_select_fields.append(getattr(Clase, field))
+        if not value:
+            continue
+        conditions.append(getattr(Clase, field) == value)
 
     if len(conditions) > 0:
         stmt = stmt.where(*conditions)
