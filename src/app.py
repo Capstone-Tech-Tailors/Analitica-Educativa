@@ -7,7 +7,7 @@ from fastapi import FastAPI, UploadFile, Depends, HTTPException, BackgroundTasks
 from db.session import get_session as db_session
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.dialects.postgresql import insert as pg_insert
-from sqlalchemy import select, func, distinct, case, asc, desc, text
+from sqlalchemy import select, func, distinct, case, text
 from models.clase import Clase
 
 from utils import (
@@ -29,7 +29,7 @@ async def liveness_probe():
 
 @app.get("/health/ready")
 async def readiness_probe(response: Response, db: AsyncSession = Depends(db_session)):
-    """Verifies database readiness using pg_isready."""
+    """Verifies database readiness."""
     try:
         result = await db.execute(text("SELECT 1"))
         if result.scalar() == 1:
@@ -106,7 +106,7 @@ async def seguimiento_docente(
             func.sum(case((Clase.tendencia_desempeno == "En riesgo", 1), else_=0)).label("Comentarios En Riesgo"),
             func.sum(case((Clase.tendencia_desempeno == "Mejora", 1), else_=0)).label("Comentarios En Mejora"),
         ).group_by(Clase.id_docente, Clase.semestre)
-        .order_by(asc("Docente"), asc("Semestre"))
+        .order_by(Clase.id_docente.asc(), Clase.semestre.asc())
         .offset(offset_value)
         .limit(limit)
     )
@@ -154,7 +154,7 @@ async def seguimiento_docente_por_asignatura(
             func.sum(case((Clase.tendencia_desempeno == "En riesgo", 1), else_=0)).label("Comentarios En Riesgo"),
             func.sum(case((Clase.tendencia_desempeno == "Mejora", 1), else_=0)).label("Comentarios En Mejora"),
         ).group_by(Clase.id_docente, Clase.semestre, Clase.asignatura)
-        .order_by(asc("Docente"), asc("Asignatura"), asc("Semestre"))
+        .order_by(Clase.id_docente.asc(), Clase.asignatura.asc(), Clase.semestre.asc())
         .offset(offset_value)
         .limit(limit)
     )
@@ -212,7 +212,7 @@ async def seguimiento_asignaturas(
             func.sum(Clase.numero_estudiantes_desistieron).label("Estudiantes Desistieron"),
             func.sum(Clase.clases_dictadas).label("Clases Dictadas"),
         ).group_by(Clase.asignatura, Clase.semestre)
-        .order_by(asc("Asignatura"), asc("Semestre"))
+        .order_by(Clase.asignatura.asc(), Clase.semestre.asc())
         .offset(offset_value)
         .limit(limit)
     )
