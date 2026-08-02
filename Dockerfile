@@ -9,6 +9,8 @@ USER gunicorn
 COPY --chown=gunicorn:gunicorn ./requirements.txt /tmp/requirements.txt
 RUN pip install --no-cache-dir -r /tmp/requirements.txt && rm /tmp/requirements.txt
 COPY --chown=gunicorn:gunicorn ./src ./
+COPY --chown=gunicorn:gunicorn ./alembic.ini ./
+COPY --chown=gunicorn:gunicorn ./alembic/ ./alembic/
 
 ENV GUNICORN_ARGS="--timeout 120 --worker-class uvicorn.workers.UvicornWorker --access-logfile -"
 CMD ["app:app"]
