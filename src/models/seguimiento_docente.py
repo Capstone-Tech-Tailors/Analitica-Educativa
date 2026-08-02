@@ -12,14 +12,14 @@ class SeguimientoDocente(BaseModel):
     Comentarios_Estables: int = Field(..., alias='Comentarios Estables')
     Comentarios_En_Riesgo: int = Field(..., alias='Comentarios En Riesgo')
     Comentarios_En_Mejora: int = Field(..., alias='Comentarios En Mejora')
-    Cantidad_Semestres_sin_Sobrecarga_de_Asignaturas: int = Field(
-        ..., alias='Cantidad Semestres sin Sobrecarga de Asignaturas'
+    Semestres_Sin_Sobrecarga_de_Asignaturas: int = Field(
+        ..., alias='Semestres Sin Sobrecarga de Asignaturas'
     )
-    Cantidad_Semestres_sin_Sobrecarga_de_Grupos: int = Field(
-        ..., alias='Cantidad Semestres sin Sobrecarga de Grupos'
+    Semestres_Sin_Sobrecarga_de_Grupos: int = Field(
+        ..., alias='Semestres Sin Sobrecarga de Grupos'
     )
-    Cantidad_Semestres_sin_Sobrecarga_Horaria: int = Field(
-        ..., alias='Cantidad Semestres sin Sobrecarga Horaria'
+    Semestres_Sin_Sobrecarga_Horaria: int = Field(
+        ..., alias='Semestres Sin Sobrecarga Horaria'
     )
     Indice_Carga_Asignaturas: float = Field(..., alias='Indice Carga Asignaturas')
     Indice_Carga_Grupos: float = Field(..., alias='Indice Carga Grupos')

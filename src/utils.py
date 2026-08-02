@@ -17,9 +17,9 @@ def agregar_metricas_generales_docente(muestras_docente: pd.DataFrame) -> pd.Dat
     muestras["last_max_idx_grupos"] = muestras["index"].where(mask_grupos).ffill().astype(int)
     muestras["last_max_idx_horas_lectivas"] = muestras["index"].where(mask_horas_lectivas).ffill().astype(int)
 
-    muestras["Cantidad Semestres sin Sobrecarga de Asignaturas"] = muestras["index"] - muestras["last_max_idx_materias"]
-    muestras["Cantidad Semestres sin Sobrecarga de Grupos"] = muestras["index"] - muestras["last_max_idx_grupos"]
-    muestras["Cantidad Semestres sin Sobrecarga Horaria"] = muestras["index"] - muestras["last_max_idx_horas_lectivas"]
+    muestras["Semestres Sin Sobrecarga de Asignaturas"] = muestras["index"] - muestras["last_max_idx_materias"]
+    muestras["Semestres Sin Sobrecarga de Grupos"] = muestras["index"] - muestras["last_max_idx_grupos"]
+    muestras["Semestres Sin Sobrecarga Horaria"] = muestras["index"] - muestras["last_max_idx_horas_lectivas"]
 
     muestras["Indice Carga Asignaturas"] = muestras["Cantidad Asignaturas"] / muestras["Max Acumulado Cantidad Asignaturas"]
     muestras["Indice Carga Grupos"] = muestras["Cantidad Grupos"] / muestras["Max Acumulado Cantidad Grupos"]
@@ -53,7 +53,7 @@ def completar_semestres(muestras_docente: pd.DataFrame) -> pd.DataFrame:
     muestras["Numero Periodos entre Semestres"] = muestras.apply(lambda row: numero_de_periodos_entre_semestres(row["Semestre"], row["Semestre Previo"]), axis=1)
 
     # Util para darle más contexto al área usuaria y a modelos de inteligencia artificial
-    muestras["Semestres Desde Ultima Calificación"] = pd.NA
+    muestras["Semestres Desde Ultima Calificación"] = None
     muestras.iloc[1:, muestras.columns.get_loc("Semestres Desde Ultima Calificación")] = 1
 
     gaps = muestras[muestras["Numero Periodos entre Semestres"] > 2].index.tolist()
