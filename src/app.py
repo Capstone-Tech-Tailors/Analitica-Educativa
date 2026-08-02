@@ -3,7 +3,7 @@ import aiofiles
 import logging
 import pandas as pd
 
-from fastapi import FastAPI, UploadFile, Depends, HTTPException, BackgroundTasks
+from fastapi import FastAPI, UploadFile, Depends, HTTPException, BackgroundTasks, Response, status
 from db.session import get_session as db_session
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.dialects.postgresql import insert as pg_insert
@@ -22,12 +22,24 @@ logger.handlers = gunicorn_logger.handlers
 logger.setLevel(gunicorn_logger.level)
 app = FastAPI(title="Analítica Académica")
 
-@app.get("/healthz", status_code=200)
-async def health_check():
-    return {"status": "healthy"}
+@app.get("/health/live", status_code=status.HTTP_200_OK)
+async def liveness_probe():
+    """Confirms the FastAPI application process is up."""
+    return {"status": "online"}
+
+@app.get("/health/ready")
+async def readiness_probe(response: Response, db: AsyncSession = Depends(db_session)):
+    """Verifies database readiness using pg_isready."""
+    try:
+        result = await db.execute(text("SELECT 1"))
+        if result.scalar() == 1:
+            return {"status": "healthy", "database": "ok"}
+    except Exception:
+        pass
+    response.status_code = status.HTTP_503_SERVICE_UNAVAILABLE
+    return {"status": "unhealthy", "database": "down"}
 
 async def bulk_update(csv_file: str, db: AsyncSession):
-    logger.info("Entered bulk update")
     campos_clase = Clase.__table__.columns.keys()
 
     with pd.read_csv(csv_file, sep=",", encoding="utf-8", header="infer", chunksize=500) as reader:
@@ -55,8 +67,8 @@ async def bulk_update(csv_file: str, db: AsyncSession):
 
 @app.post("/etl")
 async def etl(file: UploadFile, background_tasks: BackgroundTasks, db: AsyncSession = Depends(db_session)):
-    logger.info("Entered /etl")
     if not file.filename.endswith('.csv'):
+        logger.error("Archivo subido NO fue un CSV")
         raise HTTPException(status_code=400, detail="File must be a CSV.")
 
     file_path: str = ""
@@ -68,7 +80,7 @@ async def etl(file: UploadFile, background_tasks: BackgroundTasks, db: AsyncSess
 
         file_path = temp_file.name
 
-    background_tasks.add_task(bulk_update,file_path, db)
+    background_tasks.add_task(bulk_update, file_path, db)
 
     return {"status": "processing", "message": f"File {file.filename} was uploaded."}
 
