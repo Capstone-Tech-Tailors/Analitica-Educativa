@@ -8,6 +8,7 @@ from db.session import get_session as db_session
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy import select, func, distinct, case, text
+from aiofiles import os as asyncos
 
 from models.clase import Clase
 from models.seguimiento_docente import SeguimientoDocente
@@ -68,6 +69,8 @@ async def bulk_update(csv_file: str, db: AsyncSession):
             except Exception:
                 logger.error("Bulk update error", exc_info=True)
                 await db.rollback()
+
+    await asyncos.remove(csv_file)
 
 @app.post("/etl")
 async def etl(file: UploadFile, background_tasks: BackgroundTasks, db: AsyncSession = Depends(db_session)):
