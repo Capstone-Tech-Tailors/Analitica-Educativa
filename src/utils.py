@@ -53,7 +53,7 @@ def completar_semestres(muestras_docente: pd.DataFrame) -> pd.DataFrame:
     muestras["Numero Periodos entre Semestres"] = muestras.apply(lambda row: numero_de_periodos_entre_semestres(row["Semestre"], row["Semestre Previo"]), axis=1)
 
     # Util para darle más contexto al área usuaria y a modelos de inteligencia artificial
-    muestras["Semestres Desde Ultima Calificación"] = None
+    muestras["Semestres Desde Ultima Calificación"] = pd.NA
     muestras.iloc[1:, muestras.columns.get_loc("Semestres Desde Ultima Calificación")] = 1
 
     gaps = muestras[muestras["Numero Periodos entre Semestres"] > 2].index.tolist()

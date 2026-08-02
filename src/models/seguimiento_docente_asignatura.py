@@ -19,5 +19,5 @@ class SeguimientoDocenteAsignatura(BaseModel):
     Semestres_Desde_Ultima_Calificación: Optional[int] = Field(
         ..., alias='Semestres Desde Ultima Calificación'
     )
-    Reingreso: bool
-    Indice_Reingreso: float = Field(..., alias='Indice Reingreso')
+    Reingreso: Optional[bool]
+    Indice_Reingreso: Optional[float] = Field(..., alias='Indice Reingreso')
