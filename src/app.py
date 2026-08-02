@@ -93,29 +93,36 @@ async def etl(file: UploadFile, background_tasks: BackgroundTasks, db: AsyncSess
 
 @app.get("/seguimiento_docente")
 async def seguimiento_docente(
-    page: int = 1,
-    limit: int = 50,
+    page: int | None = None,
+    limit: int | None = None,
+    docente: str | None = None,
+    semestre: str | None = None,
     db: AsyncSession = Depends(db_session)
 ) -> list[SeguimientoDocente]:
-    offset_value = (page - 1) * limit
-    stmt = (
-        select(
-            Clase.id_docente.label("Docente"),
-            Clase.semestre.label("Semestre"),
-            func.count(distinct(Clase.asignatura)).label("Cantidad Asignaturas"),
-            func.count(Clase.id_curso_grupo).label("Cantidad Grupos"),
-            func.sum(Clase.numero_estudiantes).label("Numero Estudiantes"),
-            func.array_agg(distinct(Clase.asignatura)).label("Asignaturas"),
-            func.sum(
-                Clase.clases_dictadas * (func.extract("epoch", Clase.hora_fin - Clase.hora_inicio) / 3600.0)
-            ).label("Horas Lectivas"),
-            func.sum(case((Clase.tendencia_desempeno == "Estable", 1), else_=0)).label("Comentarios Estables"),
-            func.sum(case((Clase.tendencia_desempeno == "En riesgo", 1), else_=0)).label("Comentarios En Riesgo"),
-            func.sum(case((Clase.tendencia_desempeno == "Mejora", 1), else_=0)).label("Comentarios En Mejora"),
-        ).group_by(Clase.id_docente, Clase.semestre)
-        .order_by(Clase.id_docente.asc(), Clase.semestre.asc())
-        .offset(offset_value)
-        .limit(limit)
+
+    if page and not limit:
+        raise HTTPException(
+            status_code=400, 
+            detail="Must specify limit when specifying page"
+        )
+
+    stmt = select(
+        Clase.id_docente.label("Docente"),
+        Clase.semestre.label("Semestre"),
+        func.count(distinct(Clase.asignatura)).label("Cantidad Asignaturas"),
+        func.count(Clase.id_curso_grupo).label("Cantidad Grupos"),
+        func.sum(Clase.numero_estudiantes).label("Numero Estudiantes"),
+        func.array_agg(distinct(Clase.asignatura)).label("Asignaturas"),
+        func.sum(
+            Clase.clases_dictadas * (func.extract("epoch", Clase.hora_fin - Clase.hora_inicio) / 3600.0)
+        ).label("Horas Lectivas"),
+        func.sum(case((Clase.tendencia_desempeno == "Estable", 1), else_=0)).label("Comentarios Estables"),
+        func.sum(case((Clase.tendencia_desempeno == "En riesgo", 1), else_=0)).label("Comentarios En Riesgo"),
+        func.sum(case((Clase.tendencia_desempeno == "Mejora", 1), else_=0)).label("Comentarios En Mejora"),
+    )
+
+    stmt = grouping_and_paginating(stmt, page, limit,
+        id_docente=docente, semestre=semestre
     )
 
     result = await db.execute(stmt)
@@ -135,35 +142,51 @@ async def seguimiento_docente(
     return df.convert_dtypes().to_dict(orient="records")
 
 
+@app.get("/seguimiento_docente/count")
+async def seguimiento_docente_count(
+    docente: str | None = None,
+    semestre: str | None = None,
+    db: AsyncSession = Depends(db_session)
+) -> int:
+    return count(db, id_docente=docente, semestre=semestre)
+
 @app.get("/seguimiento_docente_por_asignatura")
 async def seguimiento_docente_por_asignatura(
-    page: int = 1,
-    limit: int = 50,
+    page: int | None = None,
+    limit: int | None = None,
+    docente: str | None = None,
+    semestre: str | None = None,
+    asignatura: str | None = None,
     db: AsyncSession = Depends(db_session)
 ) -> list[SeguimientoDocenteAsignatura]:
-    offset_value = (page - 1) * limit
-    stmt = (
-        select(
-            Clase.id_docente.label("Docente"),
-            Clase.semestre.label("Semestre"),
-            Clase.asignatura.label("Asignatura"),
-            func.count(Clase.id_curso_grupo).label("Cantidad Grupos"),
-            func.sum(Clase.numero_estudiantes).label("Numero Estudiantes"),
-            func.avg(Clase.puntaje_claridad).label("Puntaje Claridad"),
-            func.avg(Clase.puntaje_metodologia).label("Puntaje Metodología"),
-            func.avg(Clase.puntaje_evaluacion).label("Puntaje Evaluación"),
-            func.array_agg(distinct(Clase.comentario)).label("Comentarios"),
-            func.sum(
-                Clase.clases_dictadas * (func.extract("epoch", Clase.hora_fin - Clase.hora_inicio) / 3600.0)
-            ).label("Horas Lectivas"),
-            func.sum(Clase.numero_estudiantes_aprobaron).label("Estudiantes Aprobados"),
-            func.sum(case((Clase.tendencia_desempeno == "Estable", 1), else_=0)).label("Comentarios Estables"),
-            func.sum(case((Clase.tendencia_desempeno == "En riesgo", 1), else_=0)).label("Comentarios En Riesgo"),
-            func.sum(case((Clase.tendencia_desempeno == "Mejora", 1), else_=0)).label("Comentarios En Mejora"),
-        ).group_by(Clase.id_docente, Clase.semestre, Clase.asignatura)
-        .order_by(Clase.id_docente.asc(), Clase.asignatura.asc(), Clase.semestre.asc())
-        .offset(offset_value)
-        .limit(limit)
+
+    if page and not limit:
+        raise HTTPException(
+            status_code=400, 
+            detail="Must specify limit when specifying page"
+        )
+
+    stmt = select(
+        Clase.id_docente.label("Docente"),
+        Clase.semestre.label("Semestre"),
+        Clase.asignatura.label("Asignatura"),
+        func.count(Clase.id_curso_grupo).label("Cantidad Grupos"),
+        func.sum(Clase.numero_estudiantes).label("Numero Estudiantes"),
+        func.avg(Clase.puntaje_claridad).label("Puntaje Claridad"),
+        func.avg(Clase.puntaje_metodologia).label("Puntaje Metodología"),
+        func.avg(Clase.puntaje_evaluacion).label("Puntaje Evaluación"),
+        func.array_agg(distinct(Clase.comentario)).label("Comentarios"),
+        func.sum(
+            Clase.clases_dictadas * (func.extract("epoch", Clase.hora_fin - Clase.hora_inicio) / 3600.0)
+        ).label("Horas Lectivas"),
+        func.sum(Clase.numero_estudiantes_aprobaron).label("Estudiantes Aprobados"),
+        func.sum(case((Clase.tendencia_desempeno == "Estable", 1), else_=0)).label("Comentarios Estables"),
+        func.sum(case((Clase.tendencia_desempeno == "En riesgo", 1), else_=0)).label("Comentarios En Riesgo"),
+        func.sum(case((Clase.tendencia_desempeno == "Mejora", 1), else_=0)).label("Comentarios En Mejora"),
+    )
+
+    stmt = grouping_and_paginating(stmt, page, limit,
+        id_docente=docente, asignatura=asignatura, semestre=semestre
     )
 
     result = await db.execute(stmt)
@@ -196,32 +219,48 @@ async def seguimiento_docente_por_asignatura(
 
     return df.convert_dtypes().to_dict(orient="records")
 
+@app.get("/seguimiento_docente_por_asignatura/count")
+async def seguimiento_docente_por_asignatura_count(
+    docente: str | None = None,
+    semestre: str | None = None,
+    asignatura: str | None = None,
+    db: AsyncSession = Depends(db_session)
+) -> int:
+    return count(db, id_docente=docente, semestre=semestre, asignatura=asignatura)
+
 @app.get("/seguimiento_asignaturas")
 async def seguimiento_asignaturas(
-    page: int = 1,
-    limit: int = 50,
+    page: int | None = None,
+    limit: int | None = None,
+    semestre: str | None = None,
+    asignatura: str | None = None,
     db: AsyncSession = Depends(db_session)
 ) -> list[SeguimientoAsignaturas]:
-    offset_value = (page - 1) * limit
-    stmt = (
-        select(
-            Clase.asignatura.label("Asignatura"),
-            Clase.semestre.label("Semestre"),
-            func.count(distinct(Clase.id_docente)).label("Cantidad Docentes"),
-            func.count(Clase.id_curso_grupo).label("Cantidad Grupos"),
-            func.sum(Clase.numero_estudiantes).label("Numero Estudiantes"),
-            func.sum(Clase.promedio_asistencias_estudiantes).label("Asistencia Típica Estudiantes"),
-            func.sum(
-                Clase.clases_dictadas * (func.extract("epoch", Clase.hora_fin - Clase.hora_inicio) / 3600.0)
-            ).label("Horas Lectivas"),
-            func.sum(Clase.numero_estudiantes_aprobaron).label("Estudiantes Aprobados"),
-            func.sum(Clase.numero_estudiantes_perdieron).label("Estudiantes Perdieron"),
-            func.sum(Clase.numero_estudiantes_desistieron).label("Estudiantes Desistieron"),
-            func.sum(Clase.clases_dictadas).label("Clases Dictadas"),
-        ).group_by(Clase.asignatura, Clase.semestre)
-        .order_by(Clase.asignatura.asc(), Clase.semestre.asc())
-        .offset(offset_value)
-        .limit(limit)
+    
+    if page and not limit:
+        raise HTTPException(
+            status_code=400, 
+            detail="Must specify limit when specifying page"
+        )
+
+    stmt = select(
+        Clase.asignatura.label("Asignatura"),
+        Clase.semestre.label("Semestre"),
+        func.count(distinct(Clase.id_docente)).label("Cantidad Docentes"),
+        func.count(Clase.id_curso_grupo).label("Cantidad Grupos"),
+        func.sum(Clase.numero_estudiantes).label("Numero Estudiantes"),
+        func.sum(Clase.promedio_asistencias_estudiantes).label("Asistencia Típica Estudiantes"),
+        func.sum(
+            Clase.clases_dictadas * (func.extract("epoch", Clase.hora_fin - Clase.hora_inicio) / 3600.0)
+        ).label("Horas Lectivas"),
+        func.sum(Clase.numero_estudiantes_aprobaron).label("Estudiantes Aprobados"),
+        func.sum(Clase.numero_estudiantes_perdieron).label("Estudiantes Perdieron"),
+        func.sum(Clase.numero_estudiantes_desistieron).label("Estudiantes Desistieron"),
+        func.sum(Clase.clases_dictadas).label("Clases Dictadas"),
+    )
+
+    stmt = grouping_and_paginating(stmt, page, limit,
+        asignatura=asignatura, semestre=semestre
     )
 
     result = await db.execute(stmt)
@@ -232,3 +271,53 @@ async def seguimiento_asignaturas(
         return []
 
     return df.convert_dtypes().to_dict(orient="records")
+
+@app.get("/seguimiento_asignaturas/count")
+async def seguimiento_asignaturas_count(
+    semestre: str | None = None,
+    asignatura: str | None = None,
+    db: AsyncSession = Depends(db_session)
+) -> int:
+    return count(db, semestre=semestre, asignatura=asignatura)
+
+
+async def count(db: AsyncSession, **fields) -> int:
+    conditions = []
+    main_select_fields = []
+    for field, value in fields.items():
+        conditions.append(getattr(Clase, field) == value)
+        main_select_fields.append(getattr(Clase, field))
+
+    subq = select(*main_select_fields)
+    
+    if len(conditions) > 0:
+        subq = subq.where(*conditions)
+        
+    subq = subq.group_by(*main_select_fields).subquery()
+    
+    result = await db.execute(select(func.count()).select_from(subq))
+
+    return result.scalar() or 0
+
+
+def grouping_and_paginating(stmt, page: int, limit: int, **fields):
+    conditions = []
+    main_select_fields = []
+    for field, value in fields.items():
+        conditions.append(getattr(Clase, field) == value)
+        main_select_fields.append(getattr(Clase, field))
+
+    if len(conditions) > 0:
+        stmt = stmt.where(*conditions)
+
+    stmt = stmt.group_by(*main_select_fields).order_by(*[
+        select_field.asc() for select_field in main_select_fields
+    ])
+
+    if page and limit:
+        offset_value = (page - 1) * limit
+        stmt = stmt.limit(limit).offset(offset_value)
+    elif limit:
+        stmt = stmt.limit(limit).offset(0)
+
+    return stmt
