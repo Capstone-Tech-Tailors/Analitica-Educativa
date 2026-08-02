@@ -99,6 +99,9 @@ async def seguimiento_docente(
     rows = result.mappings().all()
     df = pd.DataFrame(rows).convert_dtypes()
 
+    if df.empty:
+        return []
+
     df = (
         df.set_index(["Docente"], append=False)
         .groupby(level=["Docente"], group_keys=False)
@@ -143,6 +146,10 @@ async def seguimiento_docente_por_asignatura(
     result = await db.execute(stmt)
     rows = result.mappings().all()
     df = pd.DataFrame(rows).convert_dtypes()
+
+    if df.empty:
+        return []
+
     df["Semestre"] = df["Semestre"].apply(
         lambda s: pd.Period(s.strip().replace("-1", "Q1").replace("-2", "Q3"), freq="2Q-DEC")
     ).astype("period[2Q-DEC]")
@@ -197,5 +204,8 @@ async def seguimiento_asignaturas(
     result = await db.execute(stmt)
     rows = result.mappings().all()
     df = pd.DataFrame(rows)
+
+    if df.empty:
+        return []
 
     return df.convert_dtypes().to_dict(orient="records")
