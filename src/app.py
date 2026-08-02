@@ -36,11 +36,12 @@ async def liveness_probe():
 async def readiness_probe(response: Response, db: AsyncSession = Depends(db_session)):
     """Verifies database readiness."""
     try:
-        result = await db.execute(text("SELECT 1"))
-        if result.scalar() == 1:
+        result = await db.scalar(text("SELECT 1"))
+        if result == 1:
             return {"status": "healthy", "database": "ok"}
     except Exception:
-        pass
+        logger.error(f"Database is unreachable or unavailable.")
+
     response.status_code = status.HTTP_503_SERVICE_UNAVAILABLE
     return {"status": "unhealthy", "database": "down"}
 
