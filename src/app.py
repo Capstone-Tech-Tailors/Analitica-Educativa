@@ -22,6 +22,10 @@ logger.handlers = gunicorn_logger.handlers
 logger.setLevel(gunicorn_logger.level)
 app = FastAPI(title="Analítica Académica")
 
+@app.get("/healthz", status_code=200)
+async def health_check():
+    return {"status": "healthy"}
+
 async def bulk_update(csv_file: str, db: AsyncSession):
     logger.info("Entered bulk update")
     campos_clase = Clase.__table__.columns.keys()
