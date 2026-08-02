@@ -7,7 +7,7 @@ from fastapi import FastAPI, UploadFile, Depends, HTTPException, BackgroundTasks
 from db.session import get_session as db_session
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.dialects.postgresql import insert as pg_insert
-from sqlalchemy import select, func, distinct, case, asc, desc
+from sqlalchemy import select, func, distinct, case, asc, desc, text
 from models.clase import Clase
 
 from utils import (
