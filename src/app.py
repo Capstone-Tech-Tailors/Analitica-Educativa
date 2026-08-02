@@ -149,7 +149,7 @@ async def seguimiento_docente_count(
     semestre: str | None = None,
     db: AsyncSession = Depends(db_session)
 ) -> int:
-    return count(db, id_docente=docente, semestre=semestre)
+    return await count(db, id_docente=docente, semestre=semestre)
 
 @app.get("/seguimiento_docente_por_asignatura")
 async def seguimiento_docente_por_asignatura(
@@ -227,7 +227,7 @@ async def seguimiento_docente_por_asignatura_count(
     asignatura: str | None = None,
     db: AsyncSession = Depends(db_session)
 ) -> int:
-    return count(db, id_docente=docente, semestre=semestre, asignatura=asignatura)
+    return await count(db, id_docente=docente, semestre=semestre, asignatura=asignatura)
 
 @app.get("/seguimiento_asignaturas")
 async def seguimiento_asignaturas(
@@ -279,7 +279,7 @@ async def seguimiento_asignaturas_count(
     asignatura: str | None = None,
     db: AsyncSession = Depends(db_session)
 ) -> int:
-    return count(db, semestre=semestre, asignatura=asignatura)
+    return await count(db, semestre=semestre, asignatura=asignatura)
 
 
 async def count(db: AsyncSession, **fields) -> int:
