@@ -1,7 +1,4 @@
-from __future__ import annotations
-
 from typing import List
-
 from pydantic import BaseModel, Field
 
 class SeguimientoDocente(BaseModel):
@@ -24,6 +21,6 @@ class SeguimientoDocente(BaseModel):
     Cantidad_Semestres_sin_Sobrecarga_Horaria: int = Field(
         ..., alias='Cantidad Semestres sin Sobrecarga Horaria'
     )
-    Indice_Carga_Asignaturas: int = Field(..., alias='Indice Carga Asignaturas')
-    Indice_Carga_Grupos: int = Field(..., alias='Indice Carga Grupos')
-    Indice_Carga_Horaria: int = Field(..., alias='Indice Carga Horaria')
+    Indice_Carga_Asignaturas: float = Field(..., alias='Indice Carga Asignaturas')
+    Indice_Carga_Grupos: float = Field(..., alias='Indice Carga Grupos')
+    Indice_Carga_Horaria: float = Field(..., alias='Indice Carga Horaria')

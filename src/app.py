@@ -137,7 +137,7 @@ async def seguimiento_docente_por_asignatura(
     page: int = 1,
     limit: int = 50,
     db: AsyncSession = Depends(db_session)
-) -> list[SeguimientoAsignaturas]:
+) -> list[SeguimientoDocenteAsignatura]:
     offset_value = (page - 1) * limit
     stmt = (
         select(
@@ -198,7 +198,7 @@ async def seguimiento_asignaturas(
     page: int = 1,
     limit: int = 50,
     db: AsyncSession = Depends(db_session)
-) -> list[SeguimientoDocenteAsignatura]:
+) -> list[SeguimientoAsignaturas]:
     offset_value = (page - 1) * limit
     stmt = (
         select(
