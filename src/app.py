@@ -33,7 +33,7 @@ logger.handlers = gunicorn_logger.handlers
 logger.setLevel(gunicorn_logger.level)
 
 
-ml_models = {}
+ml_models = dict()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -79,6 +79,8 @@ async def readiness_probe(response: Response, db: AsyncSession = Depends(db_sess
 
 @app.post("/predecir_sentimientos")
 def predecir_sentimientos(comentarios: str | list[str]) -> SentimientoClasificado | list[SentimientoClasificado]:
+    if "sentimientos" not in ml_models:
+        raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail="Modelo no fue encontrado en el Almacenamiento")
     return ml_models["sentimientos"](comentarios)
 
 async def bulk_update(csv_file: str, db: AsyncSession):
