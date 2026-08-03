@@ -2,6 +2,8 @@ import tempfile
 import aiofiles
 import logging
 import pandas as pd
+import platformdirs
+import torch
 
 from fastapi import FastAPI, UploadFile, Depends, HTTPException, BackgroundTasks, Response, status
 from db.session import get_session as db_session
@@ -9,11 +11,15 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy import select, func, distinct, case, text
 from aiofiles import os as asyncos
+from contextlib import asynccontextmanager
 
 from models.clase import Clase
 from models.seguimiento_docente import SeguimientoDocente
 from models.seguimiento_asignaturas import SeguimientoAsignaturas
 from models.seguimiento_docente_asignatura import SeguimientoDocenteAsignatura
+
+from models.sentimiento_clasificado import SentimientoClasificado
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
 
 from utils import (
     agregar_metricas_generales_docente,
@@ -25,7 +31,33 @@ gunicorn_logger = logging.getLogger("gunicorn.error")
 logger = logging.getLogger("uvicorn.error")
 logger.handlers = gunicorn_logger.handlers
 logger.setLevel(gunicorn_logger.level)
-app = FastAPI(title="Analítica Académica")
+
+
+ml_models = {}
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+
+    HF_DEVICE = "mps" if torch.backends.mps.is_available() else ("cuda" if torch.cuda.is_available() else "cpu")
+    HF_MAX_LEN = 64
+
+    models_directory = (platformdirs.user_publicshare_path() / "ml_models")
+    models_directory.mkdir(parents=True, exist_ok=True)
+    
+    modelo_sentimientos_path = (models_directory / "sentimientos")
+    if modelo_sentimientos_path.exists() and any(modelo_sentimientos_path.iterdir()):
+        tokenizador_disco = AutoTokenizer.from_pretrained(modelo_sentimientos_path)
+        modelo_disco = AutoModelForSequenceClassification.from_pretrained(modelo_sentimientos_path)
+
+        ml_models["sentimientos"] = pipeline(
+            "sentiment-analysis", model=modelo_disco, tokenizer=tokenizador_disco,
+            device=HF_DEVICE, truncation=True, max_length=HF_MAX_LEN
+        )
+
+    yield
+    ml_models.clear()
+
+app = FastAPI(title="Analítica Académica", lifespan=lifespan)
 
 @app.get("/health/live", status_code=status.HTTP_200_OK)
 async def liveness_probe():
@@ -44,6 +76,10 @@ async def readiness_probe(response: Response, db: AsyncSession = Depends(db_sess
 
     response.status_code = status.HTTP_503_SERVICE_UNAVAILABLE
     return {"status": "unhealthy", "database": "down"}
+
+@app.post("/predecir_sentimientos")
+def predecir_sentimientos(comentarios: str | list[str]) -> SentimientoClasificado | list[SentimientoClasificado]:
+    return ml_models["sentimientos"](comentarios)
 
 async def bulk_update(csv_file: str, db: AsyncSession):
     campos_clase = Clase.__table__.columns.keys()
