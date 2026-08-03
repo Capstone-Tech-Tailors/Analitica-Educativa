@@ -90,18 +90,13 @@ def predecir_sentimientos(comentarios: list[str] | str | None = Body(default=Non
         raise HTTPException(status_code=400, detail="Debe mandar los comentarios de los estudiantes")
     
     clasificaciones = ml_models["sentimientos"](comentarios)
-    pretty_labels = {
-        "NEG": "En riesgo",
-        "NEU": "Estable",
-        "POS": "Mejora"
-    }
-    
     comentarios = comentarios if len(clasificaciones) > 1 else [comentarios]
+
     response = []
     for idx, clasificacion in enumerate(clasificaciones):
         response.append({
             "comentario": comentarios[idx],
-            "sentimiento": pretty_labels[clasificacion["label"]],
+            "sentimiento": clasificacion["label"],
             "probabilidad": clasificacion["score"]
         })
 
@@ -113,11 +108,18 @@ def analisis_foda(comentarios: list[str]) -> list[Foda]:
     foda = data.groupby(["sentimiento"]).agg(
         Comentarios=("comentario", lambda x: tuple(x.dropna().unique()))
     )
-    return {
-        "Fortalezas": list(foda.loc["Mejora", "Comentarios"]),
-        "Oportunidades": list(foda.loc["Estable", "Comentarios"]),
-        "Debilidades y Amenazas": list(foda.loc["En riesgo", "Comentarios"])
-    }
+
+    response = dict()
+    sentimientos = data["sentimiento"].to_list()
+
+    if "POS" in sentimientos:
+        response["Fortalezas"] = list(foda.loc["POS", "Comentarios"])
+    if "NEG" in sentimientos:
+        response["Debilidades y Amenazas"] = list(foda.loc["NEG", "Comentarios"])
+    if "NEU" in sentimientos:
+        response["Oportunidades"] = list(foda.loc["NEU", "Comentarios"])
+
+    return response
 
 async def bulk_update(csv_file: str, db: AsyncSession):
     campos_clase = Clase.__table__.columns.keys()

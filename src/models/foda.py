@@ -1,6 +1,7 @@
+from typing import List
 from pydantic import BaseModel, Field
 
 class Foda(BaseModel):
-    Fortalezas: int
-    Oportunidades: int
-    Debilidades_Y_Amenazas: int = Field(..., alias='Debilidades y Amenazas')
+    Fortalezas: List[str]
+    Oportunidades: List[str]
+    Debilidades_Y_Amenazas: List[str] = Field(..., alias='Debilidades y Amenazas')
