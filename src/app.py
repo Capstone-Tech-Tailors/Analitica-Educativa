@@ -100,7 +100,7 @@ def predecir_sentimientos(comentarios: List[str]) -> List[ComentarioClasificado]
     return response
 
 @app.post("/analisis_foda")
-def analisis_foda(comentarios: List[str]) -> List[Foda]:
+def analisis_foda(comentarios: List[str]) -> Foda:
     data = pd.DataFrame(predecir_sentimientos(comentarios))
     foda = data.groupby(["sentimiento"]).agg(
         Comentarios=("comentario", lambda x: tuple(x.dropna().unique()))
