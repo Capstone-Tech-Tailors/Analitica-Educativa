@@ -45,7 +45,7 @@ async def lifespan(app: FastAPI):
 
     models_directory = (platformdirs.user_publicshare_path() / "ml_models")
     models_directory.mkdir(parents=True, exist_ok=True)
-    
+
     modelo_sentimientos_path = (models_directory / "sentimientos")
     if modelo_sentimientos_path.exists() and any(modelo_sentimientos_path.iterdir()):
 
@@ -86,7 +86,7 @@ async def readiness_probe(response: Response, db: AsyncSession = Depends(db_sess
 def predecir_sentimientos(comentarios: List[str]) -> List[ComentarioClasificado]:
     if "sentimientos" not in ml_models:
         raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail="Modelo no fue encontrado en el Almacenamiento")
-    
+
     clasificaciones = ml_models["sentimientos"](comentarios)
 
     response = []
@@ -108,7 +108,7 @@ def analisis_foda(comentarios: List[str]) -> Foda:
 
     response = dict()
     sentimientos = data["sentimiento"].to_list()
-    
+
     response["Fortalezas"] = list(foda.loc["POS", "Comentarios"]) if "POS" in sentimientos else []
     response["Debilidades y Amenazas"] = list(foda.loc["NEG", "Comentarios"]) if "NEG" in sentimientos else []
     response["Oportunidades"] = list(foda.loc["NEU", "Comentarios"]) if "NEU" in sentimientos else []
@@ -116,7 +116,7 @@ def analisis_foda(comentarios: List[str]) -> Foda:
     return response
 
 @app.get("/find_docentes")
-async def find_docentes(semestre: str | None = None, asignatura: str | None = None) -> List[str]:
+async def find_docentes(semestre: str | None = None, asignatura: str | None = None, db: AsyncSession = Depends(db_session)) -> List[str]:
     conditions = []
     if semestre:
         conditions.append(Clase.semestre == semestre)
@@ -126,7 +126,7 @@ async def find_docentes(semestre: str | None = None, asignatura: str | None = No
     stmt = select(
         distinct(Clase.id_docente.label("Docente"))
     ).where(*conditions)
-    
+
     result = await db.execute(stmt)
     rows = result.mappings().all()
     df = pd.DataFrame(rows).convert_dtypes()
@@ -137,7 +137,7 @@ async def find_docentes(semestre: str | None = None, asignatura: str | None = No
     return df["Docente"].to_list()
 
 @app.get("/find_asignaturas")
-async def find_asignaturas(docente: str | None = None, semestre: str | None = None) -> List[str]:
+async def find_asignaturas(docente: str | None = None, semestre: str | None = None, db: AsyncSession = Depends(db_session)) -> List[str]:
     conditions = []
     if docente:
         conditions.append(Clase.docente == docente)
@@ -147,7 +147,7 @@ async def find_asignaturas(docente: str | None = None, semestre: str | None = No
     stmt = select(
         distinct(Clase.asignatura.label("Asignatura"))
     ).where(*conditions)
-    
+
     result = await db.execute(stmt)
     rows = result.mappings().all()
     df = pd.DataFrame(rows).convert_dtypes()
@@ -158,7 +158,7 @@ async def find_asignaturas(docente: str | None = None, semestre: str | None = No
     return df["Asignatura"].to_list()
 
 @app.get("/find_semestres")
-async def find_semestres(asignatura: str | None = None, docente: str | None = None) -> List[str]:
+async def find_semestres(asignatura: str | None = None, docente: str | None = None, db: AsyncSession = Depends(db_session)) -> List[str]:
     conditions = []
     if asignatura:
         conditions.append(Clase.asignatura == asignatura)
@@ -168,7 +168,7 @@ async def find_semestres(asignatura: str | None = None, docente: str | None = No
     stmt = select(
         distinct(Clase.semestre.label("Semestre"))
     ).where(*conditions)
-    
+
     result = await db.execute(stmt)
     rows = result.mappings().all()
     df = pd.DataFrame(rows).convert_dtypes()
@@ -236,7 +236,7 @@ async def seguimiento_docente(
 
     if page and not limit:
         raise HTTPException(
-            status_code=400, 
+            status_code=400,
             detail="Must specify limit when specifying page"
         )
 
@@ -295,7 +295,7 @@ async def seguimiento_docente_por_asignatura(
 
     if page and not limit:
         raise HTTPException(
-            status_code=400, 
+            status_code=400,
             detail="Must specify limit when specifying page"
         )
 
@@ -368,10 +368,10 @@ async def seguimiento_asignaturas(
     asignatura: str | None = None,
     db: AsyncSession = Depends(db_session)
 ) -> List[SeguimientoAsignaturas]:
-    
+
     if page and not limit:
         raise HTTPException(
-            status_code=400, 
+            status_code=400,
             detail="Must specify limit when specifying page"
         )
 
@@ -423,12 +423,12 @@ async def count(db: AsyncSession, **fields) -> int:
         conditions.append(getattr(Clase, field) == value)
 
     subq = select(*main_select_fields)
-    
+
     if len(conditions) > 0:
         subq = subq.where(*conditions)
-        
+
     subq = subq.group_by(*main_select_fields).subquery()
-    
+
     result = await db.execute(select(func.count()).select_from(subq))
 
     return result.scalar() or 0
