@@ -5,7 +5,8 @@ import pandas as pd
 import platformdirs
 import torch
 
-from fastapi import FastAPI, UploadFile, Depends, HTTPException, BackgroundTasks, Response, Body, status
+from typing import List
+from fastapi import FastAPI, UploadFile, Depends, HTTPException, BackgroundTasks, Response, status
 from db.session import get_session as db_session
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.dialects.postgresql import insert as pg_insert
@@ -82,12 +83,9 @@ async def readiness_probe(response: Response, db: AsyncSession = Depends(db_sess
     return {"status": "unhealthy", "database": "down"}
 
 @app.post("/predecir_sentimientos")
-def predecir_sentimientos(comentarios: list[str] | str | None = Body(default=None)) -> list[ComentarioClasificado]:
+def predecir_sentimientos(comentarios: List[str]) -> List[ComentarioClasificado]:
     if "sentimientos" not in ml_models:
         raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail="Modelo no fue encontrado en el Almacenamiento")
-    
-    if not comentarios:
-        raise HTTPException(status_code=400, detail="Debe mandar los comentarios de los estudiantes")
     
     clasificaciones = ml_models["sentimientos"](comentarios)
     comentarios = comentarios if len(clasificaciones) > 1 else [comentarios]
@@ -103,7 +101,7 @@ def predecir_sentimientos(comentarios: list[str] | str | None = Body(default=Non
     return response
 
 @app.post("/analisis_foda")
-def analisis_foda(comentarios: list[str]) -> list[Foda]:
+def analisis_foda(comentarios: List[str]) -> List[Foda]:
     data = pd.DataFrame(predecir_sentimientos(comentarios))
     foda = data.groupby(["sentimiento"]).agg(
         Comentarios=("comentario", lambda x: tuple(x.dropna().unique()))
@@ -175,7 +173,7 @@ async def seguimiento_docente(
     docente: str | None = None,
     semestre: str | None = None,
     db: AsyncSession = Depends(db_session)
-) -> list[SeguimientoDocente]:
+) -> List[SeguimientoDocente]:
 
     if page and not limit:
         raise HTTPException(
@@ -234,7 +232,7 @@ async def seguimiento_docente_por_asignatura(
     docente: str | None = None,
     asignatura: str | None = None,
     db: AsyncSession = Depends(db_session)
-) -> list[SeguimientoDocenteAsignatura]:
+) -> List[SeguimientoDocenteAsignatura]:
 
     if page and not limit:
         raise HTTPException(
@@ -310,7 +308,7 @@ async def seguimiento_asignaturas(
     semestre: str | None = None,
     asignatura: str | None = None,
     db: AsyncSession = Depends(db_session)
-) -> list[SeguimientoAsignaturas]:
+) -> List[SeguimientoAsignaturas]:
     
     if page and not limit:
         raise HTTPException(
