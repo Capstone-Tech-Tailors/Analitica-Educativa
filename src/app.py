@@ -78,9 +78,13 @@ async def readiness_probe(response: Response, db: AsyncSession = Depends(db_sess
     return {"status": "unhealthy", "database": "down"}
 
 @app.post("/predecir_sentimientos")
-def predecir_sentimientos(comentarios: str | list[str]) -> SentimientoClasificado | list[SentimientoClasificado]:
+def predecir_sentimientos(comentarios: str | list[str] = None) -> list[SentimientoClasificado]:
     if "sentimientos" not in ml_models:
         raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail="Modelo no fue encontrado en el Almacenamiento")
+    
+    if not comentarios:
+        raise HTTPException(status_code=400, detail="Debe mandar los comentarios de los estudiantes")
+    
     return ml_models["sentimientos"](comentarios)
 
 async def bulk_update(csv_file: str, db: AsyncSession):
