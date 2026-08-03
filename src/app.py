@@ -18,7 +18,8 @@ from models.seguimiento_docente import SeguimientoDocente
 from models.seguimiento_asignaturas import SeguimientoAsignaturas
 from models.seguimiento_docente_asignatura import SeguimientoDocenteAsignatura
 
-from models.sentimiento_clasificado import SentimientoClasificado
+from models.comentario_clasificado import ComentarioClasificado
+from models.foda import Foda
 from transformers import AutoModelForSequenceClassification, AutoTokenizer, pipeline
 
 from utils import (
@@ -46,13 +47,16 @@ async def lifespan(app: FastAPI):
     
     modelo_sentimientos_path = (models_directory / "sentimientos")
     if modelo_sentimientos_path.exists() and any(modelo_sentimientos_path.iterdir()):
-        tokenizador_disco = AutoTokenizer.from_pretrained(modelo_sentimientos_path)
-        modelo_disco = AutoModelForSequenceClassification.from_pretrained(modelo_sentimientos_path)
 
-        ml_models["sentimientos"] = pipeline(
-            "sentiment-analysis", model=modelo_disco, tokenizer=tokenizador_disco,
-            device=HF_DEVICE, truncation=True, max_length=HF_MAX_LEN
-        )
+        try:
+            tokenizador_disco = AutoTokenizer.from_pretrained(modelo_sentimientos_path)
+            modelo_disco = AutoModelForSequenceClassification.from_pretrained(modelo_sentimientos_path)
+            ml_models["sentimientos"] = pipeline(
+                "sentiment-analysis", model=modelo_disco, tokenizer=tokenizador_disco,
+                device=HF_DEVICE, truncation=True, max_length=HF_MAX_LEN
+            )
+        except Exception as ex:
+            logger.exception("Error al cargar modelo de sentimientos")
 
     yield
     ml_models.clear()
@@ -78,14 +82,41 @@ async def readiness_probe(response: Response, db: AsyncSession = Depends(db_sess
     return {"status": "unhealthy", "database": "down"}
 
 @app.post("/predecir_sentimientos")
-def predecir_sentimientos(comentarios: list[str] | str | None = Body(default=None)) -> list[SentimientoClasificado]:
+def predecir_sentimientos(comentarios: list[str] | str | None = Body(default=None)) -> list[ComentarioClasificado]:
     if "sentimientos" not in ml_models:
         raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail="Modelo no fue encontrado en el Almacenamiento")
     
     if not comentarios:
         raise HTTPException(status_code=400, detail="Debe mandar los comentarios de los estudiantes")
     
-    return ml_models["sentimientos"](comentarios)
+    clasificaciones = ml_models["sentimientos"](comentarios)
+    pretty_labels = {
+        "NEG": "En riesgo",
+        "NEU": "Estable",
+        "POS": "Mejora"
+    }
+    
+    response = []
+    for idx, clasificacion in enumerate(clasificaciones):
+        response.append({
+            "comentario": comentarios[idx] if len(clasificaciones) > 1 else comentarios,
+            "sentimiento": pretty_labels[clasificaciones["label"]],
+            "probabilidad": clasificaciones["score"]
+        })
+
+    return response
+
+@app.post("/analisis_foda")
+def analisis_foda(comentarios: list[str]) -> list[Foda]:
+    data = pd.DataFrame(predecir_sentimientos(comentarios))
+    foda = data.groupby(["sentimiento"]).agg(
+        Comentarios=("comentario", lambda x: tuple(x.dropna().unique()))
+    )
+    return {
+        "Fortalezas": list(foda.loc["Mejora", "Comentarios"]),
+        "Oportunidades": list(foda.loc["Estable", "Comentarios"]),
+        "Debilidades y Amenazas": list(foda.loc["En riesgo", "Comentarios"])
+    }
 
 async def bulk_update(csv_file: str, db: AsyncSession):
     campos_clase = Clase.__table__.columns.keys()
