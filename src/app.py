@@ -96,12 +96,13 @@ def predecir_sentimientos(comentarios: list[str] | str | None = Body(default=Non
         "POS": "Mejora"
     }
     
+    comentarios = comentarios if len(clasificaciones) > 1 else [comentarios]
     response = []
     for idx, clasificacion in enumerate(clasificaciones):
         response.append({
-            "comentario": comentarios[idx] if len(clasificaciones) > 1 else comentarios,
-            "sentimiento": pretty_labels[clasificaciones["label"]],
-            "probabilidad": clasificaciones["score"]
+            "comentario": comentarios[idx],
+            "sentimiento": pretty_labels[clasificacion["label"]],
+            "probabilidad": clasificacion["score"]
         })
 
     return response
