@@ -19,7 +19,7 @@ from models.seguimiento_asignaturas import SeguimientoAsignaturas
 from models.seguimiento_docente_asignatura import SeguimientoDocenteAsignatura
 
 from models.sentimiento_clasificado import SentimientoClasificado
-from transformers import AutoModelForSequenceClassification, AutoTokenizer
+from transformers import AutoModelForSequenceClassification, AutoTokenizer, pipeline
 
 from utils import (
     agregar_metricas_generales_docente,
