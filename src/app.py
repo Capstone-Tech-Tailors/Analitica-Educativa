@@ -5,7 +5,7 @@ import pandas as pd
 import platformdirs
 import torch
 
-from fastapi import FastAPI, UploadFile, Depends, HTTPException, BackgroundTasks, Response, status
+from fastapi import FastAPI, UploadFile, Depends, HTTPException, BackgroundTasks, Response, Body, status
 from db.session import get_session as db_session
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.dialects.postgresql import insert as pg_insert
@@ -78,7 +78,7 @@ async def readiness_probe(response: Response, db: AsyncSession = Depends(db_sess
     return {"status": "unhealthy", "database": "down"}
 
 @app.post("/predecir_sentimientos")
-def predecir_sentimientos(comentarios: str | list[str] = None) -> list[SentimientoClasificado]:
+def predecir_sentimientos(comentarios: list[str] | str | None = Body(default=None)) -> list[SentimientoClasificado]:
     if "sentimientos" not in ml_models:
         raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail="Modelo no fue encontrado en el Almacenamiento")
     
