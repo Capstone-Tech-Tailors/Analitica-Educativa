@@ -88,7 +88,6 @@ def predecir_sentimientos(comentarios: List[str]) -> List[ComentarioClasificado]
         raise HTTPException(status_code=status.HTTP_503_SERVICE_UNAVAILABLE, detail="Modelo no fue encontrado en el Almacenamiento")
     
     clasificaciones = ml_models["sentimientos"](comentarios)
-    comentarios = comentarios if len(clasificaciones) > 1 else [comentarios]
 
     response = []
     for idx, clasificacion in enumerate(clasificaciones):
