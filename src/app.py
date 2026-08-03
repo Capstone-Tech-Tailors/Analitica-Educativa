@@ -110,7 +110,7 @@ def analisis_foda(comentarios: List[str]) -> Foda:
     sentimientos = data["sentimiento"].to_list()
     
     response["Fortalezas"] = list(foda.loc["POS", "Comentarios"]) if "POS" in sentimientos else []
-    response["Debilidades y Amenazas"] = list(foda.loc["NEG", "Comentarios"]) if if "NEG" in sentimientos else []
+    response["Debilidades y Amenazas"] = list(foda.loc["NEG", "Comentarios"]) if "NEG" in sentimientos else []
     response["Oportunidades"] = list(foda.loc["NEU", "Comentarios"]) if "NEU" in sentimientos else []
 
     return response
