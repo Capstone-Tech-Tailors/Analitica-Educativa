@@ -124,38 +124,28 @@ async def find_docentes(semestre: str | None = None, asignatura: str | None = No
         conditions.append(Clase.asignatura == asignatura)
 
     stmt = select(
-        distinct(Clase.id_docente.label("Docente"))
+        distinct(Clase.id_docente)
     ).where(*conditions)
 
     result = await db.execute(stmt)
-    rows = result.mappings().all()
-    df = pd.DataFrame(rows).convert_dtypes()
-
-    if df.empty:
-        return []
-
-    return df["Docente"].to_list()
+    data = result.scalars().all()
+    return [str(s) for s in data if s is not None]
 
 @app.get("/find_asignaturas")
 async def find_asignaturas(docente: str | None = None, semestre: str | None = None, db: AsyncSession = Depends(db_session)) -> List[str]:
     conditions = []
     if docente:
-        conditions.append(Clase.docente == docente)
+        conditions.append(Clase.id_docente == docente)
     if semestre:
         conditions.append(Clase.semestre == semestre)
 
     stmt = select(
-        distinct(Clase.asignatura.label("Asignatura"))
+        distinct(Clase.asignatura)
     ).where(*conditions)
 
     result = await db.execute(stmt)
-    rows = result.mappings().all()
-    df = pd.DataFrame(rows).convert_dtypes()
-
-    if df.empty:
-        return []
-
-    return df["Asignatura"].to_list()
+    data = result.scalars().all()
+    return [str(s) for s in data if s is not None]
 
 @app.get("/find_semestres")
 async def find_semestres(asignatura: str | None = None, docente: str | None = None, db: AsyncSession = Depends(db_session)) -> List[str]:
@@ -163,20 +153,15 @@ async def find_semestres(asignatura: str | None = None, docente: str | None = No
     if asignatura:
         conditions.append(Clase.asignatura == asignatura)
     if docente:
-        conditions.append(Clase.docente == docente)
+        conditions.append(Clase.id_docente == docente)
 
     stmt = select(
-        distinct(Clase.semestre.label("Semestre"))
+        distinct(Clase.semestre)
     ).where(*conditions)
 
     result = await db.execute(stmt)
-    rows = result.mappings().all()
-    df = pd.DataFrame(rows).convert_dtypes()
-
-    if df.empty:
-        return []
-
-    return df["Semestre"].to_list()
+    data = result.scalars().all()
+    return [str(s) for s in data if s is not None]
 
 async def bulk_update(csv_file: str, db: AsyncSession):
     campos_clase = Clase.__table__.columns.keys()
