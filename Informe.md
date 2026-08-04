@@ -11,7 +11,7 @@
 | **Tarea implementada** | Clasificación de sentimiento en tres polaridades (POS / NEU / NEG) |
 | **Proyecto** | Analítica Educativa · equipo Tech Tailors · Samsung Innovation Campus |
 | **Fecha del informe** | 4 de agosto de 2026 |
-| **Estado** | **Verificado sobre el archivo real.** Perfil estadístico calculado; entrenamiento y evaluación ejecutados |
+| **Estado** | **Verificado sobre el archivo real.** Perfil estadístico calculado, traducción auditada, entrenamiento y evaluación ejecutados |
 
 > **Conclusión principal.** El corpus fuente es pertinente por estar centrado en comentarios
 > estudiantiles sobre docentes. El archivo efectivamente utilizado es un **subconjunto de 100.000
@@ -55,7 +55,7 @@ Mendeley — dataset original (ABSA, >2.000.000 instancias reportadas, con etiqu
    │
    ├─ [1] Selección de un subconjunto de 100.000 filas          (realizado por el equipo)
    │
-   └─ [2] Traducción automática inglés → español                (realizado por el equipo)
+   └─ [2] Traducción inglés → español con Claude (Anthropic)    (realizado por el equipo)
         │
         └─ ReadyToTrain_comentarios_EN_ES_completo.xlsx   ← ARCHIVO UTILIZADO
              columnas: id · StudentComments_EN · Comentarios_ES
@@ -129,7 +129,8 @@ desalineación numérica** al desplegar.
 | Particiones | ✅ **Documentadas** | 118 train / 30 validación / 172 evaluación · semilla 42 · **0 fuga verificada** |
 | Duplicación | ✅ **Verificada y mitigada** | Deduplicado a 29.243 únicos **antes** de particionar |
 | Licencia | ⚠️ Reportada | CC BY-NC 3.0 — archivar la versión del depósito |
-| **Sistema de traducción** | ❌ **Pendiente** | **Debe documentarse** (véase §8) |
+| Sistema de traducción | ✅ **Documentado** | Claude (Anthropic), antes de particionar (§8) |
+| Preservación de polaridad | ✅ **Auditada** | Negaciones 99,1 % · adversativas 95,8 % (§8) |
 
 ## 6. Preparación aplicada al fine-tuning
 
@@ -173,11 +174,45 @@ modelos con la misma partición y las mismas métricas**:
 | RoBERTuito (base público) | 0,638 |
 | **RoBERTuito ajustado con etiquetas humanas** | **0,646** |
 
-**Punto pendiente de documentar.** Los textos **fueron traducidos** por el equipo, por lo que debe
-registrarse: (i) el **sistema de traducción** empleado; (ii) que la traducción se realizó **antes**
-de cualquier partición; y (iii) una auditoría de preservación de polaridad y negaciones sobre una
-muestra. La traducción produce un registro estándar sin variación coloquial regional, lo que
-constituye una limitación frente al español que tendrán las encuestas reales.
+### 8.1 Traducción: sistema, momento y auditoría
+
+Conforme a la exigencia metodológica de documentar toda traducción previa al entrenamiento, se
+registra:
+
+| Elemento | Valor |
+|---|---|
+| **Sistema de traducción** | **Claude** (modelo de lenguaje de Anthropic) |
+| **Dirección** | Inglés → español |
+| **Momento** | **Antes** de cualquier partición y de la deduplicación |
+| **Cobertura** | Las 100.000 filas del subconjunto |
+
+**Auditoría de preservación de polaridad.** Se verificó automáticamente sobre el total del corpus
+que los marcadores que invierten o matizan la polaridad sobrevivieran a la traducción:
+
+| Marcador | Presentes en el original | Preservados en español | Tasa |
+|---|--:|--:|:--:|
+| **Negaciones** (`not`, `never`, `no`, `n't`, `cannot`, `without`…) | 8.296 (8,3 %) | 8.221 | **99,1 %** |
+| **Adversativas** (`but`, `although`, `however`, `though`…) | 4.989 (5,0 %) | 4.781 | **95,8 %** |
+
+La revisión cualitativa de una muestra confirma que la estructura semántica se conserva, incluida
+la cláusula que determina la polaridad final:
+
+> *"he is a good teacher. he has vast knowledge about programming **but not** students."*
+> → *"Es un buen profesor. Tiene amplios conocimientos sobre programación, **pero no** sobre los
+> estudiantes."*
+
+> *"he is a very good lecturer... **even though** he makes us work very hard"*
+> → *"es un muy buen profesor... **aunque** nos hace trabajar muy duro"*
+
+**Interpretación.** Las tasas de preservación son altas y no comprometen la validez del
+entrenamiento. El 1,6 % de negaciones que aparecen solo en español corresponde mayoritariamente a
+reformulaciones idiomáticas legítimas (p. ej. *"lacks clarity"* → *"**no** es claro"*), no a
+inversiones de sentido.
+
+**Limitación vigente.** La traducción produce un **registro estándar** sin la variación coloquial
+regional (*chévere*, *bacano*, *un cansón*) que tendrán las encuestas reales de la Universidad del
+Rosario. Esta es una de las razones que sustentan la recomendación de reanotar con comentarios
+propios de la institución (§11).
 
 ## 9. Evaluación del modelo — registro efectivo
 
@@ -236,7 +271,7 @@ corpus traducido de Bangladesh y las encuestas reales de la Universidad del Rosa
 > Se utilizó un subconjunto de 100.000 registros del conjunto de datos *"A Novel Dataset for ABSA
 > for Teacher Performance Evaluation"*, publicado por American International University-Bangladesh
 > a través de Mendeley Data. Los comentarios, originalmente en inglés, fueron **traducidos al
-> español** por el equipo antes de cualquier partición. El archivo resultante contiene 99.992
+> español con Claude** (modelo de lenguaje de Anthropic) antes de cualquier partición. El archivo resultante contiene 99.992
 > comentarios no vacíos, de los cuales **29.243 son textos únicos** (unicidad 29,2 %), con una
 > longitud mediana de 4 palabras. El subconjunto **no conserva las etiquetas de polaridad ni los
 > aspectos** del recurso original.
@@ -257,8 +292,10 @@ corpus traducido de Bangladesh y las encuestas reales de la Universidad del Rosa
 > confusión y prueba de McNemar frente al modelo base: **macro-F1 0,646 frente a 0,638**
 > (p = 1,000, diferencia no significativa).
 
-**Pendiente de completar por el equipo:** el **sistema de traducción** utilizado en el paso inglés
-→ español, y una auditoría de preservación de polaridad sobre una muestra traducida.
+**Traducción.** El paso inglés → español se realizó con **Claude** (modelo de lenguaje de
+Anthropic) sobre las 100.000 filas, antes de cualquier partición. La auditoría de preservación
+arrojó **99,1 %** de negaciones y **95,8 %** de adversativas conservadas respecto del original
+(§8.1).
 
 ## Anexo B. Referencia de la fuente
 
