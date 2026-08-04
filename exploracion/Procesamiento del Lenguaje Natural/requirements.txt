@@ -1,0 +1,26 @@
+# Analítica Educativa — dependencias del proyecto
+# Instalar con:  pip install -r requirements.txt
+# Versiones fijadas al entorno con el que se desarrolló (julio 2026).
+
+# --- Análisis de datos y ML ---
+pandas==3.0.3
+numpy==2.4.6
+scikit-learn==1.9.0
+scipy==1.18.0
+joblib==1.5.3
+
+# --- Visualización ---
+matplotlib==3.10.9
+seaborn==0.13.2
+
+# --- Análisis de sentimiento (modelos preentrenados en español) ---
+transformers==5.14.1
+torch==2.13.0
+sentencepiece==0.2.2
+protobuf==7.35.0
+
+# --- Entorno de notebooks ---
+jupyter-core==5.9.1
+ipykernel==7.3.0
+nbformat==5.10.4
+nbconvert==7.17.1

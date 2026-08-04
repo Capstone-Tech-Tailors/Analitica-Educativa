@@ -1,0 +1,33 @@
+{
+  "nombre_campeon": "RandomForest",
+  "clases": [
+    "En riesgo",
+    "Estable",
+    "Mejora"
+  ],
+  "features_ml_numericas": [
+    "puntaje_claridad",
+    "puntaje_metodologia",
+    "puntaje_evaluacion",
+    "numero_estudiantes",
+    "sentimiento_gold_score"
+  ],
+  "features_ml_categoricas": [
+    "asignatura"
+  ],
+  "sentimiento": "gold (sentimiento_final), mapeo NEG=-1/NEU=0/POS=1",
+  "metricas_test_aleatorio": {
+    "macro_f1": 0.915,
+    "recall_en_riesgo": 0.96
+  },
+  "metricas_temporal_2023": {
+    "macro_f1": 0.905,
+    "recall_en_riesgo": 0.993
+  },
+  "calibrado": true,
+  "umbral_en_riesgo": 0.21,
+  "objetivo_recall_en_riesgo": 0.985,
+  "random_state": 42,
+  "advertencia": "Etiqueta derivada por reglas y datos plantillados; metricas son techo artificial. Validar con datos reales.",
+  "dependencia": "requiere modelo_utils.py en el path para cargar el artefacto"
+}
