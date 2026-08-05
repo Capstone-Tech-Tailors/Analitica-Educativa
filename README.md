@@ -5,7 +5,12 @@ La parte explorativa se encuentra en el directorio **exploracion** e incluye tod
 
 La metodología tentativa para los modelos de machine learning clásicos para rotación de asignaturas y deserción estudiantes se encuentran en el notebook **Consultas Estructuradas Con Metricas.ipynb**, capitulo 4.
 
-Así mismo se evidencia que el código fuente del backend para predicción con modelo RoBERTuito para análisis de sentimientos, en el archivo **src/app.py**.
+Así mismo se evidencia el código fuente del backend, el cual entre otras cosas carga un modelo de sentimientos al cual se le hizo fine-tuning, principalmente en el archivo **src/app.py**.
+
+Para pruebas locales del backend en FastAPI, los modelos resultantes del fine-tuning se deben a una ruta acorde al sistema operativo:
+- Mac: ~/Public/ml_models
+- Linux: $XDG_PUBLICSHARE_DIR/ml_models (por default es ~/Public/ml_models)
+- Windows: %PUBLIC%\ml_models (por default es C:\Users\Public\ml_models) 
 
 El código fuente del frontend se encuentra en el siguiente repositorio:
 [Dashboard en PowerBI](https://github.com/Capstone-Tech-Tailors/entregable-visual)
