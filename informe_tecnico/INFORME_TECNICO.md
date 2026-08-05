@@ -45,7 +45,7 @@
 | **13** | **Referencias** | |
 | **A** | **Anexo A** | Hiperparámetros completos por experimento |
 | **B** | **Anexo B** | Glosario |
-| **C** | **Anexo C** | Estructura del repositorio y trazabilidad |
+| **C** | **Anexo C** | Trazabilidad de los resultados |
 | **D** | **Anexo D** | Guía de reproducción |
 
 ### Índice de figuras
@@ -1361,49 +1361,7 @@ n = 750): En riesgo 0,98/0,96/0,97 (149) · Estable 0,92/0,89/0,91 (375) · Mejo
 
 <div style="page-break-after: always;"></div>
 
-## Anexo C · Estructura del repositorio y trazabilidad
-
-### C.1 Organización
-
-```
-Analisis de sentimiento/
-├── README.md                        Portada del proyecto
-├── INFORME_FINAL.ipynb              Informe ejecutable (se autoverifica al ejecutarlo)
-├── Informe.md                       Informe técnico del dataset traducido
-├── GUIA_APRENDIZAJE.md              Guía pedagógica del proceso
-├── requirements.txt · LICENSE (MIT)
-│
-├── data/
-│   ├── raw/         evaluaciones_docentes.csv · ReadyToTrain_comentarios_EN_ES_completo.xlsx
-│   └── processed/   evaluaciones_con_sentimiento.csv · gold_standard_comentarios.csv
-│                    gold_humano_eval.csv · train_humano.csv · muestra_anotacion.csv
-│                    benchmark_sentimiento.csv · mapa_sentimiento_comentarios.csv
-│
-├── analisis_sentimientos/
-│   ├── notebooks/   01_catalogo_modelos_espanol · 02_sentimiento_evaluaciones
-│   │                03_benchmark_modelos · 04_finetuning_sentimiento
-│   │                05_finetuning_humano
-│   └── models/      modelo_sentimiento_humano/ ⭐ PRODUCCIÓN
-│                    modelo_sentimiento_ft/ · modelo_sentimiento_ft_robertuito/
-│
-├── analisis_datos/
-│   ├── notebooks/   01_eda_techtailors_referencia · 02_integracion_sentimiento_eda
-│   │                03_modelado_tendencia_docente
-│   ├── models/      modelo_tendencia_docente.pkl (+ metadatos .json)
-│   └── reports/     INFORME_Revision_EDA_TechTailors.md
-│                    justificacion_comentarios_repetidos.md (+ .png)
-│                    seccion_naturaleza_limitaciones_datos.md
-│
-├── anotacion/       RUBRICA_ANOTACION.md · PROTOCOLO_ANOTACION.md
-│                    generar_planillas.py · consolidar_anotacion.py
-│                    anotacion_A1/A2/A3.xlsx · reporte_acuerdo.md · _clave_maestra.csv
-│
-├── informe_tecnico/ INFORME_TECNICO.md (este documento) · figuras/
-│
-└── src/             rutas.py · sentimiento.py · modelo_utils.py · acuerdo.py
-```
-
-### C.2 Trazabilidad
+## Anexo C · Trazabilidad de los resultados
 
 | Elemento | Valor |
 |---|---|
