@@ -302,72 +302,72 @@ a { color: var(--acento); text-decoration: none; }
 <tr>
 <td style="text-align: center;">1</td>
 <td>Los 20 comentarios distintos y su frecuencia en las 3.000 evaluaciones</td>
-<td style="text-align: center;">§3.1</td>
+<td style="text-align: center;">3.1</td>
 </tr>
 <tr>
 <td style="text-align: center;">2</td>
 <td>Desempeño de los modelos preentrenados sobre el gold de 20</td>
-<td style="text-align: center;">§5.1</td>
+<td style="text-align: center;">5.1</td>
 </tr>
 <tr>
 <td style="text-align: center;">3</td>
 <td>Matrices de confusión del benchmark</td>
-<td style="text-align: center;">§5.1</td>
+<td style="text-align: center;">5.1</td>
 </tr>
 <tr>
 <td style="text-align: center;">4</td>
 <td>Comparación de candidatos del modelo de tendencia</td>
-<td style="text-align: center;">§5.2</td>
+<td style="text-align: center;">5.2</td>
 </tr>
 <tr>
 <td style="text-align: center;">5</td>
 <td>Matriz de confusión del modelo de tendencia</td>
-<td style="text-align: center;">§5.2</td>
+<td style="text-align: center;">5.2</td>
 </tr>
 <tr>
 <td style="text-align: center;">6</td>
 <td>Curva de fiabilidad tras la calibración isotónica</td>
-<td style="text-align: center;">§5.2</td>
+<td style="text-align: center;">5.2</td>
 </tr>
 <tr>
 <td style="text-align: center;">7</td>
 <td>Curvas de aprendizaje de la destilación</td>
-<td style="text-align: center;">§5.3</td>
+<td style="text-align: center;">5.3</td>
 </tr>
 <tr>
 <td style="text-align: center;">8</td>
 <td>Comparación de arquitecturas de estudiante</td>
-<td style="text-align: center;">§5.3</td>
+<td style="text-align: center;">5.3</td>
 </tr>
 <tr>
 <td style="text-align: center;">9</td>
 <td>Compromiso precisión/recall al endurecer el umbral</td>
-<td style="text-align: center;">§5.4</td>
+<td style="text-align: center;">5.4</td>
 </tr>
 <tr>
 <td style="text-align: center;">10</td>
 <td>Desempeño sobre el gold humano de 172 comentarios</td>
-<td style="text-align: center;">§5.6</td>
+<td style="text-align: center;">5.6</td>
 </tr>
 <tr>
 <td style="text-align: center;">11</td>
 <td>Verificación reproducible en el informe ejecutable</td>
-<td style="text-align: center;">§5.6</td>
+<td style="text-align: center;">5.6</td>
 </tr>
 <tr>
 <td style="text-align: center;">12</td>
 <td>Zonas de confusión y aporte del sentimiento</td>
-<td style="text-align: center;">§5.7</td>
+<td style="text-align: center;">5.7</td>
 </tr>
 <tr>
 <td style="text-align: center;">13</td>
 <td>Distribución del sentimiento institucional</td>
-<td style="text-align: center;">§5.8</td>
+<td style="text-align: center;">5.8</td>
 </tr>
 <tr>
 <td style="text-align: center;">14</td>
 <td>Comparación de esquemas de etiquetado</td>
-<td style="text-align: center;">§5.8</td>
+<td style="text-align: center;">5.8</td>
 </tr>
 </tbody>
 </table>
@@ -445,37 +445,37 @@ natural. El problema abordado es doble:</p>
 <tr>
 <td>O1</td>
 <td>Diagnosticar la calidad e idoneidad de los datos disponibles</td>
-<td>✅ Cumplido (§3)</td>
+<td>✅ Cumplido (sección 3)</td>
 </tr>
 <tr>
 <td>O2</td>
 <td>Evaluar comparativamente modelos de sentimiento preentrenados en español</td>
-<td>✅ Cumplido (§5.1)</td>
+<td>✅ Cumplido (sección 5.1)</td>
 </tr>
 <tr>
 <td>O3</td>
 <td>Construir un modelo de tendencia docente validado temporalmente</td>
-<td>✅ Cumplido (§5.2)</td>
+<td>✅ Cumplido (sección 5.2)</td>
 </tr>
 <tr>
 <td>O4</td>
 <td>Ajustar (<em>fine-tuning</em>) un modelo de sentimiento propio</td>
-<td>✅ Cumplido (§5.3–§5.6)</td>
+<td>✅ Cumplido (secciones 5.3 a 5.6)</td>
 </tr>
 <tr>
 <td>O5</td>
 <td>Construir un estándar de oro humano con acuerdo medido</td>
-<td>✅ Cumplido (§5.5)</td>
+<td>✅ Cumplido (sección 5.5)</td>
 </tr>
 <tr>
 <td>O6</td>
 <td>Empaquetar y desplegar el modelo en la nube</td>
-<td>✅ Empaquetado; despliegue en curso (§7)</td>
+<td>✅ Empaquetado; despliegue en curso (sección 7)</td>
 </tr>
 <tr>
 <td>O7</td>
 <td>Definir la metodología sentimiento → DOFA</td>
-<td>✅ Cumplido, con prototipo (§8)</td>
+<td>✅ Cumplido, con prototipo (sección 8)</td>
 </tr>
 </tbody>
 </table>
@@ -485,7 +485,7 @@ modelo de tendencia; dos rondas de fine-tuning (destilación y verdad humana); p
 de anotación humana; empaquetado del modelo y guía de despliegue; metodología DOFA con prototipo.</p>
 <p><strong>No incluye:</strong> el despliegue productivo final en Azure (en ejecución por el equipo), la
 integración con el sistema de encuestas de la universidad, ni el análisis basado en aspectos
-(ABSA), que el corpus utilizado no permite (§3.2).</p>
+(ABSA), que el corpus utilizado no permite (sección 3.2).</p>
 <h2>2 · Idea y arquitectura de la solución</h2>
 <p>La solución es un <strong>pipeline de dos modelos complementarios</strong> cuyas salidas agregadas alimentan
 el DOFA del docente:</p>
@@ -613,7 +613,7 @@ licencia <strong>CC BY-NC 3.0</strong>.</p>
 </code></pre>
 <p><strong>Consecuencia metodológica.</strong> El subconjunto <strong>no conserva las etiquetas ni los aspectos</strong> del
 recurso original; por tanto no era directamente utilizable para aprendizaje supervisado. Esa
-ausencia es la razón de las dos estrategias de etiquetado del proyecto (§4.4 y §4.5). La tarea
+ausencia es la razón de las dos estrategias de etiquetado del proyecto (secciones 4.4 y 4.5). La tarea
 implementada es clasificación de <strong>polaridad global</strong>, no ABSA.</p>
 <h3>3.3 Perfil estadístico del corpus (verificado sobre el archivo)</h3>
 <p>Archivo de 3,3 MB · SHA-256 <code>21637107cebf941a3aab9f397983c123b1676f5f4488d2d1…</code></p>
@@ -709,7 +709,7 @@ programación, </em><em>pero no</em><em> sobre los estudiantes"</em>). El 1,6 % 
 español corresponde a reformulaciones idiomáticas legítimas (<em>"lacks clarity"</em> → <em>"no es
 claro"</em>). <strong>Las tasas no comprometen la validez del entrenamiento.</strong> La limitación que sí
 persiste: la traducción produce un registro estándar, sin la variación coloquial regional que
-tendrán las encuestas reales (§9.1, L2).</p>
+tendrán las encuestas reales (sección 9.1, L2).</p>
 <h3>3.5 Datasets derivados</h3>
 <table>
 <thead>
@@ -728,12 +728,12 @@ tendrán las encuestas reales (§9.1, L2).</p>
 <tr>
 <td><code>benchmark_sentimiento.csv</code></td>
 <td>20 comentarios con gold manual y predicción por modelo</td>
-<td>Benchmark §5.1</td>
+<td>Benchmark, sección 5.1</td>
 </tr>
 <tr>
 <td><code>muestra_anotacion.csv</code></td>
 <td>335 comentarios muestreados para anotar</td>
-<td>Anotación §4.5</td>
+<td>Anotación, sección 4.5</td>
 </tr>
 <tr>
 <td><strong><code>train_humano.csv</code></strong></td>
@@ -756,12 +756,12 @@ sus decisiones se justifican con evidencia obtenida en la fase anterior.</p>
 <p>Se partió del análisis exploratorio del dataset institucional y se sometió a una <strong>auditoría
 sistemática</strong>: cada afirmación del EDA se recomputó desde los datos y la mayoría de los hallazgos
 se sometió además a refutadores independientes antes de aceptarse. Los cuatro hallazgos
-metodológicos de mayor severidad (§5.7) quedaron sin esa segunda vuelta por un límite de sesión;
+metodológicos de mayor severidad (sección 5.7) quedaron sin esa segunda vuelta por un límite de sesión;
 se recomputaron de forma independiente y así se declara.</p>
 <p>La auditoría confirmó la calidad estructural (0 nulos, 0 duplicados, rangos válidos, paleta
 visual validada para daltonismo con ΔE CVD ≥ 23,8) y detectó <strong>seis problemas</strong> que se
 corrigieron antes de continuar: cuatro conclusiones sobre-afirmadas, la ubicación errónea de la
-«zona gris» y un artefacto en la señal de sentimiento (§5.7–§5.8).</p>
+«zona gris» y un artefacto en la señal de sentimiento (secciones 5.7 y 5.8).</p>
 <h3>4.2 Fase 2 — Benchmark de modelos preentrenados</h3>
 <p>Se compararon tres modelos de sentimiento en español contra un <strong>estándar de oro etiquetado
 manualmente por rúbrica</strong>, elaborado de forma independiente de los modelos para evitar
@@ -828,7 +828,7 @@ etiquetando el corpus deduplicado, y BETO como <strong>alumno</strong> entrenado
 <blockquote>
 <p><strong>Límite teórico declarado como hipótesis falsable.</strong> El alumno aprende la <em>función</em> del
 maestro, heredando sus aciertos y sus errores; su techo de calidad es, por construcción, el
-desempeño del maestro. La §5.3 contrasta esta hipótesis empíricamente, incluyendo una
+desempeño del maestro. La sección 5.3 contrasta esta hipótesis empíricamente, incluyendo una
 comparación de arquitecturas del alumno.</p>
 </blockquote>
 <h3>4.5 Fase 5 — Anotación humana</h3>
@@ -1152,7 +1152,7 @@ recall ≥ 0,985 (rango observado 0,953–0,973); se documenta como pendiente y 
 ajuste de umbral. Además, la ventaja del RandomForest sobre una simple regla de dos umbrales
 <strong>no es estadísticamente significativa</strong>: McNemar p = 0,280, y en 15 semillas de partición la
 regla supera al modelo en 2 de ellas —ambos resultados provienen del experimento equivalente de
-la auditoría del EDA (RF 0,920 vs regla 0,910 sobre 649 filas, §5.7); el NB03 no reejecutó la
+la auditoría del EDA (RF 0,920 vs regla 0,910 sobre 649 filas, sección 5.7); el NB03 no reejecutó la
 prueba sobre su propia partición—. La causa de fondo es la <strong>circularidad</strong>: la etiqueta
 <code>tendencia_desempeno</code> se generó por reglas a partir de los propios puntajes, de modo que estas
 métricas constituyen un <strong>techo artificial</strong> del dataset, no una medida del valor del aprendizaje
@@ -1905,7 +1905,7 @@ crítica</strong> de lo que sugería el léxico. Las cifras de la distribución 
 <td>Apple Silicon (MPS)</td>
 </tr>
 <tr>
-<td>Destilación RoBERTuito (NB04 §8.6)</td>
+<td>Destilación RoBERTuito (NB04, capítulo 8.6)</td>
 <td style="text-align: right;">8.187</td>
 <td style="text-align: right;">5,9 min</td>
 <td>Apple Silicon (MPS)</td>
@@ -2026,8 +2026,8 @@ decenas de milisegundos por comentario procesando en lotes; 100.000 comentarios 
 <h3>6.3 Verificación del artefacto</h3>
 <p>El artefacto se recarga desde disco y reproduce las predicciones de la tabla siguiente
 (<code>INFORME_FINAL.ipynb</code>, celda 12); al evaluarlo sobre el gold de 172 devuelve exactamente las
-métricas de §5.6. La prueba formal de identidad <strong>disco vs. memoria</strong> sobre 20 comentarios de
-control se ejecutó sobre <code>modelo_sentimiento_ft</code> (NB04 §9), no sobre este artefacto.
+métricas de la sección 5.6. La prueba formal de identidad <strong>disco vs. memoria</strong> sobre 20 comentarios de
+control se ejecutó sobre <code>modelo_sentimiento_ft</code> (NB04, capítulo 9), no sobre este artefacto.
 Predicciones de demostración:</p>
 <table>
 <thead>
@@ -2074,7 +2074,7 @@ Predicciones de demostración:</p>
 <p><strong>Lectura honesta de la demostración.</strong> El ajuste movió al modelo <strong>hacia la rúbrica</strong> —el caso
 mixto adversativo ya no se clasifica POS—, pero los casos emblemáticos <em>«La clase estuvo
 bien»</em> y <em>«Se podría mejorar»</em> aún no cruzan la frontera deseada. Es exactamente la limitación
-cuantificada en §9.2 (L7) y lo que resolvería la siguiente ronda de anotación.</p>
+cuantificada en la sección 9.2 (L7) y lo que resolvería la siguiente ronda de anotación.</p>
 </blockquote>
 <h3>6.4 Paquete de despliegue</h3>
 <p>Se generó <code>modelo_sentimiento_humano.zip</code> (<strong>404 MB decimales / 386 MiB</strong>, 7 archivos:
@@ -2231,7 +2231,7 @@ al DOFA.</p>
 <td>L2</td>
 <td>El corpus de entrenamiento de la destilación es <strong>traducido</strong> del inglés (dominio: aspectos académicos de una universidad de Bangladesh)</td>
 <td>Desplazamiento de dominio y registro respecto a las evaluaciones de la U. del Rosario</td>
-<td>Mitigada parcialmente por la auditoría de traducción (§3.4) y sustituida como fuente principal por la anotación humana</td>
+<td>Mitigada parcialmente por la auditoría de traducción (sección 3.4) y sustituida como fuente principal por la anotación humana</td>
 </tr>
 <tr>
 <td>L3</td>
@@ -2422,7 +2422,7 @@ Pasar de polaridad global a polaridad por aspecto (metodología · evaluación �
 El DOFA gana precisión cuando distingue «explica bien pero califica injustamente» de un
 sentimiento mixto indiferenciado. Requiere el gold ampliado de la prioridad 1.</p>
 <p><strong>Prioridad 7 — Puesta en producción y monitoreo (impacto medio).</strong>
-Desplegar el servicio de §7, registrar la distribución de predicciones por semestre y alertar
+Desplegar el servicio de la sección 7, registrar la distribución de predicciones por semestre y alertar
 ante desviaciones (<em>drift</em>). Cerrar el ciclo: cada semestre anotado alimenta la siguiente versión
 del modelo.</p>
 <div style="page-break-after: always;"></div>
@@ -2483,7 +2483,7 @@ del modelo.</p>
     (System Demonstrations). Hugging Face.</li>
 <li>Pedregosa, F. et al. (2011). <em>Scikit-learn: Machine Learning in Python.</em> JMLR, 12, 2825–2830.</li>
 <li>Anthropic (2025). <em>Claude</em> — modelo de lenguaje empleado para la traducción EN→ES del corpus
-    de entrenamiento (§3.4) y como asistente de desarrollo del proyecto.</li>
+    de entrenamiento (sección 3.4) y como asistente de desarrollo del proyecto.</li>
 </ol>
 <div style="page-break-after: always;"></div>
 
@@ -2555,7 +2555,7 @@ del modelo.</p>
 </tr>
 </tbody>
 </table>
-<h3>A.2 Destilación con RoBERTuito como estudiante (NB04 §8.6)</h3>
+<h3>A.2 Destilación con RoBERTuito como estudiante (NB04, capítulo 8.6)</h3>
 <p>Idénticos a A.1 (4 épocas · lr 2e-5 · lote 32 · <code>max_length</code> 64 · partición 70/15/15) salvo:
 modelo base <code>pysentimiento/robertuito-base-uncased</code>; duración 5,9 min.</p>
 <h3>A.3 Fine-tuning humano (NB05) — <code>modelo_sentimiento_humano</code> ⭐ producción</h3>
@@ -2818,39 +2818,39 @@ n = 750): En riesgo 0,98/0,96/0,97 (149) · Estable 0,92/0,89/0,91 (375) · Mejo
 </thead>
 <tbody>
 <tr>
-<td>§3 Datos</td>
+<td>3 Datos</td>
 <td><code>Informe.md</code> · <code>analisis_datos/reports/justificacion_comentarios_repetidos.md</code></td>
 </tr>
 <tr>
-<td>§5.1 Benchmark</td>
+<td>5.1 Benchmark</td>
 <td><code>analisis_sentimientos/notebooks/03_benchmark_modelos.ipynb</code></td>
 </tr>
 <tr>
-<td>§5.2 Tendencia</td>
+<td>5.2 Tendencia</td>
 <td><code>analisis_datos/notebooks/03_modelado_tendencia_docente.ipynb</code> + <code>_metadatos.json</code></td>
 </tr>
 <tr>
-<td>§5.3 Destilación · §5.4 Falsos positivos</td>
+<td>5.3 Destilación · 5.4 Falsos positivos</td>
 <td><code>analisis_sentimientos/notebooks/04_finetuning_sentimiento.ipynb</code></td>
 </tr>
 <tr>
-<td>§5.5 Anotación</td>
+<td>5.5 Anotación</td>
 <td><code>anotacion/reporte_acuerdo.md</code> · <code>anotacion/consolidar_anotacion.py</code></td>
 </tr>
 <tr>
-<td>§5.6 Modelo final</td>
+<td>5.6 Modelo final</td>
 <td><code>analisis_sentimientos/notebooks/05_finetuning_humano.ipynb</code> · <code>models/modelo_sentimiento_humano/info.json</code></td>
 </tr>
 <tr>
-<td>§5.7 Auditoría del EDA</td>
+<td>5.7 Auditoría del EDA</td>
 <td><code>analisis_datos/reports/INFORME_Revision_EDA_TechTailors.md</code></td>
 </tr>
 <tr>
-<td>§5.8 Análisis institucional</td>
+<td>5.8 Análisis institucional</td>
 <td><code>analisis_datos/notebooks/02_integracion_sentimiento_eda.ipynb</code></td>
 </tr>
 <tr>
-<td>§6–§8 Producción, despliegue, DOFA</td>
+<td>6 a 8 · Producción, despliegue, DOFA</td>
 <td><code>INFORME_FINAL.ipynb</code></td>
 </tr>
 </tbody>
