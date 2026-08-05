@@ -12,12 +12,20 @@ basado en reglas hacia uno **predictivo y accionable**, combinando **análisis d
 de los comentarios (modelos de lenguaje en español) con un **modelo de clasificación** de la
 tendencia de desempeño (`Mejora` / `Estable` / `En riesgo`).
 
-> 📄 **[INFORME FINAL DEL PROYECTO](INFORME_FINAL.ipynb)** — análisis completo del proceso,
-> inventario y ubicación de todos los modelos, **modelo seleccionado para producción**
-> (`modelo_sentimiento_humano`), guía de despliegue en la nube y construcción del DOFA.
+> 📕 **[INFORME TÉCNICO](informe_tecnico/INFORME_TECNICO.md)** ([PDF](informe_tecnico/INFORME_TECNICO.pdf))
+> — documento maestro del proyecto: metodología, resultados completos con las 14 figuras,
+> modelo de producción, despliegue, limitaciones y anexos de reproducción.
+>
+> 📄 **[INFORME FINAL DEL PROYECTO](INFORME_FINAL.ipynb)** — versión **ejecutable** que se
+> autoverifica al correrla: inventario y ubicación de todos los modelos, **modelo seleccionado
+> para producción** (`modelo_sentimiento_humano`), guía de despliegue en la nube y DOFA.
+>
+> 📊 **[Informe del dataset](Informe.md)** — origen, traducción y auditoría del corpus de
+> entrenamiento.
 
 ## 📑 Tabla de contenido
 
+0. [Informe técnico completo](informe_tecnico/INFORME_TECNICO.md)
 1. [Problema y objetivo](#-problema-y-objetivo)
 2. [Resultados destacados](#-resultados-destacados)
 3. [Estructura del proyecto](#-estructura-del-proyecto)
