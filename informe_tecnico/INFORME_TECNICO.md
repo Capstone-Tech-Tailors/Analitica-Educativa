@@ -15,8 +15,11 @@
 
 | | |
 |---|---|
+| **Curso** | AI Course — Samsung Innovation Campus |
 | **Equipo** | Tech Tailors |
-| **Integrantes** | Juan David Ríos · Natalia Remolina · Giovanni Balza |
+| **Líder del equipo** | Juan David Ríos Gómez |
+| **Integrantes** | Natalia Remolina · Giovanni Balza |
+| **Autoría de este informe** | Natalia Remolina — componente de procesamiento de lenguaje natural y DOFA |
 | **Fecha** | 4 de agosto de 2026 |
 | **Repositorio** | github.com/Capstone-Tech-Tailors/Analitica-Educativa |
 | **Modelo de producción** | `modelo_sentimiento_humano` (RoBERTuito + etiquetas humanas) |
@@ -29,43 +32,114 @@
 
 | | Sección | |
 |---|---|---|
+| | **Ficha del proyecto** | Objetivo · Método · Datos · Entregables · Roles |
 | | **Resumen ejecutivo** | |
 | **1** | **Introducción** | 1.1 Contexto del reto · 1.2 Problema · 1.3 Objetivos · 1.4 Alcance |
 | **2** | **Idea y arquitectura de la solución** | Pipeline encuesta → sentimiento → tendencia → DOFA → nube |
 | **3** | **Datos** | 3.1 Dataset institucional · 3.2 Cadena de derivación del corpus · 3.3 Perfil estadístico · 3.4 Traducción y auditoría · 3.5 Datasets derivados |
 | **4** | **Metodología** | 4.1 EDA y auditoría · 4.2 Benchmark · 4.3 Modelo de tendencia · 4.4 Destilación · 4.5 Anotación humana · 4.6 Fine-tuning humano |
-| **5** | **RESULTADOS** | 5.1 Benchmark · 5.2 Tendencia · 5.3 Destilación · 5.4 Falsos positivos · 5.5 Anotación · 5.6 Modelo final · 5.7 Auditoría del EDA · 5.8 Análisis institucional · 5.9 Eficiencia |
+| **5** | **RESULTADOS** | 5.1 Benchmark · 5.2 Tendencia · 5.3 Destilación · 5.4 Falsos positivos · 5.5 Anotación · 5.6 Modelo final · 5.7 Análisis institucional · 5.8 Eficiencia · 5.9 Modelos complementarios |
 | **6** | **Modelo de producción** | 6.1 Ficha técnica · 6.2 Justificación · 6.3 Verificación · 6.4 Paquete de despliegue |
-| **7** | **Despliegue en la nube** | 7.1 Publicación · 7.2 Servicio de inferencia · 7.3 Requisitos |
-| **8** | **Aplicación: del sentimiento al DOFA** | 8.1 Metodología · 8.2 Prototipo real · 8.3 Docentes «enmascarados» |
+| **7** | **Despliegue: el sistema en producción** | 7.1 Arquitectura del sistema · 7.2 Cómo se sirve el modelo |
+| **8** | **Aplicación: del sentimiento al DOFA** | 8.1 Metodología propuesta · 8.2 Implementación en el backend · 8.3 Prototipo sobre datos reales · 8.4 Docentes «enmascarados» |
 | **9** | **Limitaciones** | 9.1 Datos · 9.2 Modelo · 9.3 Alcance |
 | **10** | **Consideraciones éticas** | |
 | **11** | **Conclusiones** | |
 | **12** | **Trabajo futuro** | |
 | **13** | **Referencias** | |
-| **A** | **Anexo A** | Hiperparámetros completos por experimento |
-| **B** | **Anexo B** | Glosario |
-| **C** | **Anexo C** | Trazabilidad de los resultados |
-| **D** | **Anexo D** | Guía de reproducción |
 
-### Índice de figuras
+<div style="page-break-after: always;"></div>
 
-| Fig. | Título | Sección |
-|:--:|---|:--:|
-| 1 | Los 20 comentarios distintos y su frecuencia en las 3.000 evaluaciones | 3.1 |
-| 2 | Desempeño de los modelos preentrenados sobre el gold de 20 | 5.1 |
-| 3 | Matrices de confusión del benchmark | 5.1 |
-| 4 | Comparación de candidatos del modelo de tendencia | 5.2 |
-| 5 | Matriz de confusión del modelo de tendencia | 5.2 |
-| 6 | Curva de fiabilidad tras la calibración isotónica | 5.2 |
-| 7 | Curvas de aprendizaje de la destilación | 5.3 |
-| 8 | Comparación de arquitecturas de estudiante | 5.3 |
-| 9 | Compromiso precisión/recall al endurecer el umbral | 5.4 |
-| 10 | Desempeño sobre el gold humano de 172 comentarios | 5.6 |
-| 11 | Verificación reproducible en el informe ejecutable | 5.6 |
-| 12 | Zonas de confusión y aporte del sentimiento | 5.7 |
-| 13 | Distribución del sentimiento institucional | 5.8 |
-| 14 | Comparación de esquemas de etiquetado | 5.8 |
+## Ficha del proyecto
+
+Esta sección alinea el informe con el **Capstone Project Action Plan** del AI Course de Samsung
+Innovation Campus: reproduce sus campos oficiales —marcados con ▸— y señala dónde se desarrolla
+cada uno. Los datos de curso, equipo e integrantes figuran en la portada.
+
+| Campo | Valor |
+|---|---|
+| ▸ **Título del proyecto** (*Project Title*) | Analítica Educativa |
+| Entidad | Universidad del Rosario |
+| ▸ **Código fuente** | GitHub · `Capstone-Tech-Tailors/Analitica-Educativa` |
+| Interfaz de usuario | Dashboard en PowerBI · repositorio `entregable-visual` |
+
+### Objetivo (*Goal*)
+
+> «Diseñar e implementar una solución avanzada de análisis de evaluaciones docentes que evolucione
+> el sistema actual basado en reglas hacia un modelo de aprendizaje automático, manteniendo
+> compatibilidad con los datos y procesos existentes. El reto consiste en pasar de un análisis
+> descriptivo a uno predictivo y accionable, que permita anticipar tendencias en el desempeño
+> docente y generar recomendaciones de mejora continua.»
+> — *Capstone Project Action Plan*
+
+Este informe documenta **el componente de procesamiento de lenguaje natural y DOFA**, uno de los
+cinco entregables del proyecto. Los objetivos técnicos derivados se detallan en la sección 1.3.
+
+### Método (*Method*)
+
+El Action Plan establece una metodología ágil **Scrum/Kanban** con seguimiento y control de las
+actividades en **JIRA**. Este informe no documenta la gestión del proyecto, sino la **ejecución
+técnica** del componente de lenguaje, organizada en **seis fases encadenadas** —análisis
+exploratorio y auditoría, evaluación comparativa de modelos, modelo de tendencia, destilación,
+anotación humana y ajuste fino con verdad humana—, donde cada fase justifica sus decisiones con
+evidencia obtenida en la anterior (sección 4).
+
+### Datos (*Data*)
+
+| Aspecto | Situación |
+|---|---|
+| ▸ **Fuente institucional** | Información suministrada por la universidad (operador del reto) a través de un SharePoint del proyecto; en el sistema en producción los CSV ingresan por `POST /etl` (sección 7.1) |
+| ▸ **Propiedad intelectual** | Los datos y los resultados son propiedad de la entidad; los CSV institucionales no están versionados (`*.csv` en `.gitignore`) |
+| **Corpus de entrenamiento y evaluación del modelo de sentimiento** | `ReadyToTrain_comentarios_EN_ES_completo.xlsx` — 100.000 filas del corpus público de AIUB (referencia 1, licencia **CC BY-NC 3.0**), traducido al español por el equipo. Es la **única fuente de texto** del modelo de producción |
+
+> **Desvío declarado respecto al Action Plan.** El plan preveía trabajar únicamente con la
+> información del operador. El diagnóstico de datos lo hizo inviable para el componente de
+> lenguaje: la unicidad del campo de comentarios institucional es del **0,67 %** (detalle e
+> implicaciones en la sección 3.1). Se incorporó entonces un corpus público con licencia
+> compatible con uso académico. Tres salvaguardas acompañan la decisión:
+>
+> **(i)** El **modelo de sentimiento** de producción no se entrenó con datos institucionales:
+> su único texto proviene del corpus externo. El dataset institucional sí alimentó el análisis
+> exploratorio, el benchmark inicial (sección 5.1), el modelo de tendencia (sección 5.2) y el
+> prototipo DOFA (secciones 5.7 y 8.3). Los modelos complementarios de la sección 5.9 no usan
+> ese archivo, sino una versión sintética ampliada derivada de él.
+> **(ii)** Los datos institucionales no se enviaron a terceros para etiquetado ni traducción y no
+> están versionados; su procesamiento ocurre en el despliegue operado por el equipo — la sección
+> 10 recomienda migrarlo a infraestructura controlada por la universidad.
+> **(iii)** El corpus externo aportó materia prima de texto, no etiquetas: las del modelo de
+> producción son **anotación propia del equipo** (sección 5.5). La limitación de dominio que
+> introduce queda declarada (L2, sección 9.1) y su resolución es la prioridad 3 del trabajo futuro.
+
+### Entregables (*Expected Outcome*)
+
+| # | Entregable del Action Plan | Responsable | Dónde | Estado |
+|:--:|---|---|---|---|
+| a | Probabilidad de **rotación** de profesores entre *materias* de una misma facultad | Equipo | 5.9 | Regresor de egresos entrenado **sobre datos sintéticos ampliados**, con acoplamiento parcial declarado (R² 0,942 = techo optimista). El índice de egreso queda **propuesto, no calculado** |
+| b | Anticipar el porcentaje de **deserción** para una clase específica | Equipo | 5.9 | **Analizada:** las correlaciones por asignatura identifican sus factores (volumen del curso 0,76; carga lectiva 0,63) y muestran que desertar y reprobar son fenómenos distintos (r = 0,17). El modelo predictivo queda **pendiente** |
+| c | Anticipar la **demanda estudiantil** (estudiantes futuros por *materia*) | Equipo | 5.9 | **Explorado sin resultado válido:** el modelo reproduce una identidad aritmética (fuga de datos declarada) y el reentrenamiento quedó como recomendación |
+| d | **Análisis FODA** consolidado por profesor | **Natalia Remolina** (metodología, modelo, verificación) · Juan David Ríos Gómez (implementación en el backend) | **5.1–5.9 · 6 · 7 · 8** | **Completado y en producción:** el DOFA consolidado se proyecta en el dashboard PowerBI a partir de las salidas del modelo. El servicio **en línea** desde el backend queda operativo al publicar los pesos en el contenedor (sección 7.2). La asignación de cuadrantes tiene una desviación declarada (Oportunidades = NEU, sección 8.2) |
+| e | **Interfaz de usuario** con los resultados | Juan David Ríos Gómez | 7.1 | Entregada como **demostración pública** (dashboard PowerBI); su contenido no se inspeccionó para este informe y no hay ciclo completo con datos reales (sección 9.3). Según la arquitectura de 7.1, su panel de FODA consumiría `/analisis_foda` |
+
+*Notas de la tabla:* el Action Plan denomina **FODA** a lo que el resto de este informe llama
+**DOFA** —misma matriz—; y usa *materias* donde el informe usa *asignaturas*. Dos precisiones de
+alcance: el marco de la sección 5.9 no tiene dimensión de facultad, de modo que (a) se modela
+entre asignaturas sin restringirlas a una facultad; y «Estudiantes Aprobados» es un indicador
+retrospectivo, no la proyección futura que pide (c). El plan preveía la interfaz como aplicativo
+web; el equipo entregó un dashboard PowerBI publicado, que cumple la misma función.
+
+**Beneficios esperados** declarados en el plan: planeación más ágil de la asignación docente,
+retroalimentación personalizada que incentive mejoras pedagógicas, reducción de la deserción en
+materias de bajo desempeño, mejor proyección de ocupación de aulas y, a largo plazo, insumos
+para revisar la malla curricular.
+
+### Roles (*Role by Member*)
+
+| Integrante | Responsabilidad |
+|---|---|
+| **Juan David Ríos Gómez** (líder) | Apoyo a los integrantes, gestión de avances y reuniones con la universidad, **evaluación de resultados** y presentación de estos en una interfaz de usuario (aplicativo web). Vela por la calidad y completitud de la información (preprocesamiento, limpieza, transformación, imputación) y por la determinación de las métricas de negocio |
+| **Giovanni Balza** | Análisis estadístico exploratorio: componentes temporales (tendencia, estacionalidad, ciclicidad), segmentación de perfiles docentes, **detección de tendencias emergentes** y estudio de las variables que más influyen en cada variable objetivo |
+| **Natalia Remolina** | **Automatización del análisis FODA por docente**: análisis de sentimiento de los comentarios mediante procesamiento de lenguaje natural, selección del mejor modelo preentrenado y ajuste fino (*fine-tuning*) del modelo elegido — **objeto de este informe** |
+| **Rol compartido** | Evaluación de modelos predictivos para cada variable objetivo y selección del de mejor desempeño |
 
 <div style="page-break-after: always;"></div>
 
@@ -82,15 +156,17 @@ El proyecto recorrió el ciclo completo de un desarrollo de ciencia de datos apl
 1. **Diagnóstico de datos.** El análisis exploratorio reveló que el dataset institucional del
    reto contiene solo **20 comentarios distintos repetidos en 3.000 filas** (unicidad 0,67 %),
    lo que imposibilita entrenar o evaluar seriamente un modelo de lenguaje. Este hallazgo
-   redefinió la estrategia y motivó la incorporación de un corpus real complementario de
+   redefinió la estrategia y motivó la incorporación de un corpus real —única fuente de texto del
+   modelo de producción— de
    **100.000 comentarios** (29.243 textos únicos), traducido al español por el equipo.
 2. **Evaluación comparativa** de tres modelos de sentimiento aplicables al español —RoBERTuito y
    BETO (preentrenados en español) y XLM-R (multilingüe)— contra un estándar de oro manual: RoBERTuito resultó el mejor
    modelo individual (accuracy 0,75) y el consenso por votación el mejor macro-F1 (0,730).
 3. **Modelo de tendencia docente**: RandomForest con macro-F1 **0,915** en partición aleatoria y
    **0,905** en validación temporal (entrenar 2020-2022, probar 2023), con detección y exclusión
-   de una variable con fuga de información. El punto de operación desplegado —tras calibración
-   isotónica y umbral 0,21— rinde macro-F1 0,899 con recall `En riesgo` 0,966.
+   de una variable con fuga de información. El punto de operación elegido —tras calibración
+   isotónica y umbral 0,21— rinde macro-F1 0,899 con recall `En riesgo` 0,966. Este modelo aún
+   no está integrado en el backend (sección 7), que hoy sirve únicamente el de sentimiento.
 4. **Fine-tuning por destilación**: se demostró empírica y sistemáticamente que un modelo
    entrenado con pseudo-etiquetas de un maestro **no puede superar al maestro** (fidelidad de
    imitación de hasta 0,933, sin ganancia de calidad real), incluyendo un análisis de falsos
@@ -106,10 +182,15 @@ El proyecto recorrió el ciclo completo de un desarrollo de ciencia de datos apl
    estadísticamente significativa (McNemar p = 1,0)— al mejor modelo público (0,638).
 
 El modelo final se empaquetó en un ZIP de 404 MB (modelo en disco: 437 MB, ejecutable en CPU) y
-se entregó para su **despliegue en Azure**; el informe incluye la guía completa de despliegue, la metodología de construcción del
-DOFA a partir de las salidas del modelo (con un prototipo sobre datos reales) y una declaración
-exhaustiva de limitaciones, entre ellas que el cuello de botella actual es el **volumen de
-anotación humana**, con el sistema para ampliarla ya construido y operativo.
+está integrado en el **sistema en producción del equipo**: un backend FastAPI (`src/app.py` del
+repositorio) con despliegue continuo en **Azure Container Apps**, que expone los endpoints
+`/predecir_sentimientos` y `/analisis_foda` y está previsto que alimente un dashboard en
+PowerBI. Queda pendiente
+cargar los pesos en el almacenamiento del contenedor. El informe documenta ese sistema (sección
+7), la metodología de construcción del DOFA con su implementación real (sección 8, con un
+prototipo sobre datos reales) y una declaración exhaustiva de limitaciones, entre ellas que el
+cuello de botella actual es el **volumen de anotación humana**, con el sistema para ampliarla ya
+construido y operativo.
 
 <div style="page-break-after: always;"></div>
 
@@ -117,10 +198,13 @@ anotación humana**, con el sistema para ampliarla ya construido y operativo.
 
 ### 1.1 Contexto del reto
 
-El reto *Analítica Educativa* plantea evolucionar el análisis de las evaluaciones docentes desde
-un sistema descriptivo basado en reglas hacia una solución **predictiva y accionable**, capaz de
-anticipar tendencias en el desempeño docente y generar recomendaciones de mejora continua,
-manteniendo compatibilidad con los datos y procesos existentes.
+El reto *Analítica Educativa*, cuya formulación literal se reproduce en la ficha del proyecto,
+exige pasar de describir a **anticipar**. El sistema vigente clasifica el desempeño docente con
+reglas sobre los puntajes numéricos: es transparente y auditable, pero solo puede repetir el
+umbral que alguien fijó de antemano, no descubrir patrones ni explicar por qué un docente se
+desvía. Y, sobre todo, deja fuera la mitad de la encuesta —los **comentarios de texto libre**,
+que es donde el estudiante explica su calificación—. Ese texto sin explotar es la materia prima
+de este informe.
 
 ### 1.2 Problema
 
@@ -137,30 +221,52 @@ natural. El problema abordado es doble:
 
 ### 1.3 Objetivos
 
+Objetivos técnicos derivados del entregable **(d) Análisis FODA por profesor** de la ficha del
+proyecto, que es el componente documentado en este informe.
+
 | # | Objetivo | Estado |
 |---|---|---|
 | O1 | Diagnosticar la calidad e idoneidad de los datos disponibles | ✅ Cumplido (sección 3) |
-| O2 | Evaluar comparativamente modelos de sentimiento preentrenados en español | ✅ Cumplido (sección 5.1) |
-| O3 | Construir un modelo de tendencia docente validado temporalmente | ✅ Cumplido (sección 5.2) |
-| O4 | Ajustar (*fine-tuning*) un modelo de sentimiento propio | ✅ Cumplido (secciones 5.3 a 5.6) |
+| O2 | Evaluar comparativamente modelos de sentimiento preentrenados en español y **seleccionar el mejor** | ✅ Cumplido (sección 5.1) |
+| O3 | Construir un modelo de tendencia docente validado temporalmente | ✅ Cumplido, con dos reservas declaradas: la etiqueta es derivada por reglas (techo artificial, L4) y el objetivo de recall ≥ 0,985 solo se alcanza en el protocolo temporal (sección 5.2) |
+| O4 | Ajustar (*fine-tuning*) el modelo seleccionado | ✅ Cumplido (secciones 5.3 a 5.6) |
 | O5 | Construir un estándar de oro humano con acuerdo medido | ✅ Cumplido (sección 5.5) |
-| O6 | Empaquetar y desplegar el modelo en la nube | ✅ Empaquetado; despliegue en curso (sección 7) |
-| O7 | Definir la metodología sentimiento → DOFA | ✅ Cumplido, con prototipo (sección 8) |
+| O6 | Empaquetar y desplegar el modelo en la nube | 🟡 **Parcial**: empaquetado y backend con CI/CD en Azure Container Apps; la carga de los pesos al contenedor sigue pendiente (sección 7) |
+| O7 | **Automatizar la construcción del DOFA** a partir de las salidas del modelo | ✅ Cumplido, con una desviación declarada en la implementación (Oportunidades = NEU, sección 8.2) |
+
+O2, O4 y O7 corresponden literalmente a las tres tareas que el Action Plan asigna a Natalia
+Remolina: determinar la mejor opción de modelo preentrenado, ajustarlo mediante *fine-tuning* y
+automatizar el análisis FODA por docente.
 
 ### 1.4 Alcance y no-alcance
 
 **Incluye:** análisis exploratorio y auditoría del dataset institucional; benchmark de modelos;
 modelo de tendencia; dos rondas de fine-tuning (destilación y verdad humana); protocolo completo
-de anotación humana; empaquetado del modelo y guía de despliegue; metodología DOFA con prototipo.
+de anotación humana; empaquetado del modelo y documentación del despliegue en producción
+(sección 7); metodología DOFA con implementación y prototipo.
 
-**No incluye:** el despliegue productivo final en Azure (en ejecución por el equipo), la
-integración con el sistema de encuestas de la universidad, ni el análisis basado en aspectos
-(ABSA), que el corpus utilizado no permite (sección 3.2).
+**No incluye:** los otros cuatro entregables del proyecto. Rotación docente y demanda estudiantil
+(a y c de la ficha) se ejecutaron bajo el **rol compartido** de evaluación de modelos predictivos
+que el Action Plan asigna a los tres integrantes, y aquí solo se reseñan en la sección 5.9, donde la
+deserción (b) se aborda a nivel exploratorio y su modelado queda pendiente; la **interfaz de usuario** (e) y el backend son obra del líder del equipo,
+aunque la sección 7 documenta cómo ese sistema sirve el modelo. Tampoco incluye la integración
+con el sistema de encuestas real de la universidad ni el análisis basado en aspectos (ABSA), que
+el corpus utilizado no permite (sección 3.2).
 
 ## 2 · Idea y arquitectura de la solución
 
 La solución es un **pipeline de dos modelos complementarios** cuyas salidas agregadas alimentan
-el DOFA del docente:
+el DOFA del docente. Los principios de diseño que gobernaron el proyecto:
+
+- **Medir antes de elegir**: ningún modelo se adoptó sin un benchmark contra referencia humana.
+- **Honestidad estadística**: toda comparación va acompañada de su prueba de significancia; los
+  resultados no significativos se declaran como tales.
+- **Trazabilidad total**: semillas fijadas, sumas de comprobación, fichas `info.json` por modelo
+  y ejecución reproducible de todos los notebooks.
+- **El humano define la vara**: la calidad se mide contra etiquetas humanas con acuerdo
+  inter-anotador cuantificado, no contra las predicciones de otro modelo.
+
+El pipeline completo, de la encuesta al DOFA:
 
 ```
                      ┌──────────────────────────────────────────────────────┐
@@ -185,30 +291,22 @@ el DOFA del docente:
                      │  Fortalezas · Debilidades · Oportunidades · Amenazas  │
                      └──────────────────────────────────────────────────────┘
 
-         Despliegue: modelo empaquetado (437 MB) → volumen de Azure → API (FastAPI)
+   Despliegue: pesos (437 MB) → almacenamiento del contenedor → API FastAPI del equipo
+               (src/app.py) → Azure Container Apps → dashboard PowerBI
 ```
-
-Los principios de diseño que gobernaron el proyecto:
-
-- **Medir antes de elegir**: ningún modelo se adoptó sin un benchmark contra referencia humana.
-- **Honestidad estadística**: toda comparación va acompañada de su prueba de significancia; los
-  resultados no significativos se declaran como tales.
-- **Trazabilidad total**: semillas fijadas, sumas de comprobación, fichas `info.json` por modelo
-  y ejecución reproducible de todos los notebooks.
-- **El humano define la vara**: la calidad se mide contra etiquetas humanas con acuerdo
-  inter-anotador cuantificado, no contra las predicciones de otro modelo.
 
 <div style="page-break-after: always;"></div>
 
 ## 3 · Datos
 
-El proyecto utiliza **dos conjuntos de datos fuente** con roles distintos. Esta distinción es
+El proyecto utiliza **tres conjuntos de datos fuente** con roles distintos. Esta distinción es
 esencial: **el modelo de sentimiento de producción no se entrenó con el dataset institucional.**
 
 | # | Dataset | Origen | Alimentó |
 |---|---|---|---|
 | 1 | `evaluaciones_docentes.csv` | Universidad (reto) | EDA · benchmark inicial · modelo de tendencia · prototipo DOFA |
 | 2 | `ReadyToTrain_comentarios_EN_ES_completo.xlsx` | Corpus Mendeley (AIUB), procesado por el equipo | Destilación · anotación humana · **modelo de producción** |
+| 3 | `evaluaciones_docentes_sintetica_ampliada.csv` | Ampliación **sintética** del institucional, hecha por el equipo (añade variables operativas) | Modelos complementarios de rotación y demanda (sección 5.9) |
 
 ### 3.1 Dataset institucional
 
@@ -227,11 +325,6 @@ puntajes en escala 1–5, un comentario y la etiqueta `tendencia_desempeno`
 | Repeticiones por texto | media 150 · mín 101 · máx 233 |
 | Dispersión de cada texto | en promedio aparece en 48/50 docentes, 8/8 semestres y 7/7 asignaturas |
 
-![Figura 1 — Los 20 comentarios y su frecuencia](figuras/fig02_repeticion_comentarios.png)
-*Figura 1. Los 20 comentarios distintos del dataset institucional y su frecuencia, coloreados
-por polaridad. Dos características delatan el plantillado: la distribución casi uniforme entre
-docentes y la independencia entre el texto y el puntaje de su fila.*
-
 Tres señales indican que el campo no es texto libre real sino **plantillado/anonimizado**:
 (i) cero variaciones ortográficas y cero celdas vacías; (ii) cada frase repartida de forma casi
 uniforme entre docentes, semestres y asignaturas; (iii) independencia entre comentario y puntaje
@@ -240,6 +333,11 @@ uniforme entre docentes, semestres y asignaturas; (iii) independencia entre come
 **Implicación.** Para el análisis de texto, el conjunto real de evaluación son 20 elementos, no
 3.000: el dataset sirve para **validar el método**, no para demostrar desempeño de NLP. Esto
 motivó la incorporación del segundo dataset.
+
+![Figura 1 — Los 20 comentarios y su frecuencia](figuras/fig02_repeticion_comentarios.png)
+*Figura 1. Los 20 comentarios distintos del dataset institucional y su frecuencia, coloreados
+por polaridad. Dos características delatan el plantillado: la distribución casi uniforme entre
+docentes y la independencia entre el texto y el puntaje de su fila.*
 
 ### 3.2 Corpus de entrenamiento: origen y cadena de derivación
 
@@ -518,19 +616,19 @@ cambio de una caída marginal de macro-F1 a 0,899. En el protocolo temporal el R
 alcanza un recall de 0,993 sobre 2023 **sin** ese ajuste; el ajuste de umbral no se evaluó por
 separado en ese protocolo.
 
-![Figura 6 — Curva de fiabilidad](figuras/fig10_tendencia_calibracion.png)
-*Figura 6. Curva de fiabilidad de P(En riesgo) antes y después de la calibración isotónica.*
-
 **Declaración de honestidad estadística.** Ningún candidato alcanzó de fábrica el objetivo de
 recall ≥ 0,985 (rango observado 0,953–0,973); se documenta como pendiente y se mitiga con el
 ajuste de umbral. Además, la ventaja del RandomForest sobre una simple regla de dos umbrales
 **no es estadísticamente significativa**: McNemar p = 0,280, y en 15 semillas de partición la
 regla supera al modelo en 2 de ellas —ambos resultados provienen del experimento equivalente de
-la auditoría del EDA (RF 0,920 vs regla 0,910 sobre 649 filas, sección 5.7); el NB03 no reejecutó la
+la auditoría del análisis exploratorio (RF 0,920 vs regla 0,910 sobre 649 filas); el NB03 no reejecutó la
 prueba sobre su propia partición—. La causa de fondo es la **circularidad**: la etiqueta
 `tendencia_desempeno` se generó por reglas a partir de los propios puntajes, de modo que estas
 métricas constituyen un **techo artificial** del dataset, no una medida del valor del aprendizaje
 automático.
+
+![Figura 6 — Curva de fiabilidad](figuras/fig10_tendencia_calibracion.png)
+*Figura 6. Curva de fiabilidad de P(En riesgo) antes y después de la calibración isotónica.*
 
 ### 5.3 Fine-tuning por destilación
 
@@ -558,12 +656,6 @@ paciencia 2, semilla 42, GPU Apple Silicon (MPS). Duración: **7,2 minutos**.
 | **3** | 0,1493 | 0,3553 | **0,8892** ← mejor |
 | 4 | 0,0852 | 0,4101 | 0,8853 |
 
-![Figura 7 — Curvas de aprendizaje](figuras/fig11_destilacion_curvas.png)
-*Figura 7. Curvas de aprendizaje. La pérdida de validación sube en la época 4 mientras la de
-entrenamiento sigue bajando: sobreajuste incipiente. El entrenamiento completó las 4 épocas —el
-early stopping (paciencia 2) no llegó a dispararse— y `load_best_model_at_end` conservó el modelo
-de la época 3, la de mejor macro-F1 de validación.*
-
 **Fidelidad al maestro en prueba** (n = 1.755): accuracy 0,9054 · macro-F1 **0,9055**.
 
 | Clase | Precisión | Recall | F1 | Soporte |
@@ -571,6 +663,12 @@ de la época 3, la de mejor macro-F1 de validación.*
 | NEG | 0,889 | 0,926 | 0,907 | 585 |
 | NEU | 0,875 | 0,862 | **0,868** ← menor | 585 |
 | POS | 0,954 | 0,928 | 0,941 | 585 |
+
+![Figura 7 — Curvas de aprendizaje](figuras/fig11_destilacion_curvas.png){: .fig-s}
+*Figura 7. Curvas de aprendizaje. La pérdida de validación sube en la época 4 mientras la de
+entrenamiento sigue bajando: sobreajuste incipiente. El entrenamiento completó las 4 épocas —el
+early stopping (paciencia 2) no llegó a dispararse— y `load_best_model_at_end` conservó el modelo
+de la época 3, la de mejor macro-F1 de validación.*
 
 **Comparación de arquitecturas (contraste de hipótesis).** Se repitió el ajuste con
 `pysentimiento/robertuito-base-uncased` sobre las mismas particiones y etiquetas (re-tokenizando
@@ -794,38 +892,11 @@ proviene de las clases NEG y POS.
 *Figura 11. Verificación reproducible de los tres modelos, generada al ejecutar el informe
 ejecutable `INFORME_FINAL.ipynb`.*
 
-### 5.7 Resultados de la auditoría del análisis exploratorio
-
-La auditoría produjo cuatro hallazgos metodológicos —uno confirmado adversarialmente (la fuga de
-`delta_semestre`) y tres recomputados de forma independiente— que se corrigieron:
-
-| # | Hallazgo | Evidencia |
-|---|---|---|
-| 1 | **Fuga de información** en `delta_semestre` | Su significancia (H = 141) es artefacto: usa el promedio del semestre actual. Variable excluida del modelo |
-| 2 | **Colinealidad** invalida el ranking de importancia | `puntaje_promedio` es la media de los otros tres (r = 0,87). Sin él, macro-F1 = 0,917 vs 0,920 y las importancias individuales saltan de +0,002–0,017 a +0,14–0,16 |
-| 3 | `id_docente` **sin señal real** | V de Cramér = 0,119 con p = 0,813; el valor esperado bajo independencia (0,127) es *mayor* que el observado |
-| 4 | Ventaja del ML **no significativa** | RF 0,920 vs regla 0,910; McNemar p = 0,280; la regla gana en 2 de 15 semillas |
-
-**Corrección de la «zona gris».** El EDA situaba la zona de confusión en el promedio 3,4–3,9. La
-verificación mostró que esa franja es **98,5 % Estable** (845 de 858 filas) y la regla acierta
-ahí el 99 %. Las fronteras de decisión reales son **[3,9 – 4,5]** (Estable↔Mejora, donde se
-concentra el 84,6 % de los errores) y **[2,9 – 3,5]** (Estable↔En riesgo).
-
-**Aporte del sentimiento en la zona de solapamiento Estable↔Mejora** ([3,43 – 4,77], 2.228
-filas): P(Mejora | POS) = 0,49 frente a P(Mejora | NEG) = 0,18; el RandomForest con sentimiento
-gana +0,04 de macro-F1 sobre el mismo modelo sin él en esa franja.
-
-![Figura 12 — Zonas de confusión](figuras/fig05_zonas_confusion.png)
-*Figura 12. Probabilidad de la clase minoritaria según el sentimiento en cada zona de
-solapamiento, comparando el esquema léxico del EDA con el gold standard.*
-
-### 5.8 Análisis institucional del sentimiento
+### 5.7 Análisis institucional del sentimiento
 
 Aplicando el pipeline a las 3.000 evaluaciones institucionales:
 
 **Distribución global:** POS 888 (29,6 %) · NEU 1.220 (40,7 %) · NEG 892 (29,7 %).
-
-![Figura 13 — Distribución del sentimiento](figuras/fig03_sentimiento_institucional.png)
 
 **Validación cruzada con los puntajes** (ordenamiento coherente POS > NEU > NEG):
 
@@ -846,9 +917,11 @@ cambia la polaridad de **705 filas (23,5 %)**. Aplicar el gold desplaza masa hac
 crítica** de lo que sugería el léxico. Las cifras de la distribución global de esta sección
 (888 / 1.220 / 892) corresponden al **consenso de los tres modelos**, no al léxico del EDA.
 
-![Figura 14 — Comparación de esquemas](figuras/fig04_esquemas_sentimiento.png)
+![Figura 12 — Distribución del sentimiento](figuras/fig03_sentimiento_institucional.png)
 
-### 5.9 Eficiencia computacional
+![Figura 13 — Comparación de esquemas](figuras/fig04_esquemas_sentimiento.png)
+
+### 5.8 Eficiencia computacional
 
 | Experimento | Ejemplos | Duración | Hardware |
 |---|--:|--:|---|
@@ -869,6 +942,115 @@ directorio. En unidades binarias el modelo de producción son 417,1 MiB.
 
 **Inferencia:** CPU suficiente (no requiere GPU); ~2 vCPU y 4 GB de RAM; latencia del orden de
 decenas de milisegundos por comentario procesando en lotes; 100.000 comentarios ≈ minutos.
+
+### 5.9 Modelos predictivos complementarios sobre métricas estructuradas
+
+> **Fuente y crédito.** Capítulo 4 del notebook del equipo
+> `exploracion/Consultas Estructuradas Con Metricas.ipynb` (repositorio
+> `Capstone-Tech-Tailors/Analitica-Educativa`). Este trabajo persigue los otros dos objetivos
+> del Action Plan: **criterios de rotación** de un docente entre asignaturas (entregable a, vía
+> el índice de egreso) y **demanda estudiantil** por asignatura (entregable c, vía «Estudiantes
+> Aprobados») — señales que complementan el DOFA. El README del repositorio declara además la
+> **deserción** para una clase específica (entregable b), que aquí se aborda mediante el análisis
+> de correlaciones por asignatura; su modelado predictivo queda pendiente.
+> Todas las cifras de esta subsección provienen de las salidas ejecutadas del notebook.
+
+**Datos y marco de modelado.** Se usa un dataset **sintético ampliado**
+(`evaluaciones_docentes_sintetica_ampliada.csv`), distinto del institucional de 3.000 filas de
+la sección 3.1: añade variables operativas (clases pactadas/dictadas, horarios, asistencias,
+aprobados/perdieron/desistieron). Sobre él se construye un marco agregado por
+**docente-asignatura-semestre** con métricas históricas derivadas (rachas de mejora, incidentes,
+índice de reingreso): **1.246 observaciones × 30 predictores** tras excluir la variable objetivo
+y `Reingreso`. El marco se agrega por docente-asignatura-semestre y **no contiene ninguna
+variable de facultad**, de modo que la rotación se modela entre asignaturas sin poder
+restringirla a una misma facultad, como pide el enunciado del entregable (a).
+
+**Selección de las variables objetivo por correlación.** Se exploraron las matrices de
+correlación del marco para elegir objetivos modelables. Idealmente se habría trabajado con
+«Reingresos a la Fecha», pero su comportamiento en la matriz llevó a optar por
+**«Egresos a La Fecha»** —proxy de la rotación docente, entregable (a)—; para el segundo modelo
+se eligió **«Estudiantes Aprobados»**, que es la vía hacia la **demanda estudiantil** proyectada
+por asignatura, entregable (c).
+
+![Figura 14 — Correlaciones con Egresos a La Fecha](figuras/fig16_correlaciones_egresos.png)
+*Figura 14. Diez mayores correlaciones con «Egresos a La Fecha»: dominan las variables de racha
+(«Semestres Sin Exceso en Horas Lectivas» 0,51; las rachas sin incidente de estudiantes,
+0,47–0,50; la de comentarios negativos baja a 0,38) — señales moderadas y repartidas.*
+
+![Figura 15 — Correlaciones con Estudiantes Aprobados](figuras/fig17_correlaciones_aprobados.png)
+*Figura 15. Nueve mayores correlaciones con «Estudiantes Aprobados»: el tamaño del grupo domina
+(`numero_estudiantes` 0,93 · «Cantidad de Grupos» 0,85 · «Horas Lectivas» 0,78) — anticipo de la
+identidad aritmética que se discute más abajo.*
+
+**Idea aplicada: el índice de egreso.** El concepto propuesto es predecir los egresos acumulados
+de un docente en una asignatura y dividirlos por los semestres que la ha dictado; cuanto mayor
+el índice, mayor la probabilidad de que **rote** y deje de dictarla el semestre entrante. El
+cálculo del índice como tal queda propuesto (la línea está preparada pero comentada en el
+notebook); lo entrenado y evaluado es el predictor de egresos acumulados.
+
+**Protocolo común de los dos experimentos:** 8 regresores (Ridge, Lasso, ElasticNet, árbol de
+decisión, RandomForest, Gradient Boosting, KNN y SVR) con búsqueda de hiperparámetros
+`GridSearchCV` (5 pliegues, error cuadrático medio), partición 80/20 con semilla 42 y
+estandarización solo para los modelos sensibles a escala (lineales, KNN, SVR).
+
+**Resultados — «Egresos a La Fecha»** (test, n ≈ 250):
+
+| Modelo | RMSE | MAE | R² |
+|---|:--:|:--:|:--:|
+| **RandomForest** 🏆 | **0,358** | **0,174** | **0,942** |
+| Gradient Boosting | 0,382 | 0,195 | 0,934 |
+| Árbol de decisión | 0,458 | 0,177 | 0,906 |
+| SVR (rbf) | 0,779 | 0,571 | 0,727 |
+| Lasso | 0,968 | 0,797 | 0,578 |
+| ElasticNet | 0,972 | 0,802 | 0,574 |
+| Ridge | 0,977 | 0,804 | 0,571 |
+| KNN | 0,989 | 0,755 | 0,560 |
+
+Campeón: **RandomForest** (`n_estimators` 200 · `max_depth` None · `min_samples_leaf` 1 ·
+`min_samples_split` 2). La brecha entre los modelos de árbol (0,906–0,942) y los lineales (≈ 0,57)
+indica relaciones no lineales entre las rachas históricas y los egresos.
+
+> **Dos precisiones de lectura.** (i) La conclusión redactada en el notebook cita R² 0,8542 con
+> otros hiperparámetros: corresponde a una **corrida anterior**; aquí se reportan las salidas de
+> la celda ejecutada (R² 0,9422). (ii) «Egresos a La Fecha» se deriva de los reingresos
+> acumulados y el «Indice de Reingreso» figura entre los predictores, de modo que existe un
+> **acoplamiento parcial** entre objetivo y variables: el 0,94 debe leerse como techo optimista.
+
+**Resultados — «Estudiantes Aprobados»** (test, n ≈ 250): SVR lineal R² 1,000 · MAE 0,004;
+Ridge R² 1,000; Lasso R² 0,999997; los de árbol quedan en 0,947–0,984.
+
+> **Lectura honesta: el R² = 1,000 no es aprendizaje, es una identidad.** En estos datos se
+> cumple exactamente `numero_estudiantes = aprobados + perdieron + desistieron` (verificado
+> fila a fila, diferencia máxima 0), y los tres términos de la derecha —salvo el objetivo—
+> están entre los predictores junto con `numero_estudiantes`. El objetivo es entonces una
+> **combinación lineal exacta de tres predictores**, y los modelos lineales se limitan a
+> recuperarla: es **fuga de datos**, no capacidad predictiva. La Figura 15 ya lo anticipaba
+> (`numero_estudiantes` con r = 0,93). **Recomendación:** excluir `numero_estudiantes`,
+> `Estudiantes Perdieron` y `Estudiantes Desertados` del conjunto de predictores y reentrenar;
+> el R² resultante, aunque menor, sí medirá lo que el modelo aporta. El valor demostrado de este
+> ejercicio queda en el predictor de egresos.
+
+**Correlaciones a nivel de asignatura: la señal de deserción.** El capítulo 4.3 del notebook
+agrega los datos por **asignatura-semestre** (56 filas) y explora las tres variables de resultado
+académico. La de la deserción es la que da respaldo al entregable (b):
+
+![Figura 16 — Correlaciones con la deserción](figuras/fig18_correlaciones_desercion.png)
+*Figura 16. Correlaciones de «Estudiantes Que Desistieron» a nivel de asignatura-semestre.*
+
+La deserción se explica sobre todo por el **volumen del curso**: número de estudiantes (0,76),
+cantidad de grupos (0,68) y estudiantes aprobados (0,68), seguidos de la carga lectiva —horas
+(0,63) y clases dictadas (0,63)— y de la asistencia típica (0,59). El dato revelador es el
+último: la correlación con **«Estudiantes Que Perdieron» es apenas 0,17**, es decir que **desertar
+y reprobar son fenómenos distintos**. Quien abandona no es principalmente quien va perdiendo la
+materia; el abandono acompaña a los cursos grandes y de mayor carga. Para el entregable (b) esto
+delimita el camino: un modelo de deserción no puede apoyarse en el desempeño académico como
+predictor principal, sino en variables estructurales del curso.
+
+**Advertencia del propio notebook** (capítulo 5): la muestra no es grande y parte de los datos
+de deserción y pérdida fueron sintetizados; los modelos deben reexplorarse con datos reales.
+Esta advertencia es coherente con las limitaciones L4 y L5 de este informe: sobre datos
+plantillados o sintetizados, las métricas describen la **viabilidad del método**, no el
+desempeño esperable en producción.
 
 <div style="page-break-after: always;"></div>
 
@@ -921,7 +1103,7 @@ Predicciones de demostración:
 > **Lectura honesta de la demostración.** El ajuste movió al modelo **hacia la rúbrica** —el caso
 > mixto adversativo ya no se clasifica POS—, pero los casos emblemáticos *«La clase estuvo
 > bien»* y *«Se podría mejorar»* aún no cruzan la frontera deseada. Es exactamente la limitación
-> cuantificada en la sección 9.2 (L7) y lo que resolvería la siguiente ronda de anotación.
+> cuantificada en la sección 9.2 (L7 y L8) y lo que resolvería la siguiente ronda de anotación.
 
 ### 6.4 Paquete de despliegue
 
@@ -933,68 +1115,105 @@ repositorio** por su tamaño: se entrega por fuera de git.
 El paquete fue **verificado extrayéndolo en un directorio limpio y cargando el modelo desde
 ahí**, replicando exactamente lo que hará el servidor.
 
-## 7 · Despliegue en la nube
+## 7 · Despliegue: el sistema en producción
 
-### 7.1 Publicación del artefacto
+El modelo no se sirve con un script suelto: está integrado en el **backend del equipo**
+(`src/app.py` del repositorio `Capstone-Tech-Tailors/Analitica-Educativa`), un servicio FastAPI
+con base de datos PostgreSQL y despliegue continuo en Azure. Esta sección documenta ese sistema
+con el foco puesto en cómo sirve el modelo de sentimiento.
 
-Los pesos no se versionan en git (superan el límite de GitHub). Dos vías:
+### 7.1 Arquitectura del sistema
 
-**a) Volumen de Azure** (la adoptada por el equipo): subir el ZIP mediante Cloud Shell y
-descomprimir en el volumen montado:
-
-```bash
-unzip modelo_sentimiento_humano.zip -d /ruta/del/volumen
+```
+  CSV de evaluaciones ──▶ POST /etl ──▶ PostgreSQL (tabla clases, UPSERT por id_curso_grupo)
+                                              │
+        GET /seguimiento_docente_por_asignatura (comentarios distintos por docente-asignatura)
+                                              │
+                     POST /analisis_foda ◀────┘        ┌──────────────────────┐
+                            │  usa POST /predecir_sentimientos (el modelo)    │
+                            ▼                                                 │
+                     Dashboard PowerBI (repo entregable-visual)               │
 ```
 
-**b) Registro de artefactos** (recomendada para versionado): repositorio privado en Hugging Face
-Hub, que aporta control de acceso y versionado de modelos.
+**Componentes** (todo verificado sobre el código del repositorio):
 
-### 7.2 Servicio de inferencia
+| Componente | Implementación |
+|---|---|
+| API | FastAPI (`src/app.py`), título «Analítica Académica» |
+| Base de datos | PostgreSQL asíncrono (SQLAlchemy 2 + asyncpg); una tabla, `clases` (PK `id_curso_grupo`); esquema versionado con Alembic |
+| Ingesta | `POST /etl`: CSV → procesamiento en segundo plano por bloques de 500 filas → *UPSERT* (`ON CONFLICT DO UPDATE`). Los CSV nunca se versionan en git (información sensible) |
+| Contenedor | Imagen base `ghcr.io/benoitc/gunicorn:25.2.0` · worker `uvicorn.workers.UvicornWorker` · usuario no root |
+| CI/CD | GitHub Actions: cada *push* a `main` → login OIDC en Azure → build de la imagen → `techtailors.azurecr.io/analitica-educativa:<sha>` → actualización del Container App |
+| Infraestructura | Azure Container Apps: app `analitica-educativa` (región eastus2, según el FQDN público documentado en el README del repositorio), grupo de recursos `sic-education-analytics`, con documentación interactiva Swagger en `/docs` |
+| Interfaz de usuario | Dashboard en PowerBI (repositorio `entregable-visual`), con demo pública — es el entregable (e) de la ficha del proyecto |
+
+**Endpoints** (14, agrupados por función):
+
+| Grupo | Endpoints | Función |
+|---|---|---|
+| Salud | `GET /health/live` · `GET /health/ready` | Sondas del contenedor; *ready* verifica la base de datos (`SELECT 1`, 503 si cae) |
+| **Sentimiento (PLN)** | `POST /predecir_sentimientos` · `POST /analisis_foda` | Clasificación por lotes y construcción del DOFA (sección 8.2) |
+| Catálogo | `GET /find_docentes` · `/find_asignaturas` · `/find_semestres` | Valores distintos para los filtros del dashboard |
+| Ingesta | `POST /etl` | Carga masiva del CSV institucional |
+| Seguimiento | `GET /seguimiento_docente` (+`/count`) · `/seguimiento_docente_por_asignatura` (+`/count`) · `/seguimiento_asignaturas` (+`/count`) | Agregaciones por docente, docente-asignatura y asignatura (puntajes medios, horas lectivas, conteos por tendencia, índices de carga y reingreso) |
+
+### 7.2 Cómo se sirve el modelo
+
+El backend carga el modelo **una sola vez al arrancar** (patrón *lifespan* de FastAPI) y lo
+mantiene en memoria:
 
 ```python
-# app.py
-from fastapi import FastAPI
-from pydantic import BaseModel
-from transformers import pipeline
+# src/app.py — extracto condensado de la función lifespan (la original añade mkdir y try/except)
+HF_DEVICE = "mps" if torch.backends.mps.is_available() else ("cuda" if torch.cuda.is_available() else "cpu")
+HF_MAX_LEN = 64
 
-app = FastAPI(title="Sentimiento docente — U. del Rosario")
-clf = pipeline("sentiment-analysis", model="/ruta/del/volumen/modelo_sentimiento_humano")
-
-class Lote(BaseModel):
-    comentarios: list[str]
-
-@app.post("/sentimiento")
-def sentimiento(lote: Lote):
-    return [{"comentario": c, **r} for c, r in
-            zip(lote.comentarios, clf(lote.comentarios, truncation=True, max_length=128))]
+modelo_sentimientos_path = platformdirs.user_publicshare_path() / "ml_models" / "sentimientos"
+if modelo_sentimientos_path.exists() and any(modelo_sentimientos_path.iterdir()):
+    tokenizador_disco = AutoTokenizer.from_pretrained(modelo_sentimientos_path)
+    modelo_disco = AutoModelForSequenceClassification.from_pretrained(modelo_sentimientos_path)
+    ml_models["sentimientos"] = pipeline(
+        "sentiment-analysis", model=modelo_disco, tokenizer=tokenizador_disco,
+        device=HF_DEVICE, truncation=True, max_length=HF_MAX_LEN)
 ```
 
-```dockerfile
-FROM python:3.12-slim
-RUN pip install --no-cache-dir fastapi uvicorn transformers torch \
-    --extra-index-url https://download.pytorch.org/whl/cpu
-COPY app.py .
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8080"]
-```
+Propiedades operativas de este diseño:
 
-### 7.3 Requisitos y consideraciones
+- **Los pesos no viajan ni en git ni en la imagen Docker** (437 MB superan el límite de GitHub y
+  engordarían cada build). Se cargan **exclusivamente desde disco local del contenedor**:
+  `platformdirs.user_publicshare_path()/ml_models/sentimientos`, que con el usuario `gunicorn`
+  de la imagen resuelve a **`/home/gunicorn/Public/ml_models/sentimientos`**.
+- **Publicación del artefacto**: extraer el ZIP de la sección 6.4 en esa ruta —
+  `unzip modelo_sentimiento_humano.zip -d /home/gunicorn/Public/ml_models/sentimientos` — por
+  volumen montado o copia al contenedor. El pipeline de CI/CD **no** sube el modelo.
+- **Sin descarga automática**: no hay *fallback* a Hugging Face Hub. Si la carpeta no existe o
+  está vacía, la aplicación **arranca igual** y los dos endpoints de sentimiento responden
+  `503 — "Modelo no fue encontrado en el Almacenamiento"`; el resto del sistema (ETL,
+  seguimiento) sigue operativo. Este desacople es deliberado: la disponibilidad del dashboard no
+  depende del modelo.
+- **Dispositivo**: selección automática `mps → cuda → cpu`; en Azure Container Apps (sin GPU) la
+  inferencia corre en **CPU**, suficiente para el patrón de carga por lotes semestral.
+- **Inferencia por lotes reales**: `POST /predecir_sentimientos` recibe una lista JSON de
+  comentarios y los pasa al pipeline **en una sola llamada**; responde
+  `{comentario, sentimiento, probabilidad}` por elemento, con la etiqueta textual
+  (`POS`/`NEU`/`NEG`) directamente del `config.json` del modelo, sin umbrales ni postprocesado.
 
-| Recurso | Valor |
-|---|---|
-| CPU / RAM | 2 vCPU · 4 GB (**no requiere GPU**) |
-| Artefacto | 437 MB (+ ≈700 MB de librerías instaladas: torch CPU 525 MB · transformers 104 MB · resto) |
-| Patrón de carga | Procesamiento por lotes al cierre de cada semestre, no flujo continuo |
+> **Punto de alineación detectado.** El backend fija `max_length = 64`, mientras que
+> `modelo_sentimiento_humano` se entrenó y evaluó con `max_length = 128` (sección 5.6); 64 era el
+> valor de la destilación del NB04. Con comentarios de mediana 4 palabras el truncamiento casi
+> nunca actúa, pero los comentarios largos (hasta 199 palabras en el corpus) perderían la parte
+> final — donde los mixtos adversativos concentran la crítica. **Recomendación:** subir
+> `HF_MAX_LEN` a 128 en `src/app.py` para reproducir exactamente las condiciones de evaluación.
 
-**Protección de datos.** Los comentarios identifican opiniones sobre personas: procesarlos en
-infraestructura controlada por la universidad, seudonimizar identificadores antes de la
-inferencia, restringir el acceso al endpoint mediante token y conservar únicamente los agregados
-necesarios para el DOFA.
+**Reproducibilidad de la pila.** Producción fija `transformers==5.14.1` y `torch==2.13.0`,
+**idénticas a las del entorno de entrenamiento**, de modo que no hay deriva de versión en la
+inferencia. Los recursos del servicio y el patrón de carga por lotes se detallan en la viñeta
+anterior y en la sección 5.8; la protección de los datos personales, en la sección 10.
 
 <div style="page-break-after: always;"></div>
 
 ## 8 · Aplicación: del sentimiento al DOFA
 
-### 8.1 Metodología
+### 8.1 Metodología propuesta
 
 El modelo es el **motor de clasificación**; el DOFA se construye agregando sus salidas por
 docente y combinándolas con el modelo de tendencia:
@@ -1009,7 +1228,38 @@ docente y combinándolas con el modelo de tendencia:
 **Umbral de alerta sugerido:** % NEG del docente en el cuartil superior **o** tendencia
 `En riesgo`; ambos simultáneamente indican prioridad máxima.
 
-### 8.2 Prototipo sobre datos reales
+### 8.2 Implementación en el backend
+
+El backend implementa el DOFA como servicio: `POST /analisis_foda` recibe la lista de comentarios
+de un docente —típicamente los comentarios distintos por docente-asignatura que devuelve
+`GET /seguimiento_docente_por_asignatura`—, los clasifica en lote con el modelo y los reparte por
+cuadrante:
+
+```python
+# src/app.py (extracto real)
+response["Fortalezas"]             = list(foda.loc["POS", "Comentarios"]) if "POS" in sentimientos else []
+response["Debilidades y Amenazas"] = list(foda.loc["NEG", "Comentarios"]) if "NEG" in sentimientos else []
+response["Oportunidades"]          = list(foda.loc["NEU", "Comentarios"]) if "NEU" in sentimientos else []
+```
+
+Características de la implementación: **tres cuadrantes** (Debilidades y Amenazas se fusionan en
+una sola lista), asignación por la etiqueta más probable de cada comentario (la probabilidad se
+descarta, sin umbral de confianza) y **deduplicación** de comentarios idénticos dentro de cada
+cuadrante — decisión acertada dado el plantillado del dataset institucional (sección 3.1). El
+JSON resultante es el que consume el dashboard PowerBI.
+
+> **Diferencia con la metodología propuesta, declarada.** La implementación asigna
+> **Oportunidades = NEU**, mientras que la rúbrica de anotación (sección 4.2) etiqueta las
+> críticas constructivas —«se podría mejorar…», «debería…», «falta…»— como **NEG**. En
+> consecuencia, las peticiones de cambio accionables (la materia prima del plan de mejora según
+> la sección 8.1) aparecen hoy en «Debilidades y Amenazas», y «Oportunidades» recoge los comentarios
+> descriptivos y los elogios tibios. **Recomendación:** separar dentro del NEG las críticas
+> constructivas mediante los patrones léxicos ya identificados («debería», «podría», «falta») y
+> destinarlas a Oportunidades, o incorporar una cuarta etiqueta en la próxima ronda de anotación.
+> Mientras tanto, la lectura correcta del cuadrante «Oportunidades» del sistema es «comentarios
+> neutrales», no «críticas accionables».
+
+### 8.3 Prototipo sobre datos reales
 
 Aplicado al docente con mayor proporción de comentarios negativos del dataset institucional:
 
@@ -1028,7 +1278,7 @@ Aplicado al docente con mayor proporción de comentarios negativos del dataset i
 > **🚨 Amenazas** — Tendencia «En riesgo» en el **27 %** de sus evaluaciones frente al **20 %**
 > institucional. Evolución del % NEG: 2020: 50 % · 2021: 50 % · 2022: 38 % · **2023: 69 %**
 
-### 8.3 Hallazgo aplicado: docentes «enmascarados»
+### 8.4 Hallazgo aplicado: docentes «enmascarados»
 
 El análisis por docente reveló un patrón que el sistema de puntajes no detecta: **cuatro docentes
 con puntaje por encima de la mediana pero con el porcentaje de comentarios negativos en el
@@ -1052,7 +1302,7 @@ Se declaran de forma explícita porque condicionan la interpretación de todos l
 | # | Limitación | Impacto | Estado |
 |---|---|---|---|
 | L1 | **20 comentarios distintos en 3.000 filas** (0,67 % de unicidad). El dataset institucional está plantillado/anonimizado | Impide medir diferencias entre modelos con potencia estadística sobre el texto institucional | **Mitigada** con el gold humano de 172 ítems (8,6×) |
-| L2 | El corpus de entrenamiento de la destilación es **traducido** del inglés (dominio: aspectos académicos de una universidad de Bangladesh) | Desplazamiento de dominio y registro respecto a las evaluaciones de la U. del Rosario | Mitigada parcialmente por la auditoría de traducción (sección 3.4) y sustituida como fuente principal por la anotación humana |
+| L2 | **Todo el texto del modelo de producción es traducido del inglés** (dominio: universidad de Bangladesh): tanto el corpus de destilación como los 148 comentarios de entrenamiento y los 172 del gold humano | La anotación humana sustituyó el **origen de las etiquetas**, no el del texto: el desplazamiento de dominio y registro persiste en el entrenamiento **y también en la evaluación**, de modo que las métricas de la sección 5.6 no garantizan el mismo desempeño sobre comentarios reales de la U. del Rosario | Mitigada parcialmente por la auditoría de traducción (sección 3.4); su resolución de raíz es la prioridad 3 del trabajo futuro |
 | L3 | El gold humano contiene **20 ejemplos NEU** en evaluación y **22** en entrenamiento | Precisión NEU de 0,300 y recall 0,600, **idénticos a los del maestro**: el ajuste no consigue delimitar la clase con tan pocos ejemplos | Abierta — requiere más anotación |
 | L4 | La etiqueta `tendencia_desempeno` es **derivada por reglas**, no observada | Las métricas del modelo de tendencia (0,915) son un **techo artificial**: el modelo reaprende la regla que generó la etiqueta | Documentada; requiere validación con datos de desempeño reales |
 | L5 | Los puntajes tienen **distribución artificialmente uniforme** (media 3,99 · desviación 0,54 · sin colas largas) | Los umbrales de la zona gris pueden no trasladarse a datos reales | Abierta |
@@ -1072,8 +1322,12 @@ Se declaran de forma explícita porque condicionan la interpretación de todos l
 
 - El DOFA prototipado usa **agrupación por frecuencia de comentario**, no modelado temático
   (no hay suficientes textos distintos para justificar *topic modeling*).
-- El pipeline está validado **fuera de línea**; no se ha ejecutado un ciclo completo en producción
-  con datos de un semestre real.
+- El backend está **desplegado con CI/CD**, pero el ciclo completo con datos de un semestre real
+  —carga de pesos al contenedor incluida— aún no se ha ejecutado de extremo a extremo.
+- El DOFA implementado asigna **Oportunidades = NEU**, que según la rúbrica no contiene las
+  críticas constructivas sino los comentarios neutrales (diferencia declarada en la sección 8.2).
+- El servicio fija **`max_length = 64`** frente a los 128 con que se evaluó el modelo (punto de
+  alineación de la sección 7.2).
 - El modelo de tendencia **no alcanza el objetivo de recall ≥ 0,985** en el protocolo aleatorio
   (0,960 antes del ajuste de umbral, 0,966 después); sí lo alcanza en el protocolo temporal 2023
   (0,993). Queda documentado como pendiente.
@@ -1162,53 +1416,33 @@ automáticamente, con qué finalidad, y tener derecho a revisar y objetar el DOF
    En la frontera de decisión real ([3,9 – 4,5]), incorporar el sentimiento aporta +0,04 de
    macro-F1.
 
-9. **El artefacto está listo para producción y verificado**: 437 MB, inferencia en CPU (2 vCPU ·
-   4 GB), recargable desde disco de forma reproducible, y empaquetado en un ZIP de 404 MB
-   probado extrayéndolo en un directorio limpio.
+9. **El artefacto está verificado y su sistema de servicio, desplegado**: 437 MB, inferencia en
+   CPU (2 vCPU · 4 GB), ZIP de 404 MB probado extrayéndolo en un directorio limpio, e integrado
+   en el backend FastAPI con despliegue continuo en Azure Container Apps (sección 7). Falta
+   **completar la puesta en producción**: publicar los pesos en el contenedor —hasta entonces los
+   endpoints de sentimiento devolverán 503—, alinear `max_length` a 128 y ejecutar el ciclo
+   completo con datos de un semestre real (sección 9.3).
 
 ## 12 · Trabajo futuro
 
-Ordenado por relación entre impacto y esfuerzo.
+Ordenado por relación entre impacto y esfuerzo. La columna «Cierra» indica qué limitaciones
+de la sección 9 resuelve cada línea de trabajo.
 
-**Prioridad 1 — Ampliar el gold anotado (impacto alto · esfuerzo medio).**
-Duplicar el conjunto humano a 300–400 ítems, con énfasis en NEU (la clase con precisión 0,300) y
-en mixtos adversativos. Es la única intervención que ataca simultáneamente L3, L6 y L7. Con ~150
-ítems adicionales por clase, McNemar tendría potencia suficiente para decidir si la mejora sobre
-el maestro es real.
-
-**Prioridad 2 — Refinar la rúbrica para mixtos adversativos (impacto alto · esfuerzo bajo).**
-La brecha ordinal−nominal señala que el desacuerdo es de umbral. Redactar reglas explícitas
-(«si la crítica pide un cambio concreto, la etiqueta es la de la crítica») y re-anotar los 48
-ítems de mayoría simple debería elevar α por encima de 0,70 sin anotar nada nuevo.
-
-**Prioridad 3 — Recolectar comentarios institucionales reales (impacto alto · esfuerzo externo).**
-Solicitar a la universidad un volcado sin plantillar de un semestre. Resuelve L1, L2 y L5 de raíz
-y permite reentrenar sobre el dominio objetivo en lugar de un corpus traducido.
-
-**Prioridad 4 — Auditoría de sesgo por subgrupo (impacto alto · esfuerzo medio).**
-Medir macro-F1 y recall NEG por asignatura, facultad y —si es legalmente posible y con
-consentimiento— género del docente. Es un requisito previo a cualquier despliegue con
-consecuencias (L11).
-
-**Prioridad 5 — Validar el modelo de tendencia con desempeño observado (impacto medio).**
-Sustituir la etiqueta derivada por reglas por una señal real (evolución de puntajes en semestres
-posteriores, permanencia, resultados de aprendizaje). Sin esto, el 0,915 no es interpretable
-(L4).
-
-**Prioridad 6 — Análisis por aspectos (ABSA) (impacto medio · esfuerzo alto).**
-Pasar de polaridad global a polaridad por aspecto (metodología · evaluación · trato · material).
-El DOFA gana precisión cuando distingue «explica bien pero califica injustamente» de un
-sentimiento mixto indiferenciado. Requiere el gold ampliado de la prioridad 1.
-
-**Prioridad 7 — Puesta en producción y monitoreo (impacto medio).**
-Desplegar el servicio de la sección 7, registrar la distribución de predicciones por semestre y alertar
-ante desviaciones (*drift*). Cerrar el ciclo: cada semestre anotado alimenta la siguiente versión
-del modelo.
+| # | Línea de trabajo | Impacto · esfuerzo | Qué hacer | Cierra |
+|:--:|---|---|---|:--:|
+| **1** | **Ampliar el gold anotado** | alto · medio | Duplicar el conjunto humano a 300–400 ítems, con énfasis en NEU y en mixtos adversativos. Con ~150 ítems más por clase, McNemar tendría potencia para decidir si la mejora sobre el maestro es real | L3 · L6 · L7 |
+| **2** | **Refinar la rúbrica de mixtos adversativos** | alto · bajo | Redactar reglas explícitas («si la crítica pide un cambio concreto, la etiqueta es la de la crítica») y re-anotar los 48 ítems de mayoría simple: debería elevar α por encima de 0,70 sin anotar nada nuevo | L7 |
+| **3** | **Recolectar comentarios institucionales reales** | alto · externo | Solicitar a la universidad un volcado sin plantillar de un semestre; permite reentrenar sobre el dominio objetivo en lugar de un corpus traducido | L1 · L2 · L5 |
+| **4** | **Auditoría de sesgo por subgrupo** | alto · medio | Medir macro-F1 y recall NEG por asignatura, facultad y —si es legalmente posible y con consentimiento— género del docente. Requisito previo a cualquier despliegue con consecuencias | L11 |
+| **5** | **Validar la tendencia con desempeño observado** | medio | Sustituir la etiqueta derivada por reglas por una señal real (evolución de puntajes, permanencia, resultados de aprendizaje). Sin esto, el 0,915 no es interpretable | L4 |
+| **6** | **Análisis por aspectos (ABSA)** | medio · alto | Pasar de polaridad global a polaridad por aspecto (metodología · evaluación · trato · material): el DOFA distinguiría «explica bien pero califica injustamente» de un mixto indiferenciado. Requiere el gold de la prioridad 1 | — |
+| **7** | **Completar la puesta en producción y monitorear** | medio · bajo | Cargar los pesos en `/home/gunicorn/Public/ml_models/sentimientos`, alinear `max_length` a 128, redirigir las críticas constructivas al cuadrante Oportunidades (sección 8.2) y alertar ante desviaciones (*drift*). Cada semestre anotado alimenta la siguiente versión | — |
 
 <div style="page-break-after: always;"></div>
 
 ## 13 · Referencias
 
+<div class="refs" markdown="1">
 **Datos**
 
 1. Rahman, M. et al. *Students' Feedback on Teaching Quality — AIUB* [dataset]. Mendeley Data.
@@ -1232,27 +1466,26 @@ del modelo.
 **Métodos**
 
 8. Hinton, G., Vinyals, O. & Dean, J. (2015). *Distilling the Knowledge in a Neural Network.*
-   NIPS Deep Learning Workshop. (Fundamento de la destilación maestro→estudiante.)
+   NIPS Deep Learning Workshop. (Destilación maestro→estudiante.)
 9. Ratner, A., Bach, S. H., Ehrenberg, H., Fries, J., Wu, S. & Ré, C. (2017). *Snorkel: Rapid
    Training Data Creation with Weak Supervision.* VLDB. (Supervisión débil.)
 10. Ruder, S. & Howard, J. (2018). *Universal Language Model Fine-tuning for Text Classification
-    (ULMFiT).* ACL. (Fine-tuning con tasas de aprendizaje reducidas.)
+    (ULMFiT).* ACL.
 
 **Evaluación y acuerdo**
 
 11. Krippendorff, K. (2004). *Content Analysis: An Introduction to Its Methodology* (2ª ed.).
-    Sage. (α de Krippendorff, niveles nominal y ordinal.)
+    Sage. (α nominal y ordinal.)
 12. Fleiss, J. L. (1971). *Measuring nominal scale agreement among many raters.* Psychological
     Bulletin, 76(5), 378–382.
 13. Cohen, J. (1960). *A Coefficient of Agreement for Nominal Scales.* Educational and
     Psychological Measurement, 20(1), 37–46.
 14. Landis, J. R. & Koch, G. G. (1977). *The Measurement of Observer Agreement for Categorical
-    Data.* Biometrics, 33(1), 159–174. (Escala de interpretación de κ.)
+    Data.* Biometrics, 33(1), 159–174. (Escala de κ.)
 15. Feinstein, A. R. & Cicchetti, D. V. (1990). *High agreement but low kappa: I. The problems of
     two paradoxes.* Journal of Clinical Epidemiology, 43(6), 543–549. (Paradoja de kappa.)
 16. Dietterich, T. G. (1998). *Approximate Statistical Tests for Comparing Supervised
-    Classification Learning Algorithms.* Neural Computation, 10(7), 1895–1923. (Prueba de
-    McNemar para comparar clasificadores.)
+    Classification Learning Algorithms.* Neural Computation, 10(7), 1895–1923. (McNemar.)
 17. Niculescu-Mizil, A. & Caruana, R. (2005). *Predicting Good Probabilities with Supervised
     Learning.* ICML. (Calibración isotónica.)
 18. Brier, G. W. (1950). *Verification of Forecasts Expressed in Terms of Probability.* Monthly
@@ -1263,177 +1496,10 @@ del modelo.
 19. Wolf, T. et al. (2020). *Transformers: State-of-the-Art Natural Language Processing.* EMNLP
     (System Demonstrations). Hugging Face.
 20. Pedregosa, F. et al. (2011). *Scikit-learn: Machine Learning in Python.* JMLR, 12, 2825–2830.
-21. Anthropic (2025). *Claude* — modelo de lenguaje empleado para la traducción EN→ES del corpus
-    de entrenamiento (sección 3.4) y como asistente de desarrollo del proyecto.
+21. Anthropic (2025). *Claude* — traducción EN→ES del corpus (sección 3.4) y asistencia de
+    desarrollo.
 
-<div style="page-break-after: always;"></div>
-
-## Anexo A · Hiperparámetros completos por experimento
-
-### A.1 Destilación (NB04) — `modelo_sentimiento_ft`
-
-| Parámetro | Valor |
-|---|---|
-| Modelo base | `dccuchile/bert-base-spanish-wwm-cased` (BETO) |
-| Etiquetas | Débiles, generadas por `pysentimiento/robertuito-sentiment-analysis` |
-| Corpus | 29.243 comentarios únicos → 11.697 balanceados por submuestreo (3.899 por clase) |
-| División | 70 / 15 / 15 estratificada, semilla 42 (8.187 / 1.755 / 1.755) |
-| Épocas | 4 ejecutadas · mejor época 3, conservada por `load_best_model_at_end` |
-| Tasa de aprendizaje | 2e-5 |
-| Tamaño de lote | 32 |
-| `max_length` | 64 |
-| Decaimiento de pesos | 0,01 |
-| *Warmup* | 10 % de los pasos |
-| Función de pérdida | Entropía cruzada estándar (clases ya balanceadas por submuestreo) |
-| *Early stopping* | Configurado con paciencia 2 sobre macro-F1 de validación; **no llegó a dispararse** |
-| Dispositivo | Apple Silicon MPS (`PYTORCH_ENABLE_MPS_FALLBACK=1`) |
-| Duración | 7,2 min |
-
-### A.2 Destilación con RoBERTuito como estudiante (NB04, capítulo 8.6)
-
-Idénticos a A.1 (4 épocas · lr 2e-5 · lote 32 · `max_length` 64 · partición 70/15/15) salvo:
-modelo base `pysentimiento/robertuito-base-uncased`; duración 5,9 min.
-
-### A.3 Fine-tuning humano (NB05) — `modelo_sentimiento_humano` ⭐ producción
-
-| Parámetro | Valor |
-|---|---|
-| Modelo base | `pysentimiento/robertuito-sentiment-analysis` |
-| Etiquetas | **Humanas** · 3 anotadores. El bloque de entrenamiento (148) es de **anotación simple** (un anotador por tercio); la adjudicación por mayoría se aplica al gold de evaluación (172) |
-| Corpus de entrenamiento | 148 comentarios (NEG 52 · NEU 22 · POS 74) |
-| División | 118 entrenamiento / 30 validación, estratificada |
-| Evaluación | 172 comentarios del gold humano, sin solapamiento (fuga = 0) |
-| Épocas | 4 |
-| Tasa de aprendizaje | **1e-5** (reducida: pocos datos, no destruir lo preentrenado) |
-| Tamaño de lote | 8 |
-| `max_length` | 128 |
-| Pesos de clase | NEG 0,96 · NEU 2,19 · POS 0,67 |
-| Función de pérdida | Entropía cruzada ponderada |
-| *Early stopping* | Activo sobre macro-F1 de validación |
-| Semilla | 42 |
-| Dispositivo | Apple Silicon MPS |
-| Duración | **20 segundos** |
-
-### A.4 Modelo de tendencia (NB03 análisis de datos) — `modelo_tendencia_docente.pkl`
-
-| Parámetro | Valor |
-|---|---|
-| Algoritmo campeón | RandomForest (elegido entre 5 candidatos) |
-| Variables numéricas | `puntaje_claridad`, `puntaje_metodologia`, `puntaje_evaluacion`, `numero_estudiantes`, `sentimiento_gold_score` |
-| Variable categórica | `asignatura` |
-| **Excluidas del set de ML** | `delta_semestre` (fuga), `hist_prom_previo`, `id_docente`, `semestre` (sin poder predictivo / alta cardinalidad). `puntaje_promedio` se omite solo del pipeline de ML por redundancia —es la media de los otros tres—, pero es la variable base de los candidatos de regla |
-| Validación | Validación cruzada estratificada + retención aleatoria + **retención temporal** (train 2020–2022, test 2023) |
-| Calibración | Isotónica; Brier 0,0133 → **0,0123** |
-| Umbral «En riesgo» | **0,21** (ajustado fuera de muestra para maximizar recall) |
-| Semilla | 42 |
-| Tamaño | 3.520 KB ≈ 3,4 MiB (`ensemble=False`, `compress=3`) |
-
-**Resultados:** macro-F1 0,915 (aleatorio) · 0,905 (temporal 2023) · recall «En riesgo» 0,960
-(0,966 tras ajuste de umbral; 0,993 en el protocolo temporal, medido **sin** ese ajuste). Informe por clase (test aleatorio,
-n = 750): En riesgo 0,98/0,96/0,97 (149) · Estable 0,92/0,89/0,91 (375) · Mejora 0,84/0,90/0,87
-(226).
-
-## Anexo B · Glosario
-
-| Término | Definición |
-|---|---|
-| **α de Krippendorff** | Coeficiente de acuerdo entre anotadores que admite diseños incompletos y distintos números de anotadores por ítem. Nominal trata las clases como no ordenadas; ordinal penaliza más los desacuerdos lejanos |
-| **Adjudicación** | Proceso de convertir varias anotaciones en una única etiqueta de referencia (aquí: mayoría 2/3; sin mayoría → descartado) |
-| **Benchmark** | Comparación sistemática de varios modelos sobre el mismo conjunto de evaluación y las mismas métricas |
-| **Brier score** | Error cuadrático medio de las probabilidades predichas. Menor es mejor; mide calidad de calibración |
-| **Calibración isotónica** | Ajuste monótono que corrige probabilidades mal calibradas sin alterar el orden de las predicciones |
-| **Destilación de conocimiento** | Entrenar un modelo «estudiante» con las predicciones de un modelo «maestro» en lugar de etiquetas humanas |
-| **DOFA / SWOT** | Matriz de Debilidades, Oportunidades, Fortalezas y Amenazas |
-| **Entropía cruzada ponderada** | Función de pérdida que asigna más peso a las clases minoritarias para compensar el desbalance |
-| **Fine-tuning** | Continuar el entrenamiento de un modelo preentrenado sobre datos de la tarea objetivo, ajustando todos sus pesos |
-| **Fleiss κ** | Acuerdo entre más de dos anotadores sobre categorías nominales, corregido por azar |
-| **Fuga de información** | Uso, como variable predictora, de información que no estaría disponible en el momento real de la predicción. Infla las métricas de forma engañosa |
-| **Gold standard** | Conjunto de referencia con etiquetas consideradas correctas, contra el que se mide el desempeño |
-| **macro-F1** | Media aritmética del F1 de cada clase, sin ponderar por frecuencia. Penaliza ignorar clases minoritarias |
-| **Mixto adversativo** | Comentario con elogio y crítica unidos por un conector adversativo («bueno, **pero** …») |
-| **MPS** | *Metal Performance Shaders*: backend de aceleración de PyTorch en Apple Silicon |
-| **Paradoja de kappa** | Situación en la que el acuerdo observado es alto pero κ es bajo, porque el desbalance de clases eleva el acuerdo esperado por azar |
-| **Prueba de McNemar** | Prueba estadística para comparar dos clasificadores sobre el mismo conjunto, basada en los casos donde discrepan |
-| **RoBERTuito** | Modelo tipo RoBERTa preentrenado en español de redes sociales |
-| **Supervisión débil** | Entrenar con etiquetas generadas automáticamente (reglas, heurísticas u otro modelo) en lugar de anotación humana |
-| **Transfer learning** | Reutilizar un modelo entrenado en una tarea general para resolver una tarea específica con pocos datos |
-| **V de Cramér** | Medida de asociación entre dos variables categóricas, en el rango [0, 1] |
-
-<div style="page-break-after: always;"></div>
-
-## Anexo C · Trazabilidad de los resultados
-
-| Elemento | Valor |
-|---|---|
-| Repositorio | `Capstone-Tech-Tailors/Analitica-Educativa` |
-| Rama de trabajo | `dev/natalia` |
-| Historial | **27 commits** al cierre de este informe (la salida almacenada de `INFORME_FINAL.ipynb` corresponde a los 24 anteriores a su último *Run All*) |
-| Semilla global | 42 (todos los experimentos) |
-| Entorno | Python 3.12+ · PyTorch (MPS) · Transformers · scikit-learn · pandas |
-
-**Dónde se comprueba cada resultado del informe:**
-
-| Sección | Fuente ejecutable |
-|---|---|
-| 3 Datos | `Informe.md` · `analisis_datos/reports/justificacion_comentarios_repetidos.md` |
-| 5.1 Benchmark | `analisis_sentimientos/notebooks/03_benchmark_modelos.ipynb` |
-| 5.2 Tendencia | `analisis_datos/notebooks/03_modelado_tendencia_docente.ipynb` + `_metadatos.json` |
-| 5.3 Destilación · 5.4 Falsos positivos | `analisis_sentimientos/notebooks/04_finetuning_sentimiento.ipynb` |
-| 5.5 Anotación | `anotacion/reporte_acuerdo.md` · `anotacion/consolidar_anotacion.py` |
-| 5.6 Modelo final | `analisis_sentimientos/notebooks/05_finetuning_humano.ipynb` · `models/modelo_sentimiento_humano/info.json` |
-| 5.7 Auditoría del EDA | `analisis_datos/reports/INFORME_Revision_EDA_TechTailors.md` |
-| 5.8 Análisis institucional | `analisis_datos/notebooks/02_integracion_sentimiento_eda.ipynb` |
-| 6 a 8 · Producción, despliegue, DOFA | `INFORME_FINAL.ipynb` |
-
-## Anexo D · Guía de reproducción
-
-**1. Preparar el entorno**
-
-```bash
-git clone https://github.com/Capstone-Tech-Tailors/Analitica-Educativa.git
-cd Analitica-Educativa && git checkout dev/natalia
-python -m venv .venv && source .venv/bin/activate
-pip install -r requirements.txt
-```
-
-**2. Orden de ejecución de los notebooks**
-
-| # | Notebook | Produce |
-|--:|---|---|
-| 1 | `analisis_datos/01_eda_techtailors_referencia` | Exploración de referencia |
-| 2 | `analisis_sentimientos/01_catalogo_modelos_espanol` | Catálogo de modelos candidatos |
-| 3 | `analisis_sentimientos/02_sentimiento_evaluaciones` | `evaluaciones_con_sentimiento.csv` |
-| 4 | `analisis_sentimientos/03_benchmark_modelos` | `benchmark_sentimiento.csv` |
-| 5 | `analisis_datos/02_integracion_sentimiento_eda` | Análisis institucional |
-| 6 | `analisis_datos/03_modelado_tendencia_docente` | `modelo_tendencia_docente.pkl` |
-| 7 | `analisis_sentimientos/04_finetuning_sentimiento` | `modelo_sentimiento_ft/` |
-| 8 | `anotacion/generar_planillas.py` → anotar → `consolidar_anotacion.py` | `gold_humano_eval.csv` · `train_humano.csv` |
-| 9 | `analisis_sentimientos/05_finetuning_humano` | ⭐ `modelo_sentimiento_humano/` |
-| 10 | `INFORME_FINAL.ipynb` | Verificación integral |
-
-Los notebooks son **autónomos**: instalan sus dependencias, resuelven rutas mediante `src/rutas.py`
-y no dependen del orden de ejecución de las celdas.
-
-**3. Usar el modelo de producción**
-
-```python
-from transformers import pipeline
-
-clf = pipeline(
-    "sentiment-analysis",
-    model="analisis_sentimientos/models/modelo_sentimiento_humano",
-)
-print(clf(["La profesora explica con claridad y responde todas las dudas"]))
-# [{'label': 'POS', 'score': 0.646}]
-```
-
-**4. Nota sobre reproducibilidad exacta**
-
-Las semillas están fijadas en 42, pero el backend MPS de Apple Silicon **no es completamente
-determinista**. Se observó una variabilidad entre corridas de hasta **±0,04 en macro-F1** sobre
-conjuntos de 20 ítems (L9). Sobre el gold de 172 la variabilidad es sustancialmente menor. Las
-cifras de este informe corresponden a las ejecuciones registradas en los notebooks del
-repositorio; una re-ejecución puede diferir en el tercer decimal.
+</div>
 
 ---
 
